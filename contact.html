@@ -223,6 +223,28 @@
             <button type="submit" class="btn btn-form">운명의 서신 보내기</button>
         </form>
 
+        <!-- Disqus Comments -->
+        <div id="disqus_thread" style="margin-top: 50px; padding-top: 30px; border-top: 1px dashed var(--btn-border); text-align: left;"></div>
+        <script>
+            /**
+            *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+            *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
+            
+            var disqus_config = function () {
+                this.page.url = window.location.href;  // Replace PAGE_URL with your page's canonical URL variable
+                this.page.identifier = 'contact_page'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+            };
+            
+            (function() { // DON'T EDIT BELOW THIS LINE
+                var d = document, s = d.createElement('script');
+                // IMPORTNAT: Replace 'example' with your Forum shortname
+                s.src = 'https://example.disqus.com/embed.js'; 
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
         <a href="index.html" class="back-link">← 예언소로 돌아가기</a>
     </div>
 
