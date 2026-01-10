@@ -9,37 +9,28 @@
 
         :root {
             /* Common */
-            --paper-bg: #f4e4bc;
-            --paper-shadow: #d4c29a;
-            --lotto-red: #d32f2f;
-            --lotto-blue: #1976d2;
-            --ink-black: #2c2c2c;
-
-            /* Default (Dark Mode) */
-            --bg-color: #1a1a1a;
-            --text-color: #b8860b; /* mystic-gold */
-            --subtitle-color: rgba(184, 134, 11, 0.8);
-            --bg-image: 
-                radial-gradient(circle at 50% 50%, rgba(184, 134, 11, 0.1) 0%, transparent 70%),
-                url('https://www.transparenttextures.com/patterns/dark-leather.png');
-            --ring-color: rgba(184, 134, 11, 0.05);
             --btn-border: #b8860b;
             --btn-text: #b8860b;
             --btn-hover-bg: #b8860b;
             --btn-hover-text: #1a1a1a;
             --mystic-text-color: rgba(184, 134, 11, 0.6);
             --shadow-color: rgba(184, 134, 11, 0.5);
+
+            /* Default (Dark Mode) */
+            --bg-color: #1a1a1a;
+            --text-color: #b8860b;
+            --bg-image: 
+                radial-gradient(circle at 50% 50%, rgba(184, 134, 11, 0.1) 0%, transparent 70%),
+                url('https://www.transparenttextures.com/patterns/dark-leather.png');
         }
 
         [data-theme="light"] {
-            /* Light Mode (Map/Parchment Style) */
-            --bg-color: #e8e4d9; /* Light parchment color */
-            --text-color: #5d4037; /* Dark leather brown */
-            --subtitle-color: rgba(93, 64, 55, 0.8);
+            /* Light Mode */
+            --bg-color: #e8e4d9;
+            --text-color: #5d4037;
             --bg-image: 
                 radial-gradient(circle at 50% 50%, rgba(93, 64, 55, 0.05) 0%, transparent 70%),
                 url('https://www.transparenttextures.com/patterns/cream-paper.png');
-            --ring-color: rgba(93, 64, 55, 0.08);
             --btn-border: #5d4037;
             --btn-text: #5d4037;
             --btn-hover-bg: #5d4037;
@@ -67,42 +58,50 @@
         .container {
             width: 100%;
             max-width: 500px;
-            padding: 40px;
+            padding: 30px;
             border: 2px solid var(--btn-border);
             border-radius: 8px;
-            background: rgba(0, 0, 0, 0.4);
+            background: rgba(0, 0, 0, 0.5);
             transition: background 0.5s ease;
             text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
 
         [data-theme="light"] .container {
-            background: rgba(255, 255, 255, 0.6);
+            background: rgba(255, 255, 255, 0.8);
         }
 
         h1 {
             font-family: 'Cinzel', serif;
-            font-size: 2rem;
+            font-size: 1.8rem;
             margin: 0 0 10px 0;
             color: var(--text-color);
             text-shadow: 0 0 10px var(--shadow-color);
+            word-break: keep-all;
         }
 
         p {
             color: var(--mystic-text-color);
-            margin-bottom: 30px;
+            margin-bottom: 25px;
             font-size: 0.95rem;
-            line-height: 1.6;
+            line-height: 1.5;
+            word-break: keep-all;
         }
 
         /* Upload Area */
         .upload-area {
             border: 2px dashed var(--btn-border);
             border-radius: 10px;
-            padding: 30px;
+            padding: 10px;
             cursor: pointer;
             transition: background 0.3s;
             position: relative;
             overflow: hidden;
+            min-height: 250px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0,0,0,0.1);
         }
 
         .upload-area:hover {
@@ -115,11 +114,12 @@
 
         .preview-img {
             max-width: 100%;
-            max-height: 300px;
-            border-radius: 8px;
+            max-height: 300px; /* Limit height */
+            width: auto;
+            border-radius: 6px;
             display: none;
-            margin: 0 auto;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            object-fit: contain;
         }
 
         .upload-label {
@@ -129,10 +129,11 @@
             flex-direction: column;
             align-items: center;
             gap: 10px;
+            pointer-events: none;
         }
 
         .icon {
-            font-size: 2.5rem;
+            font-size: 3rem;
         }
 
         /* Result Area */
@@ -140,18 +141,56 @@
             margin-top: 30px;
             display: none;
             animation: fadeIn 0.5s ease;
+            padding-top: 20px;
+            border-top: 1px dashed var(--btn-border);
         }
 
         .result-title {
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             font-weight: bold;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
             color: var(--text-color);
         }
 
         .result-desc {
             font-size: 1rem;
             color: var(--mystic-text-color);
+            margin-bottom: 15px;
+            word-break: keep-all;
+            line-height: 1.5;
+        }
+
+        .bar-container {
+            width: 100%;
+            background-color: rgba(0,0,0,0.2);
+            border-radius: 10px;
+            margin: 10px 0;
+            overflow: hidden;
+            height: 20px;
+            position: relative;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        [data-theme="light"] .bar-container {
+            background-color: rgba(0,0,0,0.05);
+            border: 1px solid rgba(0,0,0,0.1);
+        }
+
+        .bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--btn-border), var(--text-color));
+            width: 0%;
+            transition: width 1s ease-in-out;
+            border-radius: 10px;
+        }
+        
+        .bar-text {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            color: var(--mystic-text-color);
+            margin-bottom: 5px;
+            margin-top: 15px;
         }
 
         /* Buttons */
@@ -171,6 +210,8 @@
             text-decoration: none;
             display: inline-block;
             margin-top: 20px;
+            max-width: 100%;
+            border-radius: 4px;
         }
 
         .btn:hover {
@@ -181,9 +222,10 @@
 
         .loading {
             display: none;
-            margin-top: 20px;
+            margin-top: 30px;
             color: var(--mystic-text-color);
             font-style: italic;
+            font-size: 0.9rem;
         }
 
         @keyframes fadeIn {
@@ -209,21 +251,61 @@
         /* Toggle Button */
         .theme-toggle {
             position: absolute;
-            top: 30px;
-            right: 30px;
+            top: 20px;
+            right: 20px;
             background: transparent;
             border: 1px solid var(--btn-border);
             color: var(--btn-text);
             border-radius: 50%;
-            width: 44px;
-            height: 44px;
+            width: 40px;
+            height: 40px;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
             transition: all 0.3s ease;
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             z-index: 100;
+        }
+        
+        /* Loading Spinner */
+        .spinner {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            border: 3px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            border-top-color: var(--text-color);
+            animation: spin 1s ease-in-out infinite;
+            margin-bottom: 10px;
+        }
+        [data-theme="light"] .spinner {
+            border: 3px solid rgba(0,0,0,0.1);
+            border-top-color: var(--text-color);
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Mobile Optimization */
+        @media (max-width: 480px) {
+            .container {
+                padding: 20px;
+                width: 95%;
+            }
+            h1 {
+                font-size: 1.5rem;
+            }
+            .upload-area {
+                min-height: 200px;
+            }
+            .icon {
+                font-size: 2.5rem;
+            }
+            .btn {
+                width: 100%; /* Full width button on mobile */
+                padding: 12px 0;
+            }
         }
     </style>
 </head>
@@ -246,30 +328,44 @@
             <img id="previewImage" class="preview-img" alt="Preview">
         </div>
 
-        <div class="loading" id="loadingText">
-            운명의 거울을 닦고 있습니다...
+        <div class="loading" id="loadingBox">
+            <div class="spinner"></div><br>
+            운명의 거울을 닦고 있습니다...<br>
+            <span style="font-size: 0.75rem;">(잠시만 기다려주세요)</span>
         </div>
 
         <div class="result-area" id="resultArea">
-            <div class="result-title" id="resultTitle">결과 대기 중</div>
+            <div class="result-title" id="resultTitle">분석 결과</div>
             <div class="result-desc" id="resultDesc"></div>
+            
+            <div id="labelContainer"></div>
         </div>
         
-        <!-- 모델이 있다면 여기에 버튼을 추가하여 실행할 수 있습니다 -->
-        <!-- <button class="btn" onclick="predict()">분석하기</button> -->
+        <button class="btn" id="predictBtn" style="display:none;" onclick="predict()">분석 시작하기</button>
 
         <a href="index.html" class="back-link">← 예언소로 돌아가기</a>
     </div>
 
+    <!-- Tensorflow & Teachable Machine Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
+
     <script>
+        // ⚠️ [중요] Teachable Machine에서 복사한 '전체 링크'를 아래에 넣어주세요 ⚠️
+        const URL = "https://teachablemachine.withgoogle.com/models/YOUR_MODEL_ID/"; 
+
+        let model, maxPredictions;
+        
         const uploadArea = document.getElementById('uploadArea');
         const imageInput = document.getElementById('imageInput');
         const uploadLabel = document.getElementById('uploadLabel');
         const previewImage = document.getElementById('previewImage');
-        const loadingText = document.getElementById('loadingText');
+        const loadingBox = document.getElementById('loadingBox');
         const resultArea = document.getElementById('resultArea');
         const resultTitle = document.getElementById('resultTitle');
         const resultDesc = document.getElementById('resultDesc');
+        const labelContainer = document.getElementById('labelContainer');
+        const predictBtn = document.getElementById('predictBtn');
         const themeToggle = document.getElementById('themeToggle');
 
         // Theme Logic
@@ -294,6 +390,29 @@
             }
         });
 
+        // Initialize Model
+        async function init() {
+            try {
+                // If URL is placeholder, warn user
+                if (URL.includes("YOUR_MODEL_ID")) {
+                    alert("모델 연결이 필요합니다! 코드를 열어 URL 변수에 티처블 머신 링크를 넣어주세요.");
+                    loadingBox.style.display = 'none';
+                    predictBtn.style.display = 'inline-block';
+                    return;
+                }
+
+                const modelURL = URL + "model.json";
+                const metadataURL = URL + "metadata.json";
+                model = await tmImage.load(modelURL, metadataURL);
+                maxPredictions = model.getTotalClasses();
+            } catch (e) {
+                console.error("Model load failed:", e);
+                alert("모델을 불러오는데 실패했습니다. 인터넷 연결이나 링크를 확인해주세요.");
+                loadingBox.style.display = 'none';
+                predictBtn.style.display = 'inline-block';
+            }
+        }
+
         // Upload Logic
         uploadArea.addEventListener('click', () => imageInput.click());
 
@@ -305,33 +424,81 @@
                     previewImage.src = event.target.result;
                     previewImage.style.display = 'block';
                     uploadLabel.style.display = 'none';
-                    
-                    // Simulate Prediction (Replace this with actual model logic)
-                    simulatePrediction();
+                    resultArea.style.display = 'none';
+                    predictBtn.style.display = 'inline-block';
                 };
                 reader.readAsDataURL(file);
             }
         });
 
-        function simulatePrediction() {
-            loadingText.style.display = 'block';
+        // Prediction Logic
+        async function predict() {
+            loadingBox.style.display = 'block';
+            predictBtn.style.display = 'none';
             resultArea.style.display = 'none';
 
-            // Fake delay
-            setTimeout(() => {
-                loadingText.style.display = 'none';
-                resultArea.style.display = 'block';
+            if (!model) {
+                await init();
+                if (!model) return; // Stop if init failed
+            }
+            
+            // Slight delay for UI update
+            setTimeout(async () => {
+                const prediction = await model.predict(previewImage);
                 
-                // Random Result for Demo
-                const isDog = Math.random() > 0.5;
-                if (isDog) {
+                // Sort by probability
+                prediction.sort((a, b) => b.probability - a.probability);
+
+                const bestClass = prediction[0].className;
+                
+                // Customize messages based on class name
+                // Note: Ensure your Teachable Machine class names match these or are handled generically
+                if (bestClass.includes('강아지') || bestClass.includes('Dog')) {
                     resultTitle.textContent = "🐶 당신은 '강아지상'입니다!";
                     resultDesc.textContent = "충성심이 강하고 활발하며, 주변 사람들에게 사랑받는 따뜻한 마음을 가지셨군요.";
-                } else {
+                } else if (bestClass.includes('고양이') || bestClass.includes('Cat')) {
                     resultTitle.textContent = "🐱 당신은 '고양이상'입니다!";
                     resultDesc.textContent = "도도하고 매력적이며, 독립심이 강하지만 내 사람에게는 한없이 다정한 반전 매력의 소유자시군요.";
+                } else if (bestClass.includes('토끼') || bestClass.includes('Rabbit')) {
+                    resultTitle.textContent = "🐰 당신은 '토끼상'입니다!";
+                    resultDesc.textContent = "순수하고 귀여운 매력으로 어디서나 사랑받는 분위기 메이커시군요.";
+                } else if (bestClass.includes('여우') || bestClass.includes('Fox')) {
+                    resultTitle.textContent = "🦊 당신은 '여우상'입니다!";
+                    resultDesc.textContent = "눈치가 빠르고 센스 넘치며, 사람의 마음을 사로잡는 매력을 지니셨군요.";
+                } else if (bestClass.includes('곰') || bestClass.includes('Bear')) {
+                    resultTitle.textContent = "🐻 당신은 '곰상'입니다!";
+                    resultDesc.textContent = "듬직하고 포근하며, 주변 사람들에게 편안함을 주는 든든한 존재시군요.";
+                } else {
+                    resultTitle.textContent = `🧐 당신은 '${bestClass}상'입니다!`;
+                    resultDesc.textContent = "독특하고 신비로운 매력을 가지고 계시네요.";
                 }
-            }, 2000);
+
+                // Create bars
+                labelContainer.innerHTML = "";
+                for (let i = 0; i < maxPredictions; i++) {
+                    const classPrediction = prediction[i];
+                    const probability = (classPrediction.probability * 100).toFixed(1);
+                    
+                    if (probability > 1) { // Show only significant ones
+                        const barDiv = document.createElement("div");
+                        barDiv.innerHTML = `
+                            <div class="bar-text">
+                                <span>${classPrediction.className}</span>
+                                <span>${probability}%</span>
+                            </div>
+                            <div class="bar-container">
+                                <div class="bar-fill" style="width: ${probability}%"></div>
+                            </div>
+                        `;
+                        labelContainer.appendChild(barDiv);
+                    }
+                }
+
+                loadingBox.style.display = 'none';
+                resultArea.style.display = 'block';
+                predictBtn.style.display = 'inline-block';
+                predictBtn.textContent = "다른 사진 분석하기";
+            }, 500); 
         }
     </script>
 </body>
