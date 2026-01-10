@@ -499,54 +499,71 @@
         @media (max-width: 900px) {
             .main-layout {
                 flex-direction: column;
-                gap: 40px;
+                gap: 20px;
             }
 
-            .content-side {
-                align-items: center;
+            /* "Unwrap" the containers so we can reorder children globally */
+            .content-side, .ticket-side {
+                display: contents;
+            }
+
+            /* 1. Title */
+            .title-container {
+                order: 1;
                 text-align: center;
-                order: 1; /* Content first */
-            }
-
-            .ticket-side {
-                order: 2; /* Ticket second */
+                margin-bottom: 10px;
                 width: 100%;
             }
 
-            .title-container {
-                text-align: center;
-                margin-bottom: 20px;
-            }
-
-            h1 {
-                font-size: 2.2rem;
-            }
-
+            /* 2. Controls */
             .controls {
+                order: 2;
                 justify-content: center;
+                width: 100%;
+                margin-top: 10px;
             }
 
-            .extra-links {
-                justify-content: center;
-            }
-
-            /* Mobile Result Balls */
+            /* 3. Mobile Balls (Optional, usually redundant if Ticket is visible, but kept per previous request) */
             .mobile-only {
+                order: 3;
                 display: flex;
-                margin-top: 25px;
+                margin-top: 15px;
                 justify-content: center;
                 gap: 8px;
                 flex-wrap: wrap;
                 width: 100%;
             }
 
-            .desktop-only {
-                display: none;
+            /* 4. Ticket (Moved Up) */
+            .ticket-wrapper {
+                order: 4;
+                width: 100%;
+                margin: 30px auto 10px auto; /* Center it */
             }
 
+            /* 5. Prophecy */
             .mystic-text {
+                order: 5;
                 text-align: center;
                 font-size: 0.85rem;
+                margin-top: 20px;
+                width: 100%;
+            }
+
+            /* 6. Extra Links (Bottom) */
+            .extra-links {
+                order: 6;
+                justify-content: center;
+                padding-bottom: 40px;
+                width: 100%;
+            }
+
+            h1 {
+                font-size: 2.2rem;
+            }
+
+            .desktop-only {
+                display: none;
             }
 
             .theme-toggle {
