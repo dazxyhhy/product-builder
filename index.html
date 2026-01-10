@@ -414,6 +414,15 @@
             transition: color 0.5s ease;
         }
 
+        /* Responsive Visibility */
+        .mobile-only {
+            display: none;
+        }
+
+        .desktop-only {
+            display: flex;
+        }
+
         /* Responsive */
         @media (max-width: 900px) {
             .main-layout {
@@ -443,6 +452,20 @@
 
             .controls {
                 justify-content: center;
+            }
+
+            /* Mobile Result Balls */
+            .mobile-only {
+                display: flex;
+                margin-top: 25px;
+                justify-content: center;
+                gap: 8px;
+                flex-wrap: wrap;
+                width: 100%;
+            }
+
+            .desktop-only {
+                display: none;
             }
 
             .mystic-text {
@@ -488,6 +511,10 @@
                 <button class="btn" style="border-color: rgba(184, 134, 11, 0.3);" id="resetBtn">정화하기</button>
             </div>
 
+            <div class="selected-nums mobile-only" id="mobileResultBalls">
+                <!-- Mobile Balls will appear here -->
+            </div>
+
             <div class="mystic-text" id="prophecyText">
                 "서두르지 마라. 운명은 기다림 속에서 모양을 갖춘다..."
             </div>
@@ -502,9 +529,9 @@
                     <div class="ticket-header">
                         <div class="lotto-logo">LOTTO<span>6/45</span></div>
                         <div class="issue-info">
-                            제 1234회<br>
-                            발행일: 2026/01/10 (토)<br>
-                            추첨일: 2026/01/10 (토)
+                            제 <span id="roundNum">1234</span>회<br>
+                            발행일: <span id="issueDate">2026/01/10 (토)</span><br>
+                            추첨일: <span id="drawDate">2026/01/10 (토)</span>
                         </div>
                     </div>
 
@@ -516,17 +543,11 @@
                         </div>
                     </div>
 
-                    <div class="selected-nums" id="resultBalls">
+                    <div class="selected-nums desktop-only" id="resultBalls">
                         <!-- Balls will appear here -->
                     </div>
 
-                    <div style="margin-top: 15px; display: flex; justify-content: center;">
-                        <div id="barcode" style="font-family: 'Libre Barcode 39', cursive; font-size: 2rem; letter-spacing: 2px; opacity: 0.7;">
-                            |||| || | ||| | || ||| || ||
-                        </div>
-                    </div>
-
-                    <div style="margin-top: 5px; font-size: 0.6rem; border-top: 1px solid rgba(0,0,0,0.1); padding-top: 5px; text-align: center;">
+                    <div style="margin-top: 15px; font-size: 0.6rem; border-top: 1px solid rgba(0,0,0,0.1); padding-top: 5px; text-align: center;">
                         TR-782-LOTR-2026-GEN01<br>
                         실제 로또와 무관한 재미용 도구입니다. 행운을 빕니다.
                     </div>
@@ -540,8 +561,39 @@
         const generateBtn = document.getElementById('generateBtn');
         const resetBtn = document.getElementById('resetBtn');
         const resultBalls = document.getElementById('resultBalls');
+        const mobileResultBalls = document.getElementById('mobileResultBalls');
         const prophecyText = document.getElementById('prophecyText');
         const themeToggle = document.getElementById('themeToggle');
+
+        // Date Calculation Logic
+        function updateDates() {
+            const now = new Date();
+            
+            // Format: YYYY/MM/DD (Day)
+            const days = ['일', '월', '화', '수', '목', '금', '토'];
+            const formatDate = (d) => {
+                const yyyy = d.getFullYear();
+                const mm = String(d.getMonth() + 1).padStart(2, '0');
+                const dd = String(d.getDate()).padStart(2, '0');
+                const day = days[d.getDay()];
+                return `${yyyy}/${mm}/${dd} (${day})`;
+            };
+
+            document.getElementById('issueDate').textContent = formatDate(now);
+
+            // Calculate next Saturday
+            const drawDate = new Date(now);
+            const dayOfWeek = now.getDay(); // 0(Sun) - 6(Sat)
+            const daysUntilSat = 6 - dayOfWeek; 
+            // If today is Sat, it's today (0). If Sun (0), it's +6. 
+            // Logic: Lottery is usually Sat night. If it's Sunday, next Sat.
+            // If it's Saturday, let's assume it's the draw day.
+            
+            drawDate.setDate(now.getDate() + (daysUntilSat < 0 ? 6 : daysUntilSat));
+            document.getElementById('drawDate').textContent = formatDate(drawDate);
+        }
+        
+        updateDates();
 
         const prophecies = [
             "“어둠이 짙을수록, 작은 빛은 더 멀리 닿는다. 오늘의 숫자는 조용히 강하다.”",
@@ -576,6 +628,7 @@
             // Reset previous state
             document.querySelectorAll('.num-box').forEach(el => el.classList.remove('active'));
             resultBalls.innerHTML = '';
+            mobileResultBalls.innerHTML = '';
             
             // Start shaking
             const ticket = document.getElementById('lottoTicket');
@@ -596,14 +649,24 @@
                     const box = document.getElementById(`num-${n}`);
                     box.classList.add('active');
 
-                    // Add the ball
-                    const ball = document.createElement('div');
-                    ball.className = `lotto-ball ${getBallColorClass(n)}`;
-                    ball.textContent = n;
-                    resultBalls.appendChild(ball);
-                    
-                    // Trigger ball animation
-                    setTimeout(() => ball.classList.add('show'), 50);
+                    // Create ball function
+                    const createBall = () => {
+                        const ball = document.createElement('div');
+                        ball.className = `lotto-ball ${getBallColorClass(n)}`;
+                        ball.textContent = n;
+                        return ball;
+                    };
+
+                    // Add ball to desktop container
+                    const desktopBall = createBall();
+                    resultBalls.appendChild(desktopBall);
+                    setTimeout(() => desktopBall.classList.add('show'), 50);
+
+                    // Add ball to mobile container
+                    const mobileBall = createBall();
+                    mobileResultBalls.appendChild(mobileBall);
+                    setTimeout(() => mobileBall.classList.add('show'), 50);
+
                 }, index * 200);
             });
 
@@ -623,6 +686,7 @@
         function reset() {
             document.querySelectorAll('.num-box').forEach(el => el.classList.remove('active'));
             resultBalls.innerHTML = '';
+            mobileResultBalls.innerHTML = '';
             prophecyText.textContent = "정화가 완료되었습니다. 다시 운명을 물으십시오.";
         }
 
