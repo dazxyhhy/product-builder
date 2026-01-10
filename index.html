@@ -135,10 +135,8 @@
         /* The Lotto Ticket */
         .ticket-wrapper {
             position: relative;
-            perspective: 1000px;
             width: 100%;
             max-width: 420px;
-            margin: 0 auto;
         }
 
         .ticket {
@@ -154,13 +152,24 @@
             border-radius: 4px;
             color: var(--ink-black);
             position: relative;
-            transform: rotateX(5deg);
-            transition: transform 0.5s ease;
+            transform: none; /* Removed initial tilt */
+            transition: transform 0.2s ease;
             user-select: none;
         }
 
         .ticket:hover {
-            transform: rotateX(0deg) scale(1.02);
+            transform: scale(1.01);
+        }
+
+        .ticket.shaking {
+            animation: mysticShake 0.5s cubic-bezier(.36,.07,.19,.97) both infinite;
+        }
+
+        @keyframes mysticShake {
+            10%, 90% { transform: translate3d(-1px, 0, 0); }
+            20%, 80% { transform: translate3d(2px, 0, 0); }
+            30%, 50%, 70% { transform: translate3d(-4px, 0, 0); }
+            40%, 60% { transform: translate3d(4px, 0, 0); }
         }
 
         .ticket-header {
@@ -501,8 +510,6 @@
 
                     <div class="game-container">
                         <div class="game-row" id="gameA">
-                            <div class="game-label">A</div>
-                            <div style="font-size: 0.6rem; writing-mode: vertical-rl; transform: rotate(180deg); margin-right: 2px;">자동</div>
                             <div class="number-grid" id="gridA">
                                 <!-- Numbers 1-45 will be generated here -->
                             </div>
@@ -570,6 +577,10 @@
             document.querySelectorAll('.num-box').forEach(el => el.classList.remove('active'));
             resultBalls.innerHTML = '';
             
+            // Start shaking
+            const ticket = document.getElementById('lottoTicket');
+            ticket.classList.add('shaking');
+
             // Randomly select 6 numbers
             const nums = [];
             while (nums.length < 6) {
@@ -595,6 +606,11 @@
                     setTimeout(() => ball.classList.add('show'), 50);
                 }, index * 200);
             });
+
+            // Stop shaking after numbers are revealed
+            setTimeout(() => {
+                ticket.classList.remove('shaking');
+            }, nums.length * 200);
 
             // Update prophecy
             prophecyText.style.opacity = '0';
