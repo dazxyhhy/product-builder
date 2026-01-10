@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>힐링 쉼터 - 동물상 테스트</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Nanum+Myeongjo:wght@400;700;800&family=Libre+Barcode+39&display=swap');
+
+        :root {
+            /* Common */
+            --paper-bg: #f4e4bc;
+            --paper-shadow: #d4c29a;
+            --lotto-red: #d32f2f;
+            --lotto-blue: #1976d2;
+            --ink-black: #2c2c2c;
+
+            /* Default (Dark Mode) */
+            --bg-color: #1a1a1a;
+            --text-color: #b8860b; /* mystic-gold */
+            --subtitle-color: rgba(184, 134, 11, 0.8);
+            --bg-image: 
+                radial-gradient(circle at 50% 50%, rgba(184, 134, 11, 0.1) 0%, transparent 70%),
+                url('https://www.transparenttextures.com/patterns/dark-leather.png');
+            --ring-color: rgba(184, 134, 11, 0.05);
+            --btn-border: #b8860b;
+            --btn-text: #b8860b;
+            --btn-hover-bg: #b8860b;
+            --btn-hover-text: #1a1a1a;
+            --mystic-text-color: rgba(184, 134, 11, 0.6);
+            --shadow-color: rgba(184, 134, 11, 0.5);
+        }
+
+        [data-theme="light"] {
+            /* Light Mode (Map/Parchment Style) */
+            --bg-color: #e8e4d9; /* Light parchment color */
+            --text-color: #5d4037; /* Dark leather brown */
+            --subtitle-color: rgba(93, 64, 55, 0.8);
+            --bg-image: 
+                radial-gradient(circle at 50% 50%, rgba(93, 64, 55, 0.05) 0%, transparent 70%),
+                url('https://www.transparenttextures.com/patterns/cream-paper.png');
+            --ring-color: rgba(93, 64, 55, 0.08);
+            --btn-border: #5d4037;
+            --btn-text: #5d4037;
+            --btn-hover-bg: #5d4037;
+            --btn-hover-text: #e8e4d9;
+            --mystic-text-color: rgba(93, 64, 55, 0.7);
+            --shadow-color: rgba(93, 64, 55, 0.3);
+        }
+
+        body {
+            background-color: var(--bg-color);
+            background-image: var(--bg-image);
+            font-family: 'Nanum Myeongjo', serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+            color: var(--text-color);
+            overflow-x: hidden;
+            transition: background 0.5s ease, color 0.5s ease;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 500px;
+            padding: 40px;
+            border: 2px solid var(--btn-border);
+            border-radius: 8px;
+            background: rgba(0, 0, 0, 0.4);
+            transition: background 0.5s ease;
+            text-align: center;
+        }
+
+        [data-theme="light"] .container {
+            background: rgba(255, 255, 255, 0.6);
+        }
+
+        h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 2rem;
+            margin: 0 0 10px 0;
+            color: var(--text-color);
+            text-shadow: 0 0 10px var(--shadow-color);
+        }
+
+        p {
+            color: var(--mystic-text-color);
+            margin-bottom: 30px;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Upload Area */
+        .upload-area {
+            border: 2px dashed var(--btn-border);
+            border-radius: 10px;
+            padding: 30px;
+            cursor: pointer;
+            transition: background 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .upload-area:hover {
+            background: rgba(184, 134, 11, 0.1);
+        }
+
+        .upload-area input {
+            display: none;
+        }
+
+        .preview-img {
+            max-width: 100%;
+            max-height: 300px;
+            border-radius: 8px;
+            display: none;
+            margin: 0 auto;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+        }
+
+        .upload-label {
+            font-size: 1rem;
+            color: var(--text-color);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .icon {
+            font-size: 2.5rem;
+        }
+
+        /* Result Area */
+        .result-area {
+            margin-top: 30px;
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .result-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: var(--text-color);
+        }
+
+        .result-desc {
+            font-size: 1rem;
+            color: var(--mystic-text-color);
+        }
+
+        /* Buttons */
+        .btn {
+            background: transparent;
+            border: 2px solid var(--btn-border);
+            color: var(--btn-text);
+            padding: 12px 30px;
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+            white-space: nowrap;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 20px;
+        }
+
+        .btn:hover {
+            background: var(--btn-hover-bg);
+            color: var(--btn-hover-text);
+            box-shadow: 0 0 20px var(--shadow-color);
+        }
+
+        .loading {
+            display: none;
+            margin-top: 20px;
+            color: var(--mystic-text-color);
+            font-style: italic;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .back-link {
+            margin-top: 30px;
+            display: inline-block;
+            color: var(--mystic-text-color);
+            text-decoration: none;
+            font-size: 0.9rem;
+            border-bottom: 1px dashed var(--mystic-text-color);
+            transition: color 0.3s;
+        }
+
+        .back-link:hover {
+            color: var(--text-color);
+            border-bottom-style: solid;
+        }
+        
+        /* Toggle Button */
+        .theme-toggle {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            background: transparent;
+            border: 1px solid var(--btn-border);
+            color: var(--btn-text);
+            border-radius: 50%;
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1.3rem;
+            z-index: 100;
+        }
+    </style>
+</head>
+<body>
+
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle Theme">
+        🌙
+    </button>
+
+    <div class="container">
+        <h1>힐링 쉼터</h1>
+        <p>당신의 영혼은 어떤 동물과 닮아있을까요?<br>사진을 올려주시면 인공지능이 분석해드립니다.</p>
+
+        <div class="upload-area" id="uploadArea">
+            <input type="file" id="imageInput" accept="image/*">
+            <div class="upload-label" id="uploadLabel">
+                <span class="icon">📸</span>
+                <span>클릭하여 사진 업로드</span>
+            </div>
+            <img id="previewImage" class="preview-img" alt="Preview">
+        </div>
+
+        <div class="loading" id="loadingText">
+            운명의 거울을 닦고 있습니다...
+        </div>
+
+        <div class="result-area" id="resultArea">
+            <div class="result-title" id="resultTitle">결과 대기 중</div>
+            <div class="result-desc" id="resultDesc"></div>
+        </div>
+        
+        <!-- 모델이 있다면 여기에 버튼을 추가하여 실행할 수 있습니다 -->
+        <!-- <button class="btn" onclick="predict()">분석하기</button> -->
+
+        <a href="index.html" class="back-link">← 예언소로 돌아가기</a>
+    </div>
+
+    <script>
+        const uploadArea = document.getElementById('uploadArea');
+        const imageInput = document.getElementById('imageInput');
+        const uploadLabel = document.getElementById('uploadLabel');
+        const previewImage = document.getElementById('previewImage');
+        const loadingText = document.getElementById('loadingText');
+        const resultArea = document.getElementById('resultArea');
+        const resultTitle = document.getElementById('resultTitle');
+        const resultDesc = document.getElementById('resultDesc');
+        const themeToggle = document.getElementById('themeToggle');
+
+        // Theme Logic
+        let isDark = true;
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'light') {
+            isDark = false;
+            document.documentElement.setAttribute('data-theme', 'light');
+            themeToggle.textContent = '☀️';
+        }
+
+        themeToggle.addEventListener('click', () => {
+            isDark = !isDark;
+            if (isDark) {
+                document.documentElement.removeAttribute('data-theme');
+                themeToggle.textContent = '🌙';
+                localStorage.setItem('theme', 'dark');
+            } else {
+                document.documentElement.setAttribute('data-theme', 'light');
+                themeToggle.textContent = '☀️';
+                localStorage.setItem('theme', 'light');
+            }
+        });
+
+        // Upload Logic
+        uploadArea.addEventListener('click', () => imageInput.click());
+
+        imageInput.addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = (event) => {
+                    previewImage.src = event.target.result;
+                    previewImage.style.display = 'block';
+                    uploadLabel.style.display = 'none';
+                    
+                    // Simulate Prediction (Replace this with actual model logic)
+                    simulatePrediction();
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        function simulatePrediction() {
+            loadingText.style.display = 'block';
+            resultArea.style.display = 'none';
+
+            // Fake delay
+            setTimeout(() => {
+                loadingText.style.display = 'none';
+                resultArea.style.display = 'block';
+                
+                // Random Result for Demo
+                const isDog = Math.random() > 0.5;
+                if (isDog) {
+                    resultTitle.textContent = "🐶 당신은 '강아지상'입니다!";
+                    resultDesc.textContent = "충성심이 강하고 활발하며, 주변 사람들에게 사랑받는 따뜻한 마음을 가지셨군요.";
+                } else {
+                    resultTitle.textContent = "🐱 당신은 '고양이상'입니다!";
+                    resultDesc.textContent = "도도하고 매력적이며, 독립심이 강하지만 내 사람에게는 한없이 다정한 반전 매력의 소유자시군요.";
+                }
+            }, 2000);
+        }
+    </script>
+</body>
+</html>
