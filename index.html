@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>반지의 제왕: 운명의 로또</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Nanum+Myeongjo:wght@400;700;800&family=Libre+Barcode+39&display=swap');
+
+        :root {
+            --paper-bg: #f4e4bc;
+            --paper-shadow: #d4c29a;
+            --lotto-red: #d32f2f;
+            --lotto-blue: #1976d2;
+            --mystic-gold: #b8860b;
+            --ink-black: #2c2c2c;
+        }
+
+        body {
+            background-color: #1a1a1a;
+            background-image: 
+                radial-gradient(circle at 50% 50%, rgba(184, 134, 11, 0.1) 0%, transparent 70%),
+                url('https://www.transparenttextures.com/patterns/dark-leather.png');
+            font-family: 'Nanum Myeongjo', serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            color: var(--mystic-gold);
+            overflow-x: hidden;
+        }
+
+        .title-container {
+            text-align: center;
+            margin-bottom: 20px;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 2.5rem;
+            margin: 0;
+            text-shadow: 0 0 10px rgba(184, 134, 11, 0.5);
+            letter-spacing: 3px;
+        }
+
+        .subtitle {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-top: 5px;
+        }
+
+        /* The Lotto Ticket */
+        .ticket-wrapper {
+            position: relative;
+            perspective: 1000px;
+        }
+
+        .ticket {
+            width: 380px;
+            background: var(--paper-bg);
+            background-image: 
+                url('https://www.transparenttextures.com/patterns/natural-paper.png');
+            box-shadow: 
+                0 20px 50px rgba(0,0,0,0.5),
+                inset 0 0 100px var(--paper-shadow);
+            padding: 20px;
+            border-radius: 2px;
+            color: var(--ink-black);
+            position: relative;
+            transform: rotateX(5deg);
+            transition: transform 0.5s ease;
+            user-select: none;
+        }
+
+        .ticket:hover {
+            transform: rotateX(0deg) scale(1.02);
+        }
+
+        .ticket-header {
+            border-bottom: 2px solid var(--ink-black);
+            margin-bottom: 15px;
+            padding-bottom: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+
+        .lotto-logo {
+            font-family: 'Cinzel', serif;
+            font-weight: 900;
+            font-size: 1.8rem;
+            line-height: 1;
+        }
+
+        .lotto-logo span {
+            color: var(--lotto-red);
+        }
+
+        .issue-info {
+            font-size: 0.7rem;
+            text-align: right;
+            line-height: 1.2;
+        }
+
+        /* Game Rows */
+        .game-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .game-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 1px dashed rgba(0,0,0,0.1);
+            padding-bottom: 10px;
+        }
+
+        .game-label {
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+            font-size: 1.2rem;
+            width: 30px;
+        }
+
+        .number-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 4px;
+            flex-grow: 1;
+        }
+
+        .num-box {
+            width: 35px;
+            height: 22px;
+            border: 1px solid rgba(0,0,0,0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            position: relative;
+            background: rgba(255,255,255,0.3);
+        }
+
+        /* The Mark (X) */
+        .mark {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            pointer-events: none;
+            opacity: 0;
+            transform: scale(3);
+            transition: opacity 0.2s ease, transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .mark::before, .mark::after {
+            content: '';
+            position: absolute;
+            width: 80%;
+            height: 2px;
+            background-color: var(--lotto-red);
+            transform: rotate(45deg);
+        }
+
+        .mark::after {
+            transform: rotate(-45deg);
+        }
+
+        .num-box.active .mark {
+            opacity: 0.8;
+            transform: scale(1);
+        }
+
+        /* Selected Numbers Bar */
+        .selected-nums {
+            margin-top: 15px;
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+            min-height: 40px;
+        }
+
+        .lotto-ball {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 800;
+            font-size: 1rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            transform: translateY(20px);
+            opacity: 0;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .lotto-ball.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        /* Ball Colors (Korean Lotto Standards) */
+        .ball-1 { background: radial-gradient(circle at 30% 30%, #fbc02d, #f9a825); }
+        .ball-11 { background: radial-gradient(circle at 30% 30%, #1976d2, #1565c0); }
+        .ball-21 { background: radial-gradient(circle at 30% 30%, #d32f2f, #c62828); }
+        .ball-31 { background: radial-gradient(circle at 30% 30%, #757575, #616161); }
+        .ball-41 { background: radial-gradient(circle at 30% 30%, #4caf50, #388e3c); }
+
+        /* Buttons */
+        .controls {
+            margin-top: 40px;
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn {
+            background: transparent;
+            border: 2px solid var(--mystic-gold);
+            color: var(--mystic-gold);
+            padding: 12px 30px;
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn:hover {
+            background: var(--mystic-gold);
+            color: #1a1a1a;
+            box-shadow: 0 0 20px rgba(184, 134, 11, 0.6);
+        }
+
+        .btn:active {
+            transform: scale(0.95);
+        }
+
+        /* Mystic Elements */
+        .one-ring {
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 150px;
+            height: 150px;
+            border: 10px solid rgba(184, 134, 11, 0.1);
+            border-radius: 50%;
+            pointer-events: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Cinzel', serif;
+            color: rgba(184, 134, 11, 0.05);
+            font-size: 0.6rem;
+            animation: rotate 60s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .mystic-text {
+            font-style: italic;
+            font-size: 0.8rem;
+            margin-top: 20px;
+            max-width: 400px;
+            text-align: center;
+            line-height: 1.6;
+            color: rgba(184, 134, 11, 0.6);
+        }
+
+        /* Responsive */
+        @media (max-width: 450px) {
+            .ticket {
+                width: 90vw;
+            }
+            .num-box {
+                width: 25px;
+                height: 18px;
+                font-size: 0.6rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="title-container">
+        <h1>LOTTO <span>OF THE RINGS</span></h1>
+        <div class="subtitle">모든 숫자를 지배하는 하나의 번호</div>
+    </div>
+
+    <div class="ticket-wrapper">
+        <div class="one-ring">One Ring to Rule Them All - One Ring to Find Them - One Ring to Bring Them All - and in the Darkness Bind Them</div>
+        
+        <div class="ticket" id="lottoTicket">
+            <div class="ticket-header">
+                <div class="lotto-logo">LOTTO<span>6/45</span></div>
+                <div class="issue-info">
+                    제 1234회<br>
+                    발행일: 2026/01/10 (토)<br>
+                    추첨일: 2026/01/10 (토)
+                </div>
+            </div>
+
+            <div class="game-container">
+                <div class="game-row" id="gameA">
+                    <div class="game-label">A</div>
+                    <div style="font-size: 0.6rem; writing-mode: vertical-rl; transform: rotate(180deg); margin-right: 2px;">자동</div>
+                    <div class="number-grid" id="gridA">
+                        <!-- Numbers 1-45 will be generated here -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="selected-nums" id="resultBalls">
+                <!-- Balls will appear here -->
+            </div>
+
+            <div style="margin-top: 15px; display: flex; justify-content: center;">
+                <div id="barcode" style="font-family: 'Libre Barcode 39', cursive; font-size: 2rem; letter-spacing: 2px; opacity: 0.7;">
+                    |||| || | ||| | || ||| || ||
+                </div>
+            </div>
+
+            <div style="margin-top: 5px; font-size: 0.6rem; border-top: 1px solid rgba(0,0,0,0.1); padding-top: 5px; text-align: center;">
+                TR-782-LOTR-2026-GEN01<br>
+                실제 로또와 무관한 재미용 도구입니다. 행운을 빕니다.
+            </div>
+        </div>
+    </div>
+
+    <div class="controls">
+        <button class="btn" id="generateBtn">운명을 결정하라</button>
+        <button class="btn" style="border-color: rgba(184, 134, 11, 0.3);" id="resetBtn">정화하기</button>
+    </div>
+
+    <div class="mystic-text" id="prophecyText">
+        "서두르지 마라. 운명은 기다림 속에서 모양을 갖춘다..."
+    </div>
+
+    <script>
+        const gridA = document.getElementById('gridA');
+        const generateBtn = document.getElementById('generateBtn');
+        const resetBtn = document.getElementById('resetBtn');
+        const resultBalls = document.getElementById('resultBalls');
+        const prophecyText = document.getElementById('prophecyText');
+
+        const prophecies = [
+            "“어둠이 짙을수록, 작은 빛은 더 멀리 닿는다. 오늘의 숫자는 조용히 강하다.”",
+            "“서두르지 마라. 운명은 기다림 속에서 모양을 갖춘다. 그리고 어느 순간, 문이 열린다.”",
+            "“바람이 북쪽에서 불면, 오래 숨겨진 길이 드러난다. 이번 주엔 변화의 징조가 있다.”",
+            "“한 번의 선택이 모든 것을 바꾸진 않지만, 계속 선택한 사람은 결국 다른 곳에 선다.”",
+            "“당신의 눈이 ‘가능’에 머무는 동안, 세상은 이미 움직이고 있다. 기회는 조용히 온다.”",
+            "“룬이 말한다: 겁내지 마라. 지혜로운 자는 기대보다 준비를 택한다.”",
+            "“기적은 확률의 틈에서 태어나고, 믿음은 그 틈을 지켜보는 눈이다.”",
+            "“오늘의 숫자는 약속이 아니라 서약이다. ‘나는 이번 주를 끝까지 살아낸다’라는.”",
+            "“행운은 숫자 뒤에 있는 사람을 좋아한다. 침착함과 꾸준함이 가장 강한 주문이다.”"
+        ];
+
+        // Initialize the grid
+        for (let i = 1; i <= 45; i++) {
+            const box = document.createElement('div');
+            box.className = 'num-box';
+            box.id = `num-${i}`;
+            box.innerHTML = `${String(i).padStart(2, '0')}<div class="mark"></div>`;
+            gridA.appendChild(box);
+        }
+
+        function getBallColorClass(num) {
+            if (num <= 10) return 'ball-1';
+            if (num <= 20) return 'ball-11';
+            if (num <= 30) return 'ball-21';
+            if (num <= 40) return 'ball-31';
+            return 'ball-41';
+        }
+
+        function generateNumbers() {
+            // Reset previous state
+            document.querySelectorAll('.num-box').forEach(el => el.classList.remove('active'));
+            resultBalls.innerHTML = '';
+            
+            // Randomly select 6 numbers
+            const nums = [];
+            while (nums.length < 6) {
+                const n = Math.floor(Math.random() * 45) + 1;
+                if (!nums.includes(n)) nums.push(n);
+            }
+            nums.sort((a, b) => a - b);
+
+            // Display animation sequence
+            nums.forEach((n, index) => {
+                setTimeout(() => {
+                    // Mark the ticket
+                    const box = document.getElementById(`num-${n}`);
+                    box.classList.add('active');
+
+                    // Add the ball
+                    const ball = document.createElement('div');
+                    ball.className = `lotto-ball ${getBallColorClass(n)}`;
+                    ball.textContent = n;
+                    resultBalls.appendChild(ball);
+                    
+                    // Trigger ball animation
+                    setTimeout(() => ball.classList.add('show'), 50);
+                }, index * 200);
+            });
+
+            // Update prophecy
+            prophecyText.style.opacity = '0';
+            setTimeout(() => {
+                prophecyText.textContent = prophecies[Math.floor(Math.random() * prophecies.length)];
+                prophecyText.style.opacity = '1';
+            }, 500);
+        }
+
+        function reset() {
+            document.querySelectorAll('.num-box').forEach(el => el.classList.remove('active'));
+            resultBalls.innerHTML = '';
+            prophecyText.textContent = "정화가 완료되었습니다. 다시 운명을 물으십시오.";
+        }
+
+        generateBtn.addEventListener('click', generateNumbers);
+        resetBtn.addEventListener('click', reset);
+    </script>
+</body>
+</html>
