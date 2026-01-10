@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>운명의 기록관 - 반지의 제왕 로또</title>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2307043093255162" crossorigin="anonymous"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Nanum+Myeongjo:wght@400;700;800&display=swap');
+
+        :root {
+            --bg-color: #1a1a1a;
+            --text-color: #b8860b;
+            --btn-border: #b8860b;
+            --card-bg: rgba(255, 255, 255, 0.05);
+        }
+
+        [data-theme="light"] {
+            --bg-color: #e8e4d9;
+            --text-color: #5d4037;
+            --btn-border: #5d4037;
+            --card-bg: rgba(0, 0, 0, 0.05);
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Nanum Myeongjo', serif;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        header { text-align: center; margin-bottom: 40px; }
+        h1 { font-family: 'Cinzel', serif; font-size: 2.5rem; margin-bottom: 10px; }
+        .subtitle { opacity: 0.8; font-size: 0.9rem; }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            width: 100%;
+            max-width: 1000px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--btn-border);
+            border-radius: 8px;
+            padding: 25px;
+            transition: transform 0.3s;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .card:hover { transform: translateY(-5px); background: rgba(184, 134, 11, 0.1); }
+
+        .card h2 { font-size: 1.3rem; margin: 0 0 10px 0; }
+        .card p { font-size: 0.9rem; opacity: 0.8; line-height: 1.5; }
+        .date { font-size: 0.8rem; opacity: 0.5; margin-top: 15px; display: block; }
+
+        .back-btn {
+            margin-top: 50px;
+            padding: 10px 20px;
+            border: 1px solid var(--btn-border);
+            text-decoration: none;
+            color: var(--text-color);
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>ARCHIVES OF FATE</h1>
+        <div class="subtitle">운명과 확률, 그리고 숫자에 관한 이야기</div>
+    </header>
+
+    <div class="grid">
+        <a href="story-probability.html" class="card">
+            <h2>🔮 로또 1등 확률의 진실과 심리학</h2>
+            <p>814만 분의 1이라는 숫자가 가지는 의미와, 사람들이 로또를 구매하는 심리적 이유에 대해 분석합니다. 우리가 운명이라고 믿는 것들의 수학적 배경을 탐구해봅니다.</p>
+            <span class="date">2026.01.10</span>
+        </a>
+
+        <a href="#" class="card">
+            <h2>🧙‍♂️ 반지의 제왕 속 운명의 힘</h2>
+            <p>프로도와 샘의 여정에서 '행운'은 어떤 역할을 했을까요? 중간계의 서사를 통해 본 운명론과 우리가 숫자를 선택하는 태도에 대한 고찰.</p>
+            <span class="date">2026.01.11 (예정)</span>
+        </a>
+
+        <a href="#" class="card">
+            <h2>🐾 동물상이 말해주는 당신의 성격</h2>
+            <p>관상학적 관점에서 본 강아지상과 고양이상의 차이점. 재미로 보는 것이지만, 오랜 데이터가 축적된 통계일 수도 있습니다.</p>
+            <span class="date">2026.01.12 (예정)</span>
+        </a>
+    </div>
+
+    <a href="index.html" class="back-btn">메인으로 돌아가기</a>
+</body>
+</html>
