@@ -414,6 +414,23 @@
             transition: color 0.5s ease;
         }
 
+        .extra-links {
+            margin-top: 30px;
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+        }
+
+        .dash-btn {
+            font-size: 0.9rem !important;
+            padding: 10px 20px !important;
+            border-style: dashed !important;
+            opacity: 0.8;
+            white-space: normal !important; /* Allow wrapping within the button text on very small screens if needed */
+            text-align: center;
+        }
+
         /* Contact Form Styling */
         .contact-form-container {
             margin-top: 40px;
@@ -509,6 +526,10 @@
                 justify-content: center;
             }
 
+            .extra-links {
+                justify-content: center;
+            }
+
             /* Mobile Result Balls */
             .mobile-only {
                 display: flex;
@@ -575,11 +596,11 @@
             </div>
 
             <!-- Contact Link -->
-            <div style="margin-top: 30px; text-align: left;">
-                <a href="contact.html" class="btn" style="font-size: 0.9rem; padding: 10px 20px; border-style: dashed; opacity: 0.8;">
+            <div class="extra-links">
+                <a href="contact.html" class="btn dash-btn">
                     📜 전문적인 예언 신청하기
                 </a>
-                <a href="animal-test.html" class="btn" style="font-size: 0.9rem; padding: 10px 20px; border-style: dashed; opacity: 0.8; margin-left: 10px;">
+                <a href="animal-test.html" class="btn dash-btn">
                     🐾 힐링쉼터 (동물상 테스트)
                 </a>
             </div>
