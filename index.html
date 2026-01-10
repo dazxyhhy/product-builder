@@ -58,6 +58,8 @@
             justify-content: center;
             min-height: 100vh;
             margin: 0;
+            padding: 40px 20px; /* Add padding to prevent sticking to edges */
+            box-sizing: border-box; /* Include padding in height calculation */
             color: var(--text-color);
             overflow-x: hidden;
             transition: background 0.5s ease, color 0.5s ease;
@@ -66,6 +68,7 @@
         .title-container {
             text-align: center;
             margin-bottom: 20px;
+            margin-top: 20px; /* Explicit top margin */
             animation: fadeIn 2s ease-in-out;
         }
 
@@ -259,7 +262,7 @@
 
         /* Buttons */
         .controls {
-            margin-top: 50px;
+            margin-top: 30px;
             display: flex;
             gap: 15px;
             flex-wrap: wrap;
@@ -270,10 +273,10 @@
             background: transparent;
             border: 2px solid var(--btn-border);
             color: var(--btn-text);
-            padding: 12px 30px;
+            padding: 10px 25px; /* Slightly smaller padding */
             font-family: 'Cinzel', serif;
             font-weight: 700;
-            font-size: 1.1rem;
+            font-size: 1rem; /* Slightly smaller font */
             cursor: pointer;
             transition: all 0.3s;
             position: relative;
@@ -319,10 +322,10 @@
         /* Mystic Elements */
         .one-ring {
             position: absolute;
-            top: -60px;
-            right: -60px;
-            width: 160px;
-            height: 160px;
+            top: -50px;
+            right: -50px;
+            width: 140px; /* Slightly smaller ring */
+            height: 140px;
             border: 10px solid var(--ring-color);
             border-radius: 50%;
             pointer-events: none;
@@ -331,7 +334,7 @@
             justify-content: center;
             font-family: 'Cinzel', serif;
             color: var(--ring-color);
-            font-size: 0.65rem;
+            font-size: 0.6rem;
             animation: rotate 60s linear infinite;
             transition: border-color 0.5s ease, color 0.5s ease;
             text-align: center;
@@ -349,11 +352,11 @@
 
         .mystic-text {
             font-style: italic;
-            font-size: 0.9rem;
-            margin-top: 30px;
+            font-size: 0.85rem;
+            margin-top: 20px; /* Reduced margin */
             max-width: 90%;
             text-align: center;
-            line-height: 1.6;
+            line-height: 1.5;
             color: var(--mystic-text-color);
             transition: color 0.5s ease;
         }
