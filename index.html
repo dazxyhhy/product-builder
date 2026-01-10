@@ -53,32 +53,76 @@
             background-image: var(--bg-image);
             font-family: 'Nanum Myeongjo', serif;
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
             min-height: 100vh;
             margin: 0;
-            padding: 40px 20px; /* Add padding to prevent sticking to edges */
-            box-sizing: border-box; /* Include padding in height calculation */
+            padding: 20px;
+            box-sizing: border-box;
             color: var(--text-color);
             overflow-x: hidden;
             transition: background 0.5s ease, color 0.5s ease;
         }
 
+        .main-layout {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            gap: 60px;
+            width: 100%;
+            max-width: 1200px;
+            flex-wrap: wrap;
+        }
+
+        .content-side {
+            flex: 1;
+            min-width: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start; /* Left align for desktop */
+            text-align: left;
+        }
+
+        .ticket-side {
+            flex: 1;
+            min-width: 320px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
         .title-container {
-            text-align: center;
-            margin-bottom: 20px;
-            margin-top: 20px; /* Explicit top margin */
+            text-align: left;
+            margin-bottom: 30px;
             animation: fadeIn 2s ease-in-out;
         }
 
         h1 {
             font-family: 'Cinzel', serif;
-            font-size: 2.5rem;
+            font-size: 3.5rem; /* Larger title for desktop */
             margin: 0;
+            line-height: 1.1;
             text-shadow: 0 0 10px var(--shadow-color);
             letter-spacing: 3px;
             transition: text-shadow 0.5s ease;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--subtitle-color);
+            margin-top: 10px;
+            transition: color 0.5s ease;
+        }
+
+        /* The Lotto Ticket */
+        .ticket-wrapper {
+            position: relative;
+            perspective: 1000px;
+            width: 100%;
+            max-width: 420px;
         }
 
         .subtitle {
@@ -266,17 +310,17 @@
             display: flex;
             gap: 15px;
             flex-wrap: wrap;
-            justify-content: center;
+            justify-content: flex-start; /* Left align for desktop */
         }
 
         .btn {
             background: transparent;
             border: 2px solid var(--btn-border);
             color: var(--btn-text);
-            padding: 10px 25px; /* Slightly smaller padding */
+            padding: 12px 30px;
             font-family: 'Cinzel', serif;
             font-weight: 700;
-            font-size: 1rem; /* Slightly smaller font */
+            font-size: 1rem;
             cursor: pointer;
             transition: all 0.3s;
             position: relative;
@@ -297,21 +341,21 @@
         /* Toggle Button */
         .theme-toggle {
             position: absolute;
-            top: 20px;
-            right: 20px;
+            top: 30px;
+            right: 30px;
             background: transparent;
             border: 1px solid var(--btn-border);
             color: var(--btn-text);
             border-radius: 50%;
-            width: 40px;
-            height: 40px;
+            width: 44px;
+            height: 44px;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
             transition: all 0.3s ease;
-            font-size: 1.2rem;
-            z-index: 10;
+            font-size: 1.3rem;
+            z-index: 100;
         }
         
         .theme-toggle:hover {
@@ -324,7 +368,7 @@
             position: absolute;
             top: -50px;
             right: -50px;
-            width: 140px; /* Slightly smaller ring */
+            width: 140px; 
             height: 140px;
             border: 10px solid var(--ring-color);
             border-radius: 50%;
@@ -352,62 +396,66 @@
 
         .mystic-text {
             font-style: italic;
-            font-size: 0.85rem;
-            margin-top: 20px; /* Reduced margin */
-            max-width: 90%;
-            text-align: center;
-            line-height: 1.5;
+            font-size: 0.95rem;
+            margin-top: 30px;
+            max-width: 100%;
+            text-align: left; /* Left align for desktop */
+            line-height: 1.6;
             color: var(--mystic-text-color);
             transition: color 0.5s ease;
         }
 
         /* Responsive */
-        @media (max-width: 480px) {
-            body {
-                padding: 20px; /* Add padding to body for small screens */
+        @media (max-width: 900px) {
+            .main-layout {
+                flex-direction: column;
+                gap: 40px;
             }
 
-            .ticket-wrapper {
-                max-width: 100%; /* Full width on mobile */
+            .content-side {
+                align-items: center;
+                text-align: center;
+                order: 1; /* Content first */
             }
 
-            .ticket {
-                padding: 15px; /* Reduce padding inside ticket */
+            .ticket-side {
+                order: 2; /* Ticket second */
+                width: 100%;
             }
-            
+
+            .title-container {
+                text-align: center;
+                margin-bottom: 20px;
+            }
+
             h1 {
-                font-size: 2rem; /* Smaller title */
-            }
-
-            .game-row {
-                gap: 5px;
-            }
-
-            .game-label {
-                font-size: 1.2rem;
-            }
-
-            .num-box {
-                font-size: 0.75rem;
-                border-width: 0.5px;
+                font-size: 2.2rem;
             }
 
             .controls {
-                margin-top: 30px;
+                justify-content: center;
+            }
+
+            .mystic-text {
+                text-align: center;
+                font-size: 0.85rem;
+            }
+
+            .theme-toggle {
+                top: 15px;
+                right: 15px;
+                width: 36px;
+                height: 36px;
+                font-size: 1.1rem;
             }
 
             .one-ring {
                 width: 120px;
                 height: 120px;
-                top: -40px;
+                top: -30px;
                 right: -30px;
                 font-size: 0.5rem;
-                border-width: 6px;
-            }
-            
-            .theme-toggle {
-                top: 15px;
-                right: 15px;
+                border-width: 8px;
             }
         }
     </style>
@@ -418,58 +466,66 @@
         🌙
     </button>
 
-    <div class="title-container">
-        <h1>LOTTO <span>OF THE RINGS</span></h1>
-        <div class="subtitle">모든 숫자를 지배하는 하나의 번호</div>
-    </div>
-
-    <div class="ticket-wrapper">
-        <div class="one-ring">One Ring to Rule Them All - One Ring to Find Them - One Ring to Bring Them All - and in the Darkness Bind Them</div>
-        
-        <div class="ticket" id="lottoTicket">
-            <div class="ticket-header">
-                <div class="lotto-logo">LOTTO<span>6/45</span></div>
-                <div class="issue-info">
-                    제 1234회<br>
-                    발행일: 2026/01/10 (토)<br>
-                    추첨일: 2026/01/10 (토)
-                </div>
+    <div class="main-layout">
+        <!-- Left Side: Content -->
+        <div class="content-side">
+            <div class="title-container">
+                <h1>LOTTO <span>OF THE RINGS</span></h1>
+                <div class="subtitle">모든 숫자를 지배하는 하나의 번호</div>
             </div>
 
-            <div class="game-container">
-                <div class="game-row" id="gameA">
-                    <div class="game-label">A</div>
-                    <div style="font-size: 0.6rem; writing-mode: vertical-rl; transform: rotate(180deg); margin-right: 2px;">자동</div>
-                    <div class="number-grid" id="gridA">
-                        <!-- Numbers 1-45 will be generated here -->
+            <div class="controls">
+                <button class="btn" id="generateBtn">운명을 결정하라</button>
+                <button class="btn" style="border-color: rgba(184, 134, 11, 0.3);" id="resetBtn">정화하기</button>
+            </div>
+
+            <div class="mystic-text" id="prophecyText">
+                "서두르지 마라. 운명은 기다림 속에서 모양을 갖춘다..."
+            </div>
+        </div>
+
+        <!-- Right Side: Ticket -->
+        <div class="ticket-side">
+            <div class="ticket-wrapper">
+                <div class="one-ring">One Ring to Rule Them All - One Ring to Find Them - One Ring to Bring Them All - and in the Darkness Bind Them</div>
+                
+                <div class="ticket" id="lottoTicket">
+                    <div class="ticket-header">
+                        <div class="lotto-logo">LOTTO<span>6/45</span></div>
+                        <div class="issue-info">
+                            제 1234회<br>
+                            발행일: 2026/01/10 (토)<br>
+                            추첨일: 2026/01/10 (토)
+                        </div>
+                    </div>
+
+                    <div class="game-container">
+                        <div class="game-row" id="gameA">
+                            <div class="game-label">A</div>
+                            <div style="font-size: 0.6rem; writing-mode: vertical-rl; transform: rotate(180deg); margin-right: 2px;">자동</div>
+                            <div class="number-grid" id="gridA">
+                                <!-- Numbers 1-45 will be generated here -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="selected-nums" id="resultBalls">
+                        <!-- Balls will appear here -->
+                    </div>
+
+                    <div style="margin-top: 15px; display: flex; justify-content: center;">
+                        <div id="barcode" style="font-family: 'Libre Barcode 39', cursive; font-size: 2rem; letter-spacing: 2px; opacity: 0.7;">
+                            |||| || | ||| | || ||| || ||
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 5px; font-size: 0.6rem; border-top: 1px solid rgba(0,0,0,0.1); padding-top: 5px; text-align: center;">
+                        TR-782-LOTR-2026-GEN01<br>
+                        실제 로또와 무관한 재미용 도구입니다. 행운을 빕니다.
                     </div>
                 </div>
             </div>
-
-            <div class="selected-nums" id="resultBalls">
-                <!-- Balls will appear here -->
-            </div>
-
-            <div style="margin-top: 15px; display: flex; justify-content: center;">
-                <div id="barcode" style="font-family: 'Libre Barcode 39', cursive; font-size: 2rem; letter-spacing: 2px; opacity: 0.7;">
-                    |||| || | ||| | || ||| || ||
-                </div>
-            </div>
-
-            <div style="margin-top: 5px; font-size: 0.6rem; border-top: 1px solid rgba(0,0,0,0.1); padding-top: 5px; text-align: center;">
-                TR-782-LOTR-2026-GEN01<br>
-                실제 로또와 무관한 재미용 도구입니다. 행운을 빕니다.
-            </div>
         </div>
-    </div>
-
-    <div class="controls">
-        <button class="btn" id="generateBtn">운명을 결정하라</button>
-        <button class="btn" style="border-color: rgba(184, 134, 11, 0.3);" id="resetBtn">정화하기</button>
-    </div>
-
-    <div class="mystic-text" id="prophecyText">
-        "서두르지 마라. 운명은 기다림 속에서 모양을 갖춘다..."
     </div>
 
     <script>
