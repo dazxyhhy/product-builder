@@ -8,19 +8,49 @@
         @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Nanum+Myeongjo:wght@400;700;800&family=Libre+Barcode+39&display=swap');
 
         :root {
+            /* Common */
             --paper-bg: #f4e4bc;
             --paper-shadow: #d4c29a;
             --lotto-red: #d32f2f;
             --lotto-blue: #1976d2;
-            --mystic-gold: #b8860b;
             --ink-black: #2c2c2c;
+
+            /* Default (Dark Mode) */
+            --bg-color: #1a1a1a;
+            --text-color: #b8860b; /* mystic-gold */
+            --subtitle-color: rgba(184, 134, 11, 0.8);
+            --bg-image: 
+                radial-gradient(circle at 50% 50%, rgba(184, 134, 11, 0.1) 0%, transparent 70%),
+                url('https://www.transparenttextures.com/patterns/dark-leather.png');
+            --ring-color: rgba(184, 134, 11, 0.05);
+            --btn-border: #b8860b;
+            --btn-text: #b8860b;
+            --btn-hover-bg: #b8860b;
+            --btn-hover-text: #1a1a1a;
+            --mystic-text-color: rgba(184, 134, 11, 0.6);
+            --shadow-color: rgba(184, 134, 11, 0.5);
+        }
+
+        [data-theme="light"] {
+            /* Light Mode (Map/Parchment Style) */
+            --bg-color: #e8e4d9; /* Light parchment color */
+            --text-color: #5d4037; /* Dark leather brown */
+            --subtitle-color: rgba(93, 64, 55, 0.8);
+            --bg-image: 
+                radial-gradient(circle at 50% 50%, rgba(93, 64, 55, 0.05) 0%, transparent 70%),
+                url('https://www.transparenttextures.com/patterns/cream-paper.png');
+            --ring-color: rgba(93, 64, 55, 0.08);
+            --btn-border: #5d4037;
+            --btn-text: #5d4037;
+            --btn-hover-bg: #5d4037;
+            --btn-hover-text: #e8e4d9;
+            --mystic-text-color: rgba(93, 64, 55, 0.7);
+            --shadow-color: rgba(93, 64, 55, 0.3);
         }
 
         body {
-            background-color: #1a1a1a;
-            background-image: 
-                radial-gradient(circle at 50% 50%, rgba(184, 134, 11, 0.1) 0%, transparent 70%),
-                url('https://www.transparenttextures.com/patterns/dark-leather.png');
+            background-color: var(--bg-color);
+            background-image: var(--bg-image);
             font-family: 'Nanum Myeongjo', serif;
             display: flex;
             flex-direction: column;
@@ -28,8 +58,9 @@
             justify-content: center;
             min-height: 100vh;
             margin: 0;
-            color: var(--mystic-gold);
+            color: var(--text-color);
             overflow-x: hidden;
+            transition: background 0.5s ease, color 0.5s ease;
         }
 
         .title-container {
@@ -42,14 +73,16 @@
             font-family: 'Cinzel', serif;
             font-size: 2.5rem;
             margin: 0;
-            text-shadow: 0 0 10px rgba(184, 134, 11, 0.5);
+            text-shadow: 0 0 10px var(--shadow-color);
             letter-spacing: 3px;
+            transition: text-shadow 0.5s ease;
         }
 
         .subtitle {
             font-size: 0.9rem;
-            opacity: 0.8;
+            color: var(--subtitle-color);
             margin-top: 5px;
+            transition: color 0.5s ease;
         }
 
         /* The Lotto Ticket */
@@ -226,8 +259,8 @@
 
         .btn {
             background: transparent;
-            border: 2px solid var(--mystic-gold);
-            color: var(--mystic-gold);
+            border: 2px solid var(--btn-border);
+            color: var(--btn-text);
             padding: 12px 30px;
             font-family: 'Cinzel', serif;
             font-weight: 700;
@@ -239,13 +272,37 @@
         }
 
         .btn:hover {
-            background: var(--mystic-gold);
-            color: #1a1a1a;
-            box-shadow: 0 0 20px rgba(184, 134, 11, 0.6);
+            background: var(--btn-hover-bg);
+            color: var(--btn-hover-text);
+            box-shadow: 0 0 20px var(--shadow-color);
         }
 
         .btn:active {
             transform: scale(0.95);
+        }
+
+        /* Toggle Button */
+        .theme-toggle {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: transparent;
+            border: 1px solid var(--btn-border);
+            color: var(--btn-text);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+        }
+        
+        .theme-toggle:hover {
+            background: var(--btn-hover-bg);
+            color: var(--btn-hover-text);
         }
 
         /* Mystic Elements */
@@ -255,16 +312,17 @@
             right: -50px;
             width: 150px;
             height: 150px;
-            border: 10px solid rgba(184, 134, 11, 0.1);
+            border: 10px solid var(--ring-color);
             border-radius: 50%;
             pointer-events: none;
             display: flex;
             align-items: center;
             justify-content: center;
             font-family: 'Cinzel', serif;
-            color: rgba(184, 134, 11, 0.05);
+            color: var(--ring-color);
             font-size: 0.6rem;
             animation: rotate 60s linear infinite;
+            transition: border-color 0.5s ease, color 0.5s ease;
         }
 
         @keyframes rotate {
@@ -284,7 +342,8 @@
             max-width: 400px;
             text-align: center;
             line-height: 1.6;
-            color: rgba(184, 134, 11, 0.6);
+            color: var(--mystic-text-color);
+            transition: color 0.5s ease;
         }
 
         /* Responsive */
@@ -297,10 +356,21 @@
                 height: 18px;
                 font-size: 0.6rem;
             }
+            .theme-toggle {
+                top: 10px;
+                right: 10px;
+                width: 30px;
+                height: 30px;
+                font-size: 1rem;
+            }
         }
     </style>
 </head>
 <body>
+
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle Theme">
+        🌙
+    </button>
 
     <div class="title-container">
         <h1>LOTTO <span>OF THE RINGS</span></h1>
@@ -362,6 +432,7 @@
         const resetBtn = document.getElementById('resetBtn');
         const resultBalls = document.getElementById('resultBalls');
         const prophecyText = document.getElementById('prophecyText');
+        const themeToggle = document.getElementById('themeToggle');
 
         const prophecies = [
             "“어둠이 짙을수록, 작은 빛은 더 멀리 닿는다. 오늘의 숫자는 조용히 강하다.”",
@@ -436,6 +507,30 @@
             resultBalls.innerHTML = '';
             prophecyText.textContent = "정화가 완료되었습니다. 다시 운명을 물으십시오.";
         }
+
+        // Theme Toggle Logic
+        let isDark = true;
+        
+        // Check local storage
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'light') {
+            isDark = false;
+            document.documentElement.setAttribute('data-theme', 'light');
+            themeToggle.textContent = '☀️';
+        }
+
+        themeToggle.addEventListener('click', () => {
+            isDark = !isDark;
+            if (isDark) {
+                document.documentElement.removeAttribute('data-theme');
+                themeToggle.textContent = '🌙';
+                localStorage.setItem('theme', 'dark');
+            } else {
+                document.documentElement.setAttribute('data-theme', 'light');
+                themeToggle.textContent = '☀️';
+                localStorage.setItem('theme', 'light');
+            }
+        });
 
         generateBtn.addEventListener('click', generateNumbers);
         resetBtn.addEventListener('click', reset);
