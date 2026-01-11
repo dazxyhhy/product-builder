@@ -1,361 +1,368 @@
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>힐링 쉼터 - 동물상 테스트</title>
-    <meta name="description" content="AI가 분석하는 나의 동물상은? 강아지상, 고양이상 등 내 얼굴에 숨겨진 동물 영혼을 찾아보세요.">
-    
+    <meta name="description" content="AI가 분석하는 나의 동물상은? 강아지상, 고양이상 등 내 얼굴에 숨겨진 동물 영혼을 찾아보세요." />
+
     <!-- Open Graph -->
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="힐링 쉼터 - 나의 동물상 찾기">
-    <meta property="og:description" content="AI가 분석해주는 나의 동물상 테스트. 당신은 강아지상일까요, 고양이상일까요?">
-    <meta property="og:image" content="https://product-builder-3d5.pages.dev/assets/main-image.png">
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="힐링 쉼터 - 나의 동물상 찾기" />
+    <meta property="og:description" content="AI가 분석해주는 나의 동물상 테스트. 당신은 강아지상일까요, 고양이상일까요?" />
+    <meta property="og:image" content="https://product-builder-3d5.pages.dev/assets/main-image.png" />
 
     <!-- Favicon -->
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐾</text></svg>">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐾</text></svg>" />
 
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2307043093255162" crossorigin="anonymous"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Nanum+Myeongjo:wght@400;700;800&family=Libre+Barcode+39&display=swap');
+      @import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Nanum+Myeongjo:wght@400;700;800&family=Libre+Barcode+39&display=swap");
 
-        :root {
-            /* Common */
-            --btn-border: #b8860b;
-            --btn-text: #b8860b;
-            --btn-hover-bg: #b8860b;
-            --btn-hover-text: #1a1a1a;
-            --mystic-text-color: rgba(184, 134, 11, 0.6);
-            --shadow-color: rgba(184, 134, 11, 0.5);
+      :root {
+        /* Common */
+        --btn-border: #b8860b;
+        --btn-text: #b8860b;
+        --btn-hover-bg: #b8860b;
+        --btn-hover-text: #1a1a1a;
+        --mystic-text-color: rgba(184, 134, 11, 0.6);
+        --shadow-color: rgba(184, 134, 11, 0.5);
 
-            /* Default (Dark Mode) */
-            --bg-color: #1a1a1a;
-            --text-color: #b8860b;
-            --bg-image: 
-                radial-gradient(circle at 50% 50%, rgba(184, 134, 11, 0.1) 0%, transparent 70%),
-                url('https://www.transparenttextures.com/patterns/dark-leather.png');
+        /* Default (Dark Mode) */
+        --bg-color: #1a1a1a;
+        --text-color: #b8860b;
+        --bg-image: radial-gradient(circle at 50% 50%, rgba(184, 134, 11, 0.1) 0%, transparent 70%), url("https://www.transparenttextures.com/patterns/dark-leather.png");
+      }
+
+      [data-theme="light"] {
+        /* Light Mode */
+        --bg-color: #e8e4d9;
+        --text-color: #5d4037;
+        --bg-image: radial-gradient(circle at 50% 50%, rgba(93, 64, 55, 0.05) 0%, transparent 70%), url("https://www.transparenttextures.com/patterns/cream-paper.png");
+        --btn-border: #5d4037;
+        --btn-text: #5d4037;
+        --btn-hover-bg: #5d4037;
+        --btn-hover-text: #e8e4d9;
+        --mystic-text-color: rgba(93, 64, 55, 0.7);
+        --shadow-color: rgba(93, 64, 55, 0.3);
+      }
+
+      body {
+        background-color: var(--bg-color);
+        background-image: var(--bg-image);
+        font-family: "Nanum Myeongjo", serif;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        margin: 0;
+        padding: 20px;
+        box-sizing: border-box;
+        color: var(--text-color);
+        overflow-x: hidden;
+        transition: background 0.5s ease, color 0.5s ease;
+      }
+
+      .container {
+        width: 100%;
+        max-width: 500px;
+        padding: 30px;
+        border: 2px solid var(--btn-border);
+        border-radius: 8px;
+        background: rgba(0, 0, 0, 0.5);
+        transition: background 0.5s ease;
+        text-align: center;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      }
+
+      [data-theme="light"] .container {
+        background: rgba(255, 255, 255, 0.8);
+      }
+
+      h1 {
+        font-family: "Cinzel", serif;
+        font-size: 1.8rem;
+        margin: 0 0 10px 0;
+        color: var(--text-color);
+        text-shadow: 0 0 10px var(--shadow-color);
+        word-break: keep-all;
+      }
+
+      p {
+        color: var(--mystic-text-color);
+        margin-bottom: 25px;
+        font-size: 0.95rem;
+        line-height: 1.5;
+        word-break: keep-all;
+      }
+
+      /* Upload Area */
+      .upload-area {
+        border: 2px dashed var(--btn-border);
+        border-radius: 10px;
+        padding: 10px;
+        cursor: pointer;
+        transition: background 0.3s;
+        position: relative;
+        overflow: hidden;
+        min-height: 250px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(0, 0, 0, 0.1);
+      }
+
+      .upload-area:hover {
+        background: rgba(184, 134, 11, 0.1);
+      }
+
+      .upload-area input {
+        display: none;
+      }
+
+      .preview-img {
+        max-width: 100%;
+        max-height: 300px; /* Limit height */
+        width: auto;
+        border-radius: 6px;
+        display: none;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        object-fit: contain;
+      }
+
+      .upload-label {
+        font-size: 1rem;
+        color: var(--text-color);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        pointer-events: none;
+      }
+
+      .icon {
+        font-size: 3rem;
+      }
+
+      /* Result Area */
+      .result-area {
+        margin-top: 30px;
+        display: none;
+        animation: fadeIn 0.5s ease;
+        padding-top: 20px;
+        border-top: 1px dashed var(--btn-border);
+      }
+
+      .result-title {
+        font-size: 1.6rem;
+        font-weight: bold;
+        margin-bottom: 12px;
+        color: var(--text-color);
+      }
+
+      .result-desc {
+        font-size: 1rem;
+        color: var(--mystic-text-color);
+        margin-bottom: 15px;
+        word-break: keep-all;
+        line-height: 1.5;
+      }
+
+      .bar-container {
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.2);
+        border-radius: 10px;
+        margin: 10px 0;
+        overflow: hidden;
+        height: 20px;
+        position: relative;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      [data-theme="light"] .bar-container {
+        background-color: rgba(0, 0, 0, 0.05);
+        border: 1px solid rgba(0, 0, 0, 0.1);
+      }
+
+      .bar-fill {
+        height: 100%;
+        background: linear-gradient(90deg, var(--btn-border), var(--text-color));
+        width: 0%;
+        transition: width 1s ease-in-out;
+        border-radius: 10px;
+      }
+
+      .bar-text {
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.8rem;
+        color: var(--mystic-text-color);
+        margin-bottom: 5px;
+        margin-top: 15px;
+      }
+
+      /* Buttons */
+      .btn {
+        background: transparent;
+        border: 2px solid var(--btn-border);
+        color: var(--btn-text);
+        padding: 12px 30px;
+        font-family: "Cinzel", serif;
+        font-weight: 700;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: all 0.3s;
+        position: relative;
+        overflow: hidden;
+        white-space: nowrap;
+        text-decoration: none;
+        display: inline-block;
+        margin-top: 20px;
+        max-width: 100%;
+        border-radius: 4px;
+      }
+
+      .btn:hover {
+        background: var(--btn-hover-bg);
+        color: var(--btn-hover-text);
+        box-shadow: 0 0 20px var(--shadow-color);
+      }
+
+      .loading {
+        display: none;
+        margin-top: 30px;
+        color: var(--mystic-text-color);
+        font-style: italic;
+        font-size: 0.9rem;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
         }
-
-        [data-theme="light"] {
-            /* Light Mode */
-            --bg-color: #e8e4d9;
-            --text-color: #5d4037;
-            --bg-image: 
-                radial-gradient(circle at 50% 50%, rgba(93, 64, 55, 0.05) 0%, transparent 70%),
-                url('https://www.transparenttextures.com/patterns/cream-paper.png');
-            --btn-border: #5d4037;
-            --btn-text: #5d4037;
-            --btn-hover-bg: #5d4037;
-            --btn-hover-text: #e8e4d9;
-            --mystic-text-color: rgba(93, 64, 55, 0.7);
-            --shadow-color: rgba(93, 64, 55, 0.3);
+        to {
+          opacity: 1;
+          transform: translateY(0);
         }
+      }
 
-        body {
-            background-color: var(--bg-color);
-            background-image: var(--bg-image);
-            font-family: 'Nanum Myeongjo', serif;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            margin: 0;
-            padding: 20px;
-            box-sizing: border-box;
-            color: var(--text-color);
-            overflow-x: hidden;
-            transition: background 0.5s ease, color 0.5s ease;
+      .back-link {
+        margin-top: 30px;
+        display: inline-block;
+        color: var(--mystic-text-color);
+        text-decoration: none;
+        font-size: 0.9rem;
+        border-bottom: 1px dashed var(--mystic-text-color);
+        transition: color 0.3s;
+      }
+
+      .back-link:hover {
+        color: var(--text-color);
+        border-bottom-style: solid;
+      }
+
+      /* Toggle Button */
+      .theme-toggle {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background: transparent;
+        border: 1px solid var(--btn-border);
+        color: var(--btn-text);
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-size: 1.2rem;
+        z-index: 100;
+      }
+
+      /* Loading Spinner */
+      .spinner {
+        display: inline-block;
+        width: 30px;
+        height: 30px;
+        border: 3px solid rgba(255, 255, 255, 0.3);
+        border-radius: 50%;
+        border-top-color: var(--text-color);
+        animation: spin 1s ease-in-out infinite;
+        margin-bottom: 10px;
+      }
+      [data-theme="light"] .spinner {
+        border: 3px solid rgba(0, 0, 0, 0.1);
+        border-top-color: var(--text-color);
+      }
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
         }
+      }
 
+      /* Mobile Optimization */
+      @media (max-width: 480px) {
         .container {
-            width: 100%;
-            max-width: 500px;
-            padding: 30px;
-            border: 2px solid var(--btn-border);
-            border-radius: 8px;
-            background: rgba(0, 0, 0, 0.5);
-            transition: background 0.5s ease;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+          padding: 20px;
+          width: 95%;
         }
-
-        [data-theme="light"] .container {
-            background: rgba(255, 255, 255, 0.8);
-        }
-
         h1 {
-            font-family: 'Cinzel', serif;
-            font-size: 1.8rem;
-            margin: 0 0 10px 0;
-            color: var(--text-color);
-            text-shadow: 0 0 10px var(--shadow-color);
-            word-break: keep-all;
+          font-size: 1.5rem;
         }
-
-        p {
-            color: var(--mystic-text-color);
-            margin-bottom: 25px;
-            font-size: 0.95rem;
-            line-height: 1.5;
-            word-break: keep-all;
-        }
-
-        /* Upload Area */
         .upload-area {
-            border: 2px dashed var(--btn-border);
-            border-radius: 10px;
-            padding: 10px;
-            cursor: pointer;
-            transition: background 0.3s;
-            position: relative;
-            overflow: hidden;
-            min-height: 250px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(0,0,0,0.1);
+          min-height: 200px;
         }
-
-        .upload-area:hover {
-            background: rgba(184, 134, 11, 0.1);
-        }
-
-        .upload-area input {
-            display: none;
-        }
-
-        .preview-img {
-            max-width: 100%;
-            max-height: 300px; /* Limit height */
-            width: auto;
-            border-radius: 6px;
-            display: none;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-            object-fit: contain;
-        }
-
-        .upload-label {
-            font-size: 1rem;
-            color: var(--text-color);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 10px;
-            pointer-events: none;
-        }
-
         .icon {
-            font-size: 3rem;
+          font-size: 2.5rem;
         }
-
-        /* Result Area */
-        .result-area {
-            margin-top: 30px;
-            display: none;
-            animation: fadeIn 0.5s ease;
-            padding-top: 20px;
-            border-top: 1px dashed var(--btn-border);
-        }
-
-        .result-title {
-            font-size: 1.6rem;
-            font-weight: bold;
-            margin-bottom: 12px;
-            color: var(--text-color);
-        }
-
-        .result-desc {
-            font-size: 1rem;
-            color: var(--mystic-text-color);
-            margin-bottom: 15px;
-            word-break: keep-all;
-            line-height: 1.5;
-        }
-
-        .bar-container {
-            width: 100%;
-            background-color: rgba(0,0,0,0.2);
-            border-radius: 10px;
-            margin: 10px 0;
-            overflow: hidden;
-            height: 20px;
-            position: relative;
-            border: 1px solid rgba(255,255,255,0.1);
-        }
-        
-        [data-theme="light"] .bar-container {
-            background-color: rgba(0,0,0,0.05);
-            border: 1px solid rgba(0,0,0,0.1);
-        }
-
-        .bar-fill {
-            height: 100%;
-            background: linear-gradient(90deg, var(--btn-border), var(--text-color));
-            width: 0%;
-            transition: width 1s ease-in-out;
-            border-radius: 10px;
-        }
-        
-        .bar-text {
-            display: flex;
-            justify-content: space-between;
-            font-size: 0.8rem;
-            color: var(--mystic-text-color);
-            margin-bottom: 5px;
-            margin-top: 15px;
-        }
-
-        /* Buttons */
         .btn {
-            background: transparent;
-            border: 2px solid var(--btn-border);
-            color: var(--btn-text);
-            padding: 12px 30px;
-            font-family: 'Cinzel', serif;
-            font-weight: 700;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: all 0.3s;
-            position: relative;
-            overflow: hidden;
-            white-space: nowrap;
-            text-decoration: none;
-            display: inline-block;
-            margin-top: 20px;
-            max-width: 100%;
-            border-radius: 4px;
+          width: 100%; /* Full width button on mobile */
+          padding: 12px 0;
         }
-
-        .btn:hover {
-            background: var(--btn-hover-bg);
-            color: var(--btn-hover-text);
-            box-shadow: 0 0 20px var(--shadow-color);
-        }
-
-        .loading {
-            display: none;
-            margin-top: 30px;
-            color: var(--mystic-text-color);
-            font-style: italic;
-            font-size: 0.9rem;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .back-link {
-            margin-top: 30px;
-            display: inline-block;
-            color: var(--mystic-text-color);
-            text-decoration: none;
-            font-size: 0.9rem;
-            border-bottom: 1px dashed var(--mystic-text-color);
-            transition: color 0.3s;
-        }
-
-        .back-link:hover {
-            color: var(--text-color);
-            border-bottom-style: solid;
-        }
-        
-        /* Toggle Button */
-        .theme-toggle {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: transparent;
-            border: 1px solid var(--btn-border);
-            color: var(--btn-text);
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 1.2rem;
-            z-index: 100;
-        }
-        
-        /* Loading Spinner */
-        .spinner {
-            display: inline-block;
-            width: 30px;
-            height: 30px;
-            border: 3px solid rgba(255,255,255,0.3);
-            border-radius: 50%;
-            border-top-color: var(--text-color);
-            animation: spin 1s ease-in-out infinite;
-            margin-bottom: 10px;
-        }
-        [data-theme="light"] .spinner {
-            border: 3px solid rgba(0,0,0,0.1);
-            border-top-color: var(--text-color);
-        }
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-
-        /* Mobile Optimization */
-        @media (max-width: 480px) {
-            .container {
-                padding: 20px;
-                width: 95%;
-            }
-            h1 {
-                font-size: 1.5rem;
-            }
-            .upload-area {
-                min-height: 200px;
-            }
-            .icon {
-                font-size: 2.5rem;
-            }
-            .btn {
-                width: 100%; /* Full width button on mobile */
-                padding: 12px 0;
-            }
-        }
+      }
     </style>
-</head>
-<body>
-
-    <button class="theme-toggle" id="themeToggle" aria-label="Toggle Theme">
-        🌙
-    </button>
+  </head>
+  <body>
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle Theme">🌙</button>
 
     <div class="container">
-        <h1>힐링 쉼터</h1>
-        <p>당신의 영혼은 어떤 동물과 닮아있을까요?<br>사진을 올려주시면 인공지능이 분석해드립니다.</p>
+      <h1>힐링 쉼터</h1>
+      <p>
+        당신의 영혼은 어떤 동물과 닮아있을까요?
+        <br />
+        사진을 올려주시면 인공지능이 분석해드립니다.
+      </p>
 
-        <div class="upload-area" id="uploadArea">
-            <input type="file" id="imageInput" accept="image/*">
-            <div class="upload-label" id="uploadLabel">
-                <span class="icon">📸</span>
-                <span>클릭하여 사진 업로드</span>
-            </div>
-            <img id="previewImage" class="preview-img" alt="Preview">
+      <div class="upload-area" id="uploadArea">
+        <input type="file" id="imageInput" accept="image/*" />
+        <div class="upload-label" id="uploadLabel">
+          <span class="icon">📸</span>
+          <span>클릭하여 사진 업로드</span>
         </div>
+        <img id="previewImage" class="preview-img" alt="Preview" />
+      </div>
 
-        <div class="loading" id="loadingBox">
-            <div class="spinner"></div><br>
-            운명의 거울을 닦고 있습니다...<br>
-            <span style="font-size: 0.75rem;">(잠시만 기다려주세요)</span>
-        </div>
+      <div class="loading" id="loadingBox">
+        <div class="spinner"></div>
+        <br />
+        운명의 거울을 닦고 있습니다...
+        <br />
+        <span style="font-size: 0.75rem">(잠시만 기다려주세요)</span>
+      </div>
 
-        <div class="result-area" id="resultArea">
-            <div class="result-title" id="resultTitle">분석 결과</div>
-            <div class="result-desc" id="resultDesc"></div>
-            
-            <div id="labelContainer"></div>
-        </div>
-        
-        <button class="btn" id="predictBtn" style="display:none;" onclick="predict()">분석 시작하기</button>
+      <div class="result-area" id="resultArea">
+        <div class="result-title" id="resultTitle">분석 결과</div>
+        <div class="result-desc" id="resultDesc"></div>
 
-        <a href="index.html" class="back-link">← 예언소로 돌아가기</a>
+        <div id="labelContainer"></div>
+      </div>
+
+      <button class="btn" id="predictBtn" style="display: none" onclick="predict()">분석 시작하기</button>
+
+      <a href="index.html" class="back-link">← 예언소로 돌아가기</a>
     </div>
 
     <!-- Tensorflow & Teachable Machine Scripts -->
@@ -363,137 +370,138 @@
     <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
 
     <script>
-        // ⚠️ [중요] Teachable Machine에서 복사한 '전체 링크'를 아래에 넣어주세요 ⚠️
-        const URL = "https://teachablemachine.withgoogle.com/models/15RFyCSxl/"; 
+      // ⚠️ [중요] Teachable Machine에서 복사한 '전체 링크'를 아래에 넣어주세요 ⚠️
+      const URL = "https://teachablemachine.withgoogle.com/models/15RFyCSxl/"
 
-        let model, maxPredictions;
-        
-        const uploadArea = document.getElementById('uploadArea');
-        const imageInput = document.getElementById('imageInput');
-        const uploadLabel = document.getElementById('uploadLabel');
-        const previewImage = document.getElementById('previewImage');
-        const loadingBox = document.getElementById('loadingBox');
-        const resultArea = document.getElementById('resultArea');
-        const resultTitle = document.getElementById('resultTitle');
-        const resultDesc = document.getElementById('resultDesc');
-        const labelContainer = document.getElementById('labelContainer');
-        const predictBtn = document.getElementById('predictBtn');
-        const themeToggle = document.getElementById('themeToggle');
+      let model, maxPredictions
 
-        // Theme Logic
-        let isDark = true;
-        const savedTheme = localStorage.getItem('theme');
-        if (savedTheme === 'light') {
-            isDark = false;
-            document.documentElement.setAttribute('data-theme', 'light');
-            themeToggle.textContent = '☀️';
+      const uploadArea = document.getElementById("uploadArea")
+      const imageInput = document.getElementById("imageInput")
+      const uploadLabel = document.getElementById("uploadLabel")
+      const previewImage = document.getElementById("previewImage")
+      const loadingBox = document.getElementById("loadingBox")
+      const resultArea = document.getElementById("resultArea")
+      const resultTitle = document.getElementById("resultTitle")
+      const resultDesc = document.getElementById("resultDesc")
+      const labelContainer = document.getElementById("labelContainer")
+      const predictBtn = document.getElementById("predictBtn")
+      const themeToggle = document.getElementById("themeToggle")
+
+      // Theme Logic
+      let isDark = true
+      const savedTheme = localStorage.getItem("theme")
+      if (savedTheme === "light") {
+        isDark = false
+        document.documentElement.setAttribute("data-theme", "light")
+        themeToggle.textContent = "☀️"
+      }
+
+      themeToggle.addEventListener("click", () => {
+        isDark = !isDark
+        if (isDark) {
+          document.documentElement.removeAttribute("data-theme")
+          themeToggle.textContent = "🌙"
+          localStorage.setItem("theme", "dark")
+        } else {
+          document.documentElement.setAttribute("data-theme", "light")
+          themeToggle.textContent = "☀️"
+          localStorage.setItem("theme", "light")
+        }
+      })
+
+      // Initialize Model
+      async function init() {
+        try {
+          // If URL is placeholder, warn user
+          if (URL.includes("YOUR_MODEL_ID")) {
+            alert("모델 연결이 필요합니다! 코드를 열어 URL 변수에 티처블 머신 링크를 넣어주세요.")
+            loadingBox.style.display = "none"
+            predictBtn.style.display = "inline-block"
+            return
+          }
+
+          const modelURL = URL + "model.json"
+          const metadataURL = URL + "metadata.json"
+          model = await tmImage.load(modelURL, metadataURL)
+          maxPredictions = model.getTotalClasses()
+        } catch (e) {
+          console.error("Model load failed:", e)
+          alert("모델을 불러오는데 실패했습니다. 인터넷 연결이나 링크를 확인해주세요.")
+          loadingBox.style.display = "none"
+          predictBtn.style.display = "inline-block"
+        }
+      }
+
+      // Upload Logic
+      uploadArea.addEventListener("click", () => imageInput.click())
+
+      imageInput.addEventListener("change", (e) => {
+        const file = e.target.files[0]
+        if (file) {
+          const reader = new FileReader()
+          reader.onload = (event) => {
+            previewImage.src = event.target.result
+            previewImage.style.display = "block"
+            uploadLabel.style.display = "none"
+            resultArea.style.display = "none"
+            predictBtn.style.display = "inline-block"
+          }
+          reader.readAsDataURL(file)
+        }
+      })
+
+      // Prediction Logic
+      async function predict() {
+        loadingBox.style.display = "block"
+        predictBtn.style.display = "none"
+        resultArea.style.display = "none"
+
+        if (!model) {
+          await init()
+          if (!model) return // Stop if init failed
         }
 
-        themeToggle.addEventListener('click', () => {
-            isDark = !isDark;
-            if (isDark) {
-                document.documentElement.removeAttribute('data-theme');
-                themeToggle.textContent = '🌙';
-                localStorage.setItem('theme', 'dark');
-            } else {
-                document.documentElement.setAttribute('data-theme', 'light');
-                themeToggle.textContent = '☀️';
-                localStorage.setItem('theme', 'light');
-            }
-        });
+        // Slight delay for UI update
+        setTimeout(async () => {
+          const prediction = await model.predict(previewImage)
 
-        // Initialize Model
-        async function init() {
-            try {
-                // If URL is placeholder, warn user
-                if (URL.includes("YOUR_MODEL_ID")) {
-                    alert("모델 연결이 필요합니다! 코드를 열어 URL 변수에 티처블 머신 링크를 넣어주세요.");
-                    loadingBox.style.display = 'none';
-                    predictBtn.style.display = 'inline-block';
-                    return;
-                }
+          // Sort by probability
+          prediction.sort((a, b) => b.probability - a.probability)
 
-                const modelURL = URL + "model.json";
-                const metadataURL = URL + "metadata.json";
-                model = await tmImage.load(modelURL, metadataURL);
-                maxPredictions = model.getTotalClasses();
-            } catch (e) {
-                console.error("Model load failed:", e);
-                alert("모델을 불러오는데 실패했습니다. 인터넷 연결이나 링크를 확인해주세요.");
-                loadingBox.style.display = 'none';
-                predictBtn.style.display = 'inline-block';
-            }
-        }
+          const bestClass = prediction[0].className
 
-        // Upload Logic
-        uploadArea.addEventListener('click', () => imageInput.click());
+          // Customize messages based on class name
+          // Note: Ensure your Teachable Machine class names match these or are handled generically
+          if (bestClass.includes("강아지") || bestClass.includes("Dog")) {
+            resultTitle.textContent = "🐶 당신은 '강아지상'입니다!"
+            resultDesc.textContent = "충성심이 강하고 활발하며, 주변 사람들에게 사랑받는 따뜻한 마음을 가지셨군요."
+          } else if (bestClass.includes("고양이") || bestClass.includes("Cat")) {
+            resultTitle.textContent = "🐱 당신은 '고양이상'입니다!"
+            resultDesc.textContent = "도도하고 매력적이며, 독립심이 강하지만 내 사람에게는 한없이 다정한 반전 매력의 소유자시군요."
+          } else if (bestClass.includes("토끼") || bestClass.includes("Rabbit")) {
+            resultTitle.textContent = "🐰 당신은 '토끼상'입니다!"
+            resultDesc.textContent = "순수하고 귀여운 매력으로 어디서나 사랑받는 분위기 메이커시군요."
+          } else if (bestClass.includes("여우") || bestClass.includes("Fox")) {
+            resultTitle.textContent = "🦊 당신은 '여우상'입니다!"
+            resultDesc.textContent = "눈치가 빠르고 센스 넘치며, 사람의 마음을 사로잡는 매력을 지니셨군요."
+          } else if (bestClass.includes("곰") || bestClass.includes("Bear")) {
+            resultTitle.textContent = "🐻 당신은 '곰상'입니다!"
+            resultDesc.textContent = "듬직하고 포근하며, 주변 사람들에게 편안함을 주는 든든한 존재시군요."
+          } else {
+            resultTitle.textContent = `🧐 당신은 '${bestClass}상'입니다!`
+            resultDesc.textContent = "독특하고 신비로운 매력을 가지고 계시네요."
+          }
 
-        imageInput.addEventListener('change', (e) => {
-            const file = e.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = (event) => {
-                    previewImage.src = event.target.result;
-                    previewImage.style.display = 'block';
-                    uploadLabel.style.display = 'none';
-                    resultArea.style.display = 'none';
-                    predictBtn.style.display = 'inline-block';
-                };
-                reader.readAsDataURL(file);
-            }
-        });
+          // Create bars
+          labelContainer.innerHTML = ""
+          for (let i = 0; i < maxPredictions; i++) {
+            const classPrediction = prediction[i]
+            const probability = (classPrediction.probability * 100).toFixed(1)
 
-        // Prediction Logic
-        async function predict() {
-            loadingBox.style.display = 'block';
-            predictBtn.style.display = 'none';
-            resultArea.style.display = 'none';
-
-            if (!model) {
-                await init();
-                if (!model) return; // Stop if init failed
-            }
-            
-            // Slight delay for UI update
-            setTimeout(async () => {
-                const prediction = await model.predict(previewImage);
-                
-                // Sort by probability
-                prediction.sort((a, b) => b.probability - a.probability);
-
-                const bestClass = prediction[0].className;
-                
-                // Customize messages based on class name
-                // Note: Ensure your Teachable Machine class names match these or are handled generically
-                if (bestClass.includes('강아지') || bestClass.includes('Dog')) {
-                    resultTitle.textContent = "🐶 당신은 '강아지상'입니다!";
-                    resultDesc.textContent = "충성심이 강하고 활발하며, 주변 사람들에게 사랑받는 따뜻한 마음을 가지셨군요.";
-                } else if (bestClass.includes('고양이') || bestClass.includes('Cat')) {
-                    resultTitle.textContent = "🐱 당신은 '고양이상'입니다!";
-                    resultDesc.textContent = "도도하고 매력적이며, 독립심이 강하지만 내 사람에게는 한없이 다정한 반전 매력의 소유자시군요.";
-                } else if (bestClass.includes('토끼') || bestClass.includes('Rabbit')) {
-                    resultTitle.textContent = "🐰 당신은 '토끼상'입니다!";
-                    resultDesc.textContent = "순수하고 귀여운 매력으로 어디서나 사랑받는 분위기 메이커시군요.";
-                } else if (bestClass.includes('여우') || bestClass.includes('Fox')) {
-                    resultTitle.textContent = "🦊 당신은 '여우상'입니다!";
-                    resultDesc.textContent = "눈치가 빠르고 센스 넘치며, 사람의 마음을 사로잡는 매력을 지니셨군요.";
-                } else if (bestClass.includes('곰') || bestClass.includes('Bear')) {
-                    resultTitle.textContent = "🐻 당신은 '곰상'입니다!";
-                    resultDesc.textContent = "듬직하고 포근하며, 주변 사람들에게 편안함을 주는 든든한 존재시군요.";
-                } else {
-                    resultTitle.textContent = `🧐 당신은 '${bestClass}상'입니다!`;
-                    resultDesc.textContent = "독특하고 신비로운 매력을 가지고 계시네요.";
-                }
-
-                // Create bars
-                labelContainer.innerHTML = "";
-                for (let i = 0; i < maxPredictions; i++) {
-                    const classPrediction = prediction[i];
-                    const probability = (classPrediction.probability * 100).toFixed(1);
-                    
-                    if (probability > 1) { // Show only significant ones
-                        const barDiv = document.createElement("div");
-                        barDiv.innerHTML = `
+            if (probability > 1) {
+              // Show only significant ones
+              const barDiv = document.createElement("div")
+              barDiv.innerHTML = `
                             <div class="bar-text">
                                 <span>${classPrediction.className}</span>
                                 <span>${probability}%</span>
@@ -501,17 +509,17 @@
                             <div class="bar-container">
                                 <div class="bar-fill" style="width: ${probability}%"></div>
                             </div>
-                        `;
-                        labelContainer.appendChild(barDiv);
-                    }
-                }
+                        `
+              labelContainer.appendChild(barDiv)
+            }
+          }
 
-                loadingBox.style.display = 'none';
-                resultArea.style.display = 'block';
-                predictBtn.style.display = 'inline-block';
-                predictBtn.textContent = "다른 사진 분석하기";
-            }, 500); 
-        }
+          loadingBox.style.display = "none"
+          resultArea.style.display = "block"
+          predictBtn.style.display = "inline-block"
+          predictBtn.textContent = "다른 사진 분석하기"
+        }, 500)
+      }
     </script>
-</body>
+  </body>
 </html>

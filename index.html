@@ -1,850 +1,737 @@
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>신비한 반지 로또 - 운명의 번호 생성기</title>
-    <meta name="description" content="절대 반지의 신비한 힘으로 로또 번호를 추첨해보세요. 반지의 제왕 테마의 운명적 번호 생성 및 동물상 테스트 힐링 쉼터.">
-    <link rel="canonical" href="https://product-builder-3d5.pages.dev/">
+    <meta name="description" content="절대 반지의 신비한 힘으로 로또 번호를 추첨해보세요. 반지의 제왕 테마의 운명적 번호 생성 및 동물상 테스트 힐링 쉼터." />
+    <link rel="canonical" href="https://product-builder-3d5.pages.dev/" />
 
-    <!-- Open Graph / Facebook / Kakao -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://product-builder-3d5.pages.dev/">
-    <meta property="og:title" content="신비한 반지 로또 - MYSTIC RING LOTTO">
-    <meta property="og:description" content="당신의 운명을 시험해보세요. 신비한 반지가 이끄는 오늘의 행운의 숫자는?">
-    <meta property="og:image" content="https://product-builder-3d5.pages.dev/assets/main-image.png">
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://product-builder-3d5.pages.dev/" />
+    <meta property="og:title" content="신비한 반지 로또 - MYSTIC RING LOTTO" />
+    <meta property="og:description" content="당신의 운명을 시험해보세요. 신비한 반지가 이끄는 오늘의 행운의 숫자는?" />
+    <meta property="og:image" content="https://product-builder-3d5.pages.dev/assets/main-image.png" />
 
-    <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="신비한 반지 로또">
-    <meta name="twitter:description" content="당신의 운명을 시험해보세요. 신비한 반지가 이끄는 오늘의 행운의 숫자는?">
-    <meta name="twitter:image" content="https://product-builder-3d5.pages.dev/assets/main-image.png">
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="신비한 반지 로또" />
+    <meta name="twitter:description" content="당신의 운명을 시험해보세요. 신비한 반지가 이끄는 오늘의 행운의 숫자는?" />
+    <meta name="twitter:image" content="https://product-builder-3d5.pages.dev/assets/main-image.png" />
 
-    <!-- Favicon (Emoji) -->
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💍</text></svg>">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💍</text></svg>" />
 
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2307043093255162" crossorigin="anonymous"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Nanum+Myeongjo:wght@400;700;800&family=Libre+Barcode+39&display=swap');
+      @import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Nanum+Myeongjo:wght@400;700;800&family=Libre+Barcode+39&display=swap");
 
-        :root {
-            /* Common */
-            --paper-bg: #f4e4bc;
-            --paper-shadow: #d4c29a;
-            --lotto-red: #d32f2f;
-            --lotto-blue: #1976d2;
-            --ink-black: #2c2c2c;
+      :root {
+        /* Common */
+        --paper-bg: #f4e4bc;
+        --paper-shadow: #d4c29a;
+        --lotto-red: #d32f2f;
+        --lotto-blue: #1976d2;
+        --ink-black: #2c2c2c;
 
-            /* Default (Dark Mode) */
-            --bg-color: #1a1a1a;
-            --text-color: #b8860b; /* mystic-gold */
-            --subtitle-color: rgba(184, 134, 11, 0.8);
-            --bg-image: 
-                radial-gradient(circle at 50% 50%, rgba(184, 134, 11, 0.1) 0%, transparent 70%),
-                url('https://www.transparenttextures.com/patterns/dark-leather.png');
-            --ring-color: rgba(184, 134, 11, 0.05);
-            --btn-border: #b8860b;
-            --btn-text: #b8860b;
-            --btn-hover-bg: #b8860b;
-            --btn-hover-text: #1a1a1a;
-            --mystic-text-color: rgba(184, 134, 11, 0.6);
-            --shadow-color: rgba(184, 134, 11, 0.5);
+        /* Default (Dark Mode) */
+        --bg-color: #1a1a1a;
+        --text-color: #b8860b; /* mystic-gold */
+        --subtitle-color: rgba(184, 134, 11, 0.8);
+        --bg-image: radial-gradient(circle at 50% 50%, rgba(184, 134, 11, 0.1) 0%, transparent 70%), url("https://www.transparenttextures.com/patterns/dark-leather.png");
+        --ring-color: rgba(184, 134, 11, 0.05);
+        --btn-border: #b8860b;
+        --btn-text: #b8860b;
+        --btn-hover-bg: #b8860b;
+        --btn-hover-text: #1a1a1a;
+        --mystic-text-color: rgba(184, 134, 11, 0.6);
+        --shadow-color: rgba(184, 134, 11, 0.5);
+      }
+
+      [data-theme="light"] {
+        /* Light Mode (Map/Parchment Style) */
+        --bg-color: #e8e4d9; /* Light parchment color */
+        --text-color: #5d4037; /* Dark leather brown */
+        --subtitle-color: rgba(93, 64, 55, 0.8);
+        --bg-image: radial-gradient(circle at 50% 50%, rgba(93, 64, 55, 0.05) 0%, transparent 70%), url("https://www.transparenttextures.com/patterns/cream-paper.png");
+        --ring-color: rgba(93, 64, 55, 0.08);
+        --btn-border: #5d4037;
+        --btn-text: #5d4037;
+        --btn-hover-bg: #5d4037;
+        --btn-hover-text: #e8e4d9;
+        --mystic-text-color: rgba(93, 64, 55, 0.7);
+        --shadow-color: rgba(93, 64, 55, 0.3);
+      }
+
+      body {
+        background-color: var(--bg-color);
+        background-image: var(--bg-image);
+        font-family: "Nanum Myeongjo", serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        min-height: 100vh;
+        margin: 0;
+        padding: 20px;
+        box-sizing: border-box;
+        color: var(--text-color);
+        overflow-x: hidden;
+        transition: background 0.5s ease, color 0.5s ease;
+      }
+
+      .main-layout {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: 60px;
+        width: 100%;
+        max-width: 1200px;
+        flex-wrap: wrap;
+        min-height: 100vh;
+      }
+
+      .content-side {
+        flex: 1;
+        min-width: 300px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        text-align: left;
+      }
+
+      .ticket-side {
+        flex: 1;
+        min-width: 320px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+      }
+
+      .title-container {
+        text-align: left;
+        margin-bottom: 30px;
+        animation: fadeIn 2s ease-in-out;
+      }
+
+      h1 {
+        font-family: "Cinzel", serif;
+        font-size: 3.5rem;
+        margin: 0;
+        line-height: 1.1;
+        text-shadow: 0 0 10px var(--shadow-color);
+        letter-spacing: 3px;
+        transition: text-shadow 0.5s ease;
+      }
+
+      .subtitle {
+        font-size: 1.1rem;
+        color: var(--subtitle-color);
+        margin-top: 10px;
+        transition: color 0.5s ease;
+      }
+
+      .ticket-wrapper {
+        position: relative;
+        width: 100%;
+        max-width: 420px;
+      }
+
+      .ticket {
+        width: 100%;
+        box-sizing: border-box;
+        background: var(--paper-bg);
+        background-image: url("https://www.transparenttextures.com/patterns/natural-paper.png");
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), inset 0 0 100px var(--paper-shadow);
+        padding: 25px;
+        border-radius: 4px;
+        color: var(--ink-black);
+        position: relative;
+        transition: transform 0.2s ease;
+        user-select: none;
+      }
+
+      .ticket:hover {
+        transform: scale(1.01);
+      }
+
+      .ticket.shaking {
+        animation: mysticShake 0.5s cubic-bezier(0.36, 0.07, 0.19, 0.97) both infinite;
+      }
+
+      @keyframes mysticShake {
+        10%,
+        90% {
+          transform: translate3d(-1px, 0, 0);
         }
-
-        [data-theme="light"] {
-            /* Light Mode (Map/Parchment Style) */
-            --bg-color: #e8e4d9; /* Light parchment color */
-            --text-color: #5d4037; /* Dark leather brown */
-            --subtitle-color: rgba(93, 64, 55, 0.8);
-            --bg-image: 
-                radial-gradient(circle at 50% 50%, rgba(93, 64, 55, 0.05) 0%, transparent 70%),
-                url('https://www.transparenttextures.com/patterns/cream-paper.png');
-            --ring-color: rgba(93, 64, 55, 0.08);
-            --btn-border: #5d4037;
-            --btn-text: #5d4037;
-            --btn-hover-bg: #5d4037;
-            --btn-hover-text: #e8e4d9;
-            --mystic-text-color: rgba(93, 64, 55, 0.7);
-            --shadow-color: rgba(93, 64, 55, 0.3);
+        20%,
+        80% {
+          transform: translate3d(2px, 0, 0);
         }
-
-        body {
-            background-color: var(--bg-color);
-            background-image: var(--bg-image);
-            font-family: 'Nanum Myeongjo', serif;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            margin: 0;
-            padding: 20px;
-            box-sizing: border-box;
-            color: var(--text-color);
-            overflow-x: hidden;
-            transition: background 0.5s ease, color 0.5s ease;
+        30%,
+        50%,
+        70% {
+          transform: translate3d(-4px, 0, 0);
         }
+        40%,
+        60% {
+          transform: translate3d(4px, 0, 0);
+        }
+      }
 
+      .ticket-header {
+        border-bottom: 2px solid var(--ink-black);
+        margin-bottom: 20px;
+        padding-bottom: 8px;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+      }
+
+      .lotto-logo {
+        font-family: "Cinzel", serif;
+        font-weight: 900;
+        font-size: 1.8rem;
+        line-height: 1;
+      }
+
+      .lotto-logo span {
+        color: var(--lotto-red);
+      }
+
+      .issue-info {
+        font-size: 0.75rem;
+        text-align: right;
+        line-height: 1.4;
+      }
+
+      .number-grid {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        gap: 4px;
+        flex-grow: 1;
+      }
+
+      .num-box {
+        aspect-ratio: 1.4;
+        width: 100%;
+        border: 1px solid rgba(0, 0, 0, 0.3);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.85rem;
+        position: relative;
+        background: rgba(255, 255, 255, 0.3);
+        font-weight: 700;
+      }
+
+      .mark {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        pointer-events: none;
+        opacity: 0;
+        transform: scale(3);
+        transition: opacity 0.2s ease, transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      }
+
+      .mark::before,
+      .mark::after {
+        content: "";
+        position: absolute;
+        width: 80%;
+        height: 2px;
+        background-color: var(--lotto-red);
+        transform: rotate(45deg);
+      }
+
+      .mark::after {
+        transform: rotate(-45deg);
+      }
+
+      .num-box.active .mark {
+        opacity: 0.8;
+        transform: scale(1);
+      }
+
+      .selected-nums {
+        margin-top: 25px;
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+        min-height: 45px;
+        flex-wrap: wrap;
+      }
+
+      .lotto-ball {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: 800;
+        font-size: 1.1rem;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        transform: translateY(20px);
+        opacity: 0;
+        transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      }
+
+      .lotto-ball.show {
+        transform: translateY(0);
+        opacity: 1;
+      }
+
+      .ball-1 {
+        background: radial-gradient(circle at 30% 30%, #fbc02d, #f9a825);
+      }
+      .ball-11 {
+        background: radial-gradient(circle at 30% 30%, #1976d2, #1565c0);
+      }
+      .ball-21 {
+        background: radial-gradient(circle at 30% 30%, #d32f2f, #c62828);
+      }
+      .ball-31 {
+        background: radial-gradient(circle at 30% 30%, #757575, #616161);
+      }
+      .ball-41 {
+        background: radial-gradient(circle at 30% 30%, #4caf50, #388e3c);
+      }
+
+      .controls {
+        margin-top: 30px;
+        display: flex;
+        gap: 15px;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+      }
+
+      .btn {
+        background: transparent;
+        border: 2px solid var(--btn-border);
+        color: var(--btn-text);
+        padding: 12px 30px;
+        font-family: "Cinzel", serif;
+        font-weight: 700;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: all 0.3s;
+        position: relative;
+        overflow: hidden;
+        white-space: nowrap;
+      }
+
+      .btn:hover {
+        background: var(--btn-hover-bg);
+        color: var(--btn-hover-text);
+        box-shadow: 0 0 20px var(--shadow-color);
+      }
+
+      .theme-toggle {
+        position: fixed;
+        top: 30px;
+        right: 30px;
+        background: transparent;
+        border: 1px solid var(--btn-border);
+        color: var(--btn-text);
+        border-radius: 50%;
+        width: 44px;
+        height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-size: 1.3rem;
+        z-index: 100;
+      }
+
+      .one-ring {
+        position: absolute;
+        top: -50px;
+        right: -50px;
+        width: 140px;
+        height: 140px;
+        border: 10px solid var(--ring-color);
+        border-radius: 50%;
+        pointer-events: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: "Cinzel", serif;
+        color: var(--ring-color);
+        font-size: 0.6rem;
+        animation: rotate 60s linear infinite;
+        text-align: center;
+      }
+
+      @keyframes rotate {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(360deg);
+        }
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(-20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .mystic-text {
+        font-style: italic;
+        font-size: 0.95rem;
+        margin-top: 30px;
+        line-height: 1.6;
+        color: var(--mystic-text-color);
+      }
+
+      .extra-links {
+        margin-top: 30px;
+        display: flex;
+        gap: 15px;
+        flex-wrap: wrap;
+      }
+
+      .dash-btn {
+        font-size: 0.9rem !important;
+        padding: 10px 20px !important;
+        border-style: dashed !important;
+        opacity: 0.8;
+        text-align: center;
+      }
+
+      .seo-content {
+        max-width: 900px;
+        width: 100%;
+        margin: 80px 0;
+        padding: 40px 20px;
+        line-height: 1.8;
+        color: var(--mystic-text-color);
+        border-top: 1px solid rgba(184, 134, 11, 0.3);
+        text-align: left;
+      }
+
+      .seo-content h2 {
+        font-family: "Cinzel", serif;
+        color: var(--text-color);
+        border-bottom: 1px solid var(--btn-border);
+        padding-bottom: 10px;
+      }
+      .seo-content h3 {
+        color: var(--text-color);
+        margin-top: 30px;
+      }
+
+      /* Responsive Improvement */
+      @media (max-width: 900px) {
         .main-layout {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            justify-content: center;
-            gap: 60px;
-            width: 100%;
-            max-width: 1200px;
-            flex-wrap: wrap;
+          flex-direction: column;
+          gap: 20px;
+          align-items: center; /* Ensures horizontal centering in column mode */
         }
 
         .content-side {
-            flex: 1;
-            min-width: 300px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: flex-start; /* Left align for desktop */
-            text-align: left;
+          display: contents; /* Keeps reordering logic intact */
         }
 
+        /* Essential Fix: Ensure Ticket-Side also centers its child properly */
         .ticket-side {
-            flex: 1;
-            min-width: 320px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
+          display: flex;
+          order: 4;
+          width: 100%;
+          justify-content: center;
+          align-items: center;
+          min-width: unset;
         }
 
         .title-container {
-            text-align: left;
-            margin-bottom: 30px;
-            animation: fadeIn 2s ease-in-out;
+          order: 1;
+          text-align: center;
+          width: 100%;
+          margin-bottom: 10px;
         }
-
-        h1 {
-            font-family: 'Cinzel', serif;
-            font-size: 3.5rem; /* Larger title for desktop */
-            margin: 0;
-            line-height: 1.1;
-            text-shadow: 0 0 10px var(--shadow-color);
-            letter-spacing: 3px;
-            transition: text-shadow 0.5s ease;
-        }
-
-        .subtitle {
-            font-size: 1.1rem;
-            color: var(--subtitle-color);
-            margin-top: 10px;
-            transition: color 0.5s ease;
-        }
-
-        /* The Lotto Ticket */
-        .ticket-wrapper {
-            position: relative;
-            perspective: 1000px;
-            width: 100%;
-            max-width: 420px;
-        }
-
-        .subtitle {
-            font-size: 0.9rem;
-            color: var(--subtitle-color);
-            margin-top: 5px;
-            transition: color 0.5s ease;
-        }
-
-        /* The Lotto Ticket */
-        .ticket-wrapper {
-            position: relative;
-            width: 100%;
-            max-width: 420px;
-        }
-
-        .ticket {
-            width: 100%;
-            box-sizing: border-box; /* Ensure padding doesn't overflow */
-            background: var(--paper-bg);
-            background-image: 
-                url('https://www.transparenttextures.com/patterns/natural-paper.png');
-            box-shadow: 
-                0 20px 50px rgba(0,0,0,0.5),
-                inset 0 0 100px var(--paper-shadow);
-            padding: 25px;
-            border-radius: 4px;
-            color: var(--ink-black);
-            position: relative;
-            transform: none; /* Removed initial tilt */
-            transition: transform 0.2s ease;
-            user-select: none;
-        }
-
-        .ticket:hover {
-            transform: scale(1.01);
-        }
-
-        .ticket.shaking {
-            animation: mysticShake 0.5s cubic-bezier(.36,.07,.19,.97) both infinite;
-        }
-
-        @keyframes mysticShake {
-            10%, 90% { transform: translate3d(-1px, 0, 0); }
-            20%, 80% { transform: translate3d(2px, 0, 0); }
-            30%, 50%, 70% { transform: translate3d(-4px, 0, 0); }
-            40%, 60% { transform: translate3d(4px, 0, 0); }
-        }
-
-        .ticket-header {
-            border-bottom: 2px solid var(--ink-black);
-            margin-bottom: 20px;
-            padding-bottom: 8px;
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
-        }
-
-        .lotto-logo {
-            font-family: 'Cinzel', serif;
-            font-weight: 900;
-            font-size: 1.8rem;
-            line-height: 1;
-        }
-
-        .lotto-logo span {
-            color: var(--lotto-red);
-        }
-
-        .issue-info {
-            font-size: 0.75rem;
-            text-align: right;
-            line-height: 1.4;
-        }
-
-        /* Game Rows */
-        .game-container {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        .game-row {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            border-bottom: 1px dashed rgba(0,0,0,0.1);
-            padding-bottom: 15px;
-        }
-
-        .game-label {
-            font-family: 'Cinzel', serif;
-            font-weight: 700;
-            font-size: 1.4rem;
-            width: 30px;
-            flex-shrink: 0;
-        }
-
-        .number-grid {
-            display: grid;
-            grid-template-columns: repeat(7, 1fr);
-            gap: 4px;
-            flex-grow: 1;
-        }
-
-        .num-box {
-            aspect-ratio: 1.4; /* Maintain rectangular shape */
-            width: 100%;
-            border: 1px solid rgba(0,0,0,0.3);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.85rem;
-            position: relative;
-            background: rgba(255,255,255,0.3);
-            font-weight: 700;
-        }
-
-        /* The Mark (X) */
-        .mark {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            pointer-events: none;
-            opacity: 0;
-            transform: scale(3);
-            transition: opacity 0.2s ease, transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-
-        .mark::before, .mark::after {
-            content: '';
-            position: absolute;
-            width: 80%;
-            height: 2px;
-            background-color: var(--lotto-red);
-            transform: rotate(45deg);
-        }
-
-        .mark::after {
-            transform: rotate(-45deg);
-        }
-
-        .num-box.active .mark {
-            opacity: 0.8;
-            transform: scale(1);
-        }
-
-        /* Selected Numbers Bar */
-        .selected-nums {
-            margin-top: 25px;
-            display: flex;
-            gap: 10px;
-            justify-content: center;
-            min-height: 45px;
-            flex-wrap: wrap;
-        }
-
-        .lotto-ball {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: 800;
-            font-size: 1.1rem;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-            transform: translateY(20px);
-            opacity: 0;
-            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-
-        .lotto-ball.show {
-            transform: translateY(0);
-            opacity: 1;
-        }
-
-        /* Ball Colors (Korean Lotto Standards) */
-        .ball-1 { background: radial-gradient(circle at 30% 30%, #fbc02d, #f9a825); }
-        .ball-11 { background: radial-gradient(circle at 30% 30%, #1976d2, #1565c0); }
-        .ball-21 { background: radial-gradient(circle at 30% 30%, #d32f2f, #c62828); }
-        .ball-31 { background: radial-gradient(circle at 30% 30%, #757575, #616161); }
-        .ball-41 { background: radial-gradient(circle at 30% 30%, #4caf50, #388e3c); }
-
-        /* Buttons */
         .controls {
-            margin-top: 30px;
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-            justify-content: flex-start; /* Left align for desktop */
+          order: 2;
+          justify-content: center;
+          width: 100%;
+          margin-top: 10px;
+        }
+        .mobile-only {
+          order: 3;
+          display: flex;
+          margin-top: 15px;
+          justify-content: center;
+          width: 100%;
         }
 
-        .btn {
-            background: transparent;
-            border: 2px solid var(--btn-border);
-            color: var(--btn-text);
-            padding: 12px 30px;
-            font-family: 'Cinzel', serif;
-            font-weight: 700;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: all 0.3s;
-            position: relative;
-            overflow: hidden;
-            white-space: nowrap;
-        }
-
-        .btn:hover {
-            background: var(--btn-hover-bg);
-            color: var(--btn-hover-text);
-            box-shadow: 0 0 20px var(--shadow-color);
-        }
-
-        .btn:active {
-            transform: scale(0.95);
-        }
-
-        /* Toggle Button */
-        .theme-toggle {
-            position: absolute;
-            top: 30px;
-            right: 30px;
-            background: transparent;
-            border: 1px solid var(--btn-border);
-            color: var(--btn-text);
-            border-radius: 50%;
-            width: 44px;
-            height: 44px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 1.3rem;
-            z-index: 100;
-        }
-        
-        .theme-toggle:hover {
-            background: var(--btn-hover-bg);
-            color: var(--btn-hover-text);
-        }
-
-        /* Mystic Elements */
-        .one-ring {
-            position: absolute;
-            top: -50px;
-            right: -50px;
-            width: 140px; 
-            height: 140px;
-            border: 10px solid var(--ring-color);
-            border-radius: 50%;
-            pointer-events: none;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: 'Cinzel', serif;
-            color: var(--ring-color);
-            font-size: 0.6rem;
-            animation: rotate 60s linear infinite;
-            transition: border-color 0.5s ease, color 0.5s ease;
-            text-align: center;
-        }
-
-        @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
+        .ticket-wrapper {
+          order: 4;
+          width: 95%; /* Responsive width */
+          max-width: 420px;
+          margin: 20px auto; /* Explicitly centered */
         }
 
         .mystic-text {
-            font-style: italic;
-            font-size: 0.95rem;
-            margin-top: 30px;
-            max-width: 100%;
-            text-align: left; /* Left align for desktop */
-            line-height: 1.6;
-            color: var(--mystic-text-color);
-            transition: color 0.5s ease;
+          order: 5;
+          text-align: center;
+          width: 100%;
+          margin-top: 20px;
         }
-
         .extra-links {
-            margin-top: 30px;
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-            justify-content: flex-start;
+          order: 6;
+          justify-content: center;
+          width: 100%;
+          padding-bottom: 40px;
         }
 
-        .dash-btn {
-            font-size: 0.9rem !important;
-            padding: 10px 20px !important;
-            border-style: dashed !important;
-            opacity: 0.8;
-            white-space: normal !important; /* Allow wrapping within the button text on very small screens if needed */
-            text-align: center;
+        h1 {
+          font-size: 2.2rem;
         }
-
-        /* Contact Form Styling */
-        .contact-form-container {
-            margin-top: 40px;
-            width: 100%;
-            padding: 20px;
-            border: 1px solid var(--btn-border);
-            border-radius: 8px;
-            background: rgba(0, 0, 0, 0.2);
-            transition: background 0.5s ease;
-        }
-
-        [data-theme="light"] .contact-form-container {
-            background: rgba(255, 255, 255, 0.3);
-        }
-
-        .form-title {
-            font-family: 'Cinzel', serif;
-            font-size: 1.4rem;
-            margin: 0 0 10px 0;
-            color: var(--text-color);
-        }
-
-        .form-desc {
-            font-size: 0.85rem;
-            margin-bottom: 20px;
-            color: var(--mystic-text-color);
-        }
-
-        .mystic-form {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .form-group input, .form-group textarea {
-            width: 100%;
-            padding: 10px;
-            background: transparent;
-            border: 1px solid var(--btn-border);
-            color: var(--text-color);
-            font-family: 'Nanum Myeongjo', serif;
-            border-radius: 4px;
-            box-sizing: border-box;
-        }
-
-        .form-group input::placeholder, .form-group textarea::placeholder {
-            color: var(--mystic-text-color);
-            opacity: 0.7;
-        }
-
-        .btn-form {
-            width: 100%;
-            margin-top: 5px;
-        }
-
-        /* Responsive Visibility */
-        .mobile-only {
-            display: none;
-        }
-
         .desktop-only {
-            display: flex;
+          display: none;
         }
-
-        /* Responsive */
-        @media (max-width: 900px) {
-            .main-layout {
-                flex-direction: column;
-                gap: 20px;
-            }
-
-            /* "Unwrap" the containers so we can reorder children globally */
-            .content-side, .ticket-side {
-                display: contents;
-            }
-
-            /* 1. Title */
-            .title-container {
-                order: 1;
-                text-align: center;
-                margin-bottom: 10px;
-                width: 100%;
-            }
-
-            /* 2. Controls */
-            .controls {
-                order: 2;
-                justify-content: center;
-                width: 100%;
-                margin-top: 10px;
-            }
-
-            /* 3. Mobile Balls (Optional, usually redundant if Ticket is visible, but kept per previous request) */
-            .mobile-only {
-                order: 3;
-                display: flex;
-                margin-top: 15px;
-                justify-content: center;
-                gap: 8px;
-                flex-wrap: wrap;
-                width: 100%;
-            }
-
-            /* 4. Ticket (Moved Up) */
-            .ticket-wrapper {
-                order: 4;
-                width: 100%;
-                margin: 30px auto 10px auto; /* Center it */
-            }
-
-            /* 5. Prophecy */
-            .mystic-text {
-                order: 5;
-                text-align: center;
-                font-size: 0.85rem;
-                margin-top: 20px;
-                width: 100%;
-            }
-
-            /* 6. Extra Links (Bottom) */
-            .extra-links {
-                order: 6;
-                justify-content: center;
-                padding-bottom: 40px;
-                width: 100%;
-            }
-
-            h1 {
-                font-size: 2.2rem;
-            }
-
-            .desktop-only {
-                display: none;
-            }
-
-            .theme-toggle {
-                top: 15px;
-                right: 15px;
-                width: 36px;
-                height: 36px;
-                font-size: 1.1rem;
-            }
-
-            .one-ring {
-                width: 120px;
-                height: 120px;
-                top: -30px;
-                right: -30px;
-                font-size: 0.5rem;
-                border-width: 8px;
-            }
+        .theme-toggle {
+          top: 15px;
+          right: 15px;
+          width: 36px;
+          height: 36px;
+          font-size: 1.1rem;
         }
+        .one-ring {
+          width: 120px;
+          height: 120px;
+          top: -30px;
+          right: -30px;
+          font-size: 0.5rem;
+          border-width: 8px;
+        }
+      }
     </style>
-</head>
-<body>
-
-    <button class="theme-toggle" id="themeToggle" aria-label="Toggle Theme">
-        🌙
-    </button>
+  </head>
+  <body>
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle Theme">🌙</button>
 
     <div class="main-layout">
-        <!-- Left Side: Content -->
-        <div class="content-side">
-            <div class="title-container">
-                <h1>MYSTIC RING <span>LOTTO</span></h1>
-                <div class="subtitle">모든 숫자를 지배하는 하나의 번호</div>
-            </div>
-
-            <div class="controls">
-                <button class="btn" id="generateBtn">운명을 결정하라</button>
-                <button class="btn" style="border-color: rgba(184, 134, 11, 0.3);" id="resetBtn">정화하기</button>
-            </div>
-
-            <div class="selected-nums mobile-only" id="mobileResultBalls">
-                <!-- Mobile Balls will appear here -->
-            </div>
-
-            <div class="mystic-text" id="prophecyText">
-                "서두르지 마라. 운명은 기다림 속에서 모양을 갖춘다..."
-            </div>
-
-            <!-- Contact Link -->
-            <div class="extra-links">
-                <a href="contact.html" class="btn dash-btn">
-                    📜 전문적인 예언 신청하기
-                </a>
-                <a href="animal-test.html" class="btn dash-btn">
-                    🐾 힐링쉼터 (동물상 테스트)
-                </a>
-            </div>
-
-            <!-- Footer Links -->
-            <div style="margin-top: 40px; font-size: 0.75rem; opacity: 0.6; text-align: left;" class="footer-links">
-                <a href="privacy.html" style="color: inherit; text-decoration: none; margin-right: 15px;">개인정보처리방침</a>
-                <a href="blog.html" style="color: inherit; text-decoration: none;">운명의 기록관 (Blog)</a>
-            </div>
+      <div class="content-side">
+        <div class="title-container">
+          <h1>
+            MYSTIC RING
+            <span>LOTTO</span>
+          </h1>
+          <div class="subtitle">모든 숫자를 지배하는 하나의 번호</div>
         </div>
 
-        <!-- Right Side: Ticket -->
-        <div class="ticket-side">
-            <div class="ticket-wrapper">
-                <div class="one-ring">One Ring to Rule Them All - One Ring to Find Them - One Ring to Bring Them All - and in the Darkness Bind Them</div>
-                
-                <div class="ticket" id="lottoTicket">
-                    <div class="ticket-header">
-                        <div class="lotto-logo">LOTTO<span>6/45</span></div>
-                        <div class="issue-info">
-                            제 <span id="roundNum">1234</span>회<br>
-                            발행일: <span id="issueDate">2026/01/10 (토)</span><br>
-                            추첨일: <span id="drawDate">2026/01/10 (토)</span>
-                        </div>
-                    </div>
-
-                    <div class="game-container">
-                        <div class="game-row" id="gameA">
-                            <div class="number-grid" id="gridA">
-                                <!-- Numbers 1-45 will be generated here -->
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="selected-nums desktop-only" id="resultBalls">
-                        <!-- Balls will appear here -->
-                    </div>
-
-                    <div style="margin-top: 15px; font-size: 0.6rem; border-top: 1px solid rgba(0,0,0,0.1); padding-top: 5px; text-align: center;">
-                        TR-782-LOTR-2026-GEN01<br>
-                        실제 로또와 무관한 재미용 도구입니다. 행운을 빕니다.
-                    </div>
-                </div>
-            </div>
+        <div class="controls">
+          <button class="btn" id="generateBtn">운명을 결정하라</button>
+          <button class="btn" style="border-color: rgba(184, 134, 11, 0.3)" id="resetBtn">정화하기</button>
         </div>
+
+        <div class="selected-nums mobile-only" id="mobileResultBalls"></div>
+
+        <div class="mystic-text" id="prophecyText">"서두르지 마라. 운명은 기다림 속에서 모양을 갖춘다..."</div>
+
+        <div class="extra-links">
+          <a href="contact.html" class="btn dash-btn">📜 전문적인 예언 신청하기</a>
+          <a href="animal-test.html" class="btn dash-btn">🐾 힐링쉼터 (동물상 테스트)</a>
+        </div>
+
+        <div style="margin-top: 40px; font-size: 0.75rem; opacity: 0.6; text-align: left" class="footer-links">
+          <a href="privacy.html" style="color: inherit; text-decoration: none; margin-right: 15px">개인정보처리방침</a>
+          <a href="blog.html" style="color: inherit; text-decoration: none">운명의 기록관 (Blog)</a>
+        </div>
+      </div>
+
+      <div class="ticket-side">
+        <div class="ticket-wrapper">
+          <div class="one-ring">One Ring to Rule Them All - One Ring to Find Them - One Ring to Bring Them All - and in the Darkness Bind Them</div>
+
+          <div class="ticket" id="lottoTicket">
+            <div class="ticket-header">
+              <div class="lotto-logo">
+                LOTTO
+                <span>6/45</span>
+              </div>
+              <div class="issue-info">
+                <br />
+                발행일:
+                <span id="issueDate">2026/01/10 (토)</span>
+                <br />
+                추첨일:
+                <span id="drawDate">2026/01/10 (토)</span>
+              </div>
+            </div>
+
+            <div class="game-container">
+              <div class="game-row" id="gameA">
+                <div class="number-grid" id="gridA"></div>
+              </div>
+            </div>
+
+            <div class="selected-nums desktop-only" id="resultBalls"></div>
+
+            <div style="margin-top: 15px; font-size: 0.6rem; border-top: 1px solid rgba(0, 0, 0, 0.1); padding-top: 5px; text-align: center">
+              TR-782-LOTR-2026-GEN01
+              <br />
+              실제 로또와 무관한 재미용 도구입니다. 행운을 빕니다.
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
+    <section class="seo-content">
+      <h2>신비한 반지 로또: 숫자에 담긴 철학</h2>
+      <p>
+        로또 6/45의 확률은 정확히 1/8,145,060입니다. 이는 단순히 숫자의 나열을 넘어 인간이 인지하기 힘든 거대한 확률의 세계를 의미합니다. 본 사이트는 '반지의 제왕' 테마를 통해 사용자가 행운을 찾는
+        과정을 하나의 서사적 경험으로 재해석했습니다.
+      </p>
+      <h3>통계적 무작위성과 알고리즘</h3>
+      <p>
+        본 생성기는 자바스크립트의 표준 난수 발생 알고리즘을 활용하여 완벽한 독립 시행을 보장합니다. 매주 반복되는 일상 속에서 사용자가 직접 번호를 생성하고 운명을 확인하는 행위는 '통제감의
+        착각'이라는 심리적 위안을 넘어 작은 기대감과 즐거움을 선사합니다.
+      </p>
+      <div style="background: rgba(184, 134, 11, 0.05); padding: 25px; border-radius: 8px; margin-top: 30px; border: 1px solid rgba(184, 134, 11, 0.2)">
+        <p style="font-size: 0.9rem; margin: 0; line-height: 1.6">
+          <strong>안내 및 공지:</strong>
+          본 서비스에서 제공하는 번호는 재미를 위한 것이며 실제 당첨을 보장하지 않습니다. 과도한 복권 구매는 삶에 지장을 줄 수 있으니 유의하시기 바랍니다.
+        </p>
+      </div>
+    </section>
+
     <script>
-        const gridA = document.getElementById('gridA');
-        const generateBtn = document.getElementById('generateBtn');
-        const resetBtn = document.getElementById('resetBtn');
-        const resultBalls = document.getElementById('resultBalls');
-        const mobileResultBalls = document.getElementById('mobileResultBalls');
-        const prophecyText = document.getElementById('prophecyText');
-        const themeToggle = document.getElementById('themeToggle');
+      const gridA = document.getElementById("gridA")
+      const generateBtn = document.getElementById("generateBtn")
+      const resetBtn = document.getElementById("resetBtn")
+      const resultBalls = document.getElementById("resultBalls")
+      const mobileResultBalls = document.getElementById("mobileResultBalls")
+      const prophecyText = document.getElementById("prophecyText")
+      const themeToggle = document.getElementById("themeToggle")
 
-        // Date Calculation Logic
-        function updateDates() {
-            const now = new Date();
-            
-            // Format: YYYY/MM/DD (Day)
-            const days = ['일', '월', '화', '수', '목', '금', '토'];
-            const formatDate = (d) => {
-                const yyyy = d.getFullYear();
-                const mm = String(d.getMonth() + 1).padStart(2, '0');
-                const dd = String(d.getDate()).padStart(2, '0');
-                const day = days[d.getDay()];
-                return `${yyyy}/${mm}/${dd} (${day})`;
-            };
+      function updateDates() {
+        const now = new Date()
+        const days = ["일", "월", "화", "수", "목", "금", "토"]
+        const formatDate = (d) => `${d.getFullYear()}/${String(d.getMonth() + 1).padStart(2, "0")}/${String(d.getDate()).padStart(2, "0")} (${days[d.getDay()]})`
+        document.getElementById("issueDate").textContent = formatDate(now)
+        const drawDate = new Date(now)
+        const daysUntilSat = 6 - now.getDay()
+        drawDate.setDate(now.getDate() + (daysUntilSat < 0 ? 6 : daysUntilSat))
+        document.getElementById("drawDate").textContent = formatDate(drawDate)
+      }
 
-            document.getElementById('issueDate').textContent = formatDate(now);
+      updateDates()
 
-            // Calculate next Saturday
-            const drawDate = new Date(now);
-            const dayOfWeek = now.getDay(); // 0(Sun) - 6(Sat)
-            const daysUntilSat = 6 - dayOfWeek; 
-            // If today is Sat, it's today (0). If Sun (0), it's +6. 
-            // Logic: Lottery is usually Sat night. If it's Sunday, next Sat.
-            // If it's Saturday, let's assume it's the draw day.
-            
-            drawDate.setDate(now.getDate() + (daysUntilSat < 0 ? 6 : daysUntilSat));
-            document.getElementById('drawDate').textContent = formatDate(drawDate);
+      const prophecies = [
+        "“어둠이 짙을수록, 작은 빛은 더 멀리 닿는다. 오늘의 숫자는 조용히 강하다.”",
+        "“서두르지 마라. 운명은 기다림 속에서 모양을 갖춘다. 그리고 어느 순간, 문이 열린다.”",
+        "“바람이 북쪽에서 불면, 오래 숨겨진 길이 드러난다. 이번 주엔 변화의 징조가 있다.”",
+        "“한 번의 선택이 모든 것을 바꾸진 않지만, 계속 선택한 사람은 결국 다른 곳에 선다.”",
+        "“당신의 눈이 ‘가능’에 머무는 동안, 세상은 이미 움직이고 있다. 기회는 조용히 온다.”",
+        "“룬이 말한다: 겁내지 마라. 지혜로운 자는 기대보다 준비를 택한다.”",
+        "“기적은 확률의 틈에서 태어나고, 믿음은 그 틈을 지켜보는 눈이다.”",
+        "“오늘의 숫자는 약속이 아니라 서약이다. ‘나는 이번 주를 끝까지 살아낸다’라는.”",
+        "“행운은 숫자 뒤에 있는 사람을 좋아한다. 침착함과 꾸준함이 가장 강한 주문이다.”",
+      ]
+
+      for (let i = 1; i <= 45; i++) {
+        const box = document.createElement("div")
+        box.className = "num-box"
+        box.id = `num-${i}`
+        box.innerHTML = `${String(i).padStart(2, "0")}<div class="mark"></div>`
+        gridA.appendChild(box)
+      }
+
+      function getBallColorClass(num) {
+        if (num <= 10) return "ball-1"
+        if (num <= 20) return "ball-11"
+        if (num <= 30) return "ball-21"
+        if (num <= 40) return "ball-31"
+        return "ball-41"
+      }
+
+      function generateNumbers() {
+        document.querySelectorAll(".num-box").forEach((el) => el.classList.remove("active"))
+        resultBalls.innerHTML = ""
+        mobileResultBalls.innerHTML = ""
+        const ticket = document.getElementById("lottoTicket")
+        ticket.classList.add("shaking")
+        const nums = []
+        while (nums.length < 6) {
+          const n = Math.floor(Math.random() * 45) + 1
+          if (!nums.includes(n)) nums.push(n)
         }
-        
-        updateDates();
-
-        const prophecies = [
-            "“어둠이 짙을수록, 작은 빛은 더 멀리 닿는다. 오늘의 숫자는 조용히 강하다.”",
-            "“서두르지 마라. 운명은 기다림 속에서 모양을 갖춘다. 그리고 어느 순간, 문이 열린다.”",
-            "“바람이 북쪽에서 불면, 오래 숨겨진 길이 드러난다. 이번 주엔 변화의 징조가 있다.”",
-            "“한 번의 선택이 모든 것을 바꾸진 않지만, 계속 선택한 사람은 결국 다른 곳에 선다.”",
-            "“당신의 눈이 ‘가능’에 머무는 동안, 세상은 이미 움직이고 있다. 기회는 조용히 온다.”",
-            "“룬이 말한다: 겁내지 마라. 지혜로운 자는 기대보다 준비를 택한다.”",
-            "“기적은 확률의 틈에서 태어나고, 믿음은 그 틈을 지켜보는 눈이다.”",
-            "“오늘의 숫자는 약속이 아니라 서약이다. ‘나는 이번 주를 끝까지 살아낸다’라는.”",
-            "“행운은 숫자 뒤에 있는 사람을 좋아한다. 침착함과 꾸준함이 가장 강한 주문이다.”"
-        ];
-
-        // Initialize the grid
-        for (let i = 1; i <= 45; i++) {
-            const box = document.createElement('div');
-            box.className = 'num-box';
-            box.id = `num-${i}`;
-            box.innerHTML = `${String(i).padStart(2, '0')}<div class="mark"></div>`;
-            gridA.appendChild(box);
-        }
-
-        function getBallColorClass(num) {
-            if (num <= 10) return 'ball-1';
-            if (num <= 20) return 'ball-11';
-            if (num <= 30) return 'ball-21';
-            if (num <= 40) return 'ball-31';
-            return 'ball-41';
-        }
-
-        function generateNumbers() {
-            // Reset previous state
-            document.querySelectorAll('.num-box').forEach(el => el.classList.remove('active'));
-            resultBalls.innerHTML = '';
-            mobileResultBalls.innerHTML = '';
-            
-            // Start shaking
-            const ticket = document.getElementById('lottoTicket');
-            ticket.classList.add('shaking');
-
-            // Randomly select 6 numbers
-            const nums = [];
-            while (nums.length < 6) {
-                const n = Math.floor(Math.random() * 45) + 1;
-                if (!nums.includes(n)) nums.push(n);
+        nums.sort((a, b) => a - b)
+        nums.forEach((n, index) => {
+          setTimeout(() => {
+            document.getElementById(`num-${n}`).classList.add("active")
+            const createBall = () => {
+              const ball = document.createElement("div")
+              ball.className = `lotto-ball ${getBallColorClass(n)}`
+              ball.textContent = n
+              return ball
             }
-            nums.sort((a, b) => a - b);
+            const desktopBall = createBall()
+            resultBalls.appendChild(desktopBall)
+            setTimeout(() => desktopBall.classList.add("show"), 50)
+            const mobileBall = createBall()
+            mobileResultBalls.appendChild(mobileBall)
+            setTimeout(() => mobileBall.classList.add("show"), 50)
+          }, index * 200)
+        })
+        setTimeout(() => {
+          ticket.classList.remove("shaking")
+        }, nums.length * 200)
+        prophecyText.style.opacity = "0"
+        setTimeout(() => {
+          prophecyText.textContent = prophecies[Math.floor(Math.random() * prophecies.length)]
+          prophecyText.style.opacity = "1"
+        }, 500)
+      }
 
-            // Display animation sequence
-            nums.forEach((n, index) => {
-                setTimeout(() => {
-                    // Mark the ticket
-                    const box = document.getElementById(`num-${n}`);
-                    box.classList.add('active');
+      function reset() {
+        document.querySelectorAll(".num-box").forEach((el) => el.classList.remove("active"))
+        resultBalls.innerHTML = ""
+        mobileResultBalls.innerHTML = ""
+        prophecyText.textContent = "정화가 완료되었습니다. 다시 운명을 물으십시오."
+      }
 
-                    // Create ball function
-                    const createBall = () => {
-                        const ball = document.createElement('div');
-                        ball.className = `lotto-ball ${getBallColorClass(n)}`;
-                        ball.textContent = n;
-                        return ball;
-                    };
+      let isDark = true
+      const savedTheme = localStorage.getItem("theme")
+      if (savedTheme === "light") {
+        isDark = false
+        document.documentElement.setAttribute("data-theme", "light")
+        themeToggle.textContent = "☀️"
+      }
 
-                    // Add ball to desktop container
-                    const desktopBall = createBall();
-                    resultBalls.appendChild(desktopBall);
-                    setTimeout(() => desktopBall.classList.add('show'), 50);
-
-                    // Add ball to mobile container
-                    const mobileBall = createBall();
-                    mobileResultBalls.appendChild(mobileBall);
-                    setTimeout(() => mobileBall.classList.add('show'), 50);
-
-                }, index * 200);
-            });
-
-            // Stop shaking after numbers are revealed
-            setTimeout(() => {
-                ticket.classList.remove('shaking');
-            }, nums.length * 200);
-
-            // Update prophecy
-            prophecyText.style.opacity = '0';
-            setTimeout(() => {
-                prophecyText.textContent = prophecies[Math.floor(Math.random() * prophecies.length)];
-                prophecyText.style.opacity = '1';
-            }, 500);
+      themeToggle.addEventListener("click", () => {
+        isDark = !isDark
+        if (isDark) {
+          document.documentElement.removeAttribute("data-theme")
+          themeToggle.textContent = "🌙"
+          localStorage.setItem("theme", "dark")
+        } else {
+          document.documentElement.setAttribute("data-theme", "light")
+          themeToggle.textContent = "☀️"
+          localStorage.setItem("theme", "light")
         }
+      })
 
-        function reset() {
-            document.querySelectorAll('.num-box').forEach(el => el.classList.remove('active'));
-            resultBalls.innerHTML = '';
-            mobileResultBalls.innerHTML = '';
-            prophecyText.textContent = "정화가 완료되었습니다. 다시 운명을 물으십시오.";
-        }
-
-        // Theme Toggle Logic
-        let isDark = true;
-        
-        // Check local storage
-        const savedTheme = localStorage.getItem('theme');
-        if (savedTheme === 'light') {
-            isDark = false;
-            document.documentElement.setAttribute('data-theme', 'light');
-            themeToggle.textContent = '☀️';
-        }
-
-        themeToggle.addEventListener('click', () => {
-            isDark = !isDark;
-            if (isDark) {
-                document.documentElement.removeAttribute('data-theme');
-                themeToggle.textContent = '🌙';
-                localStorage.setItem('theme', 'dark');
-            } else {
-                document.documentElement.setAttribute('data-theme', 'light');
-                themeToggle.textContent = '☀️';
-                localStorage.setItem('theme', 'light');
-            }
-        });
-
-        generateBtn.addEventListener('click', generateNumbers);
-        resetBtn.addEventListener('click', reset);
+      generateBtn.addEventListener("click", generateNumbers)
+      resetBtn.addEventListener("click", reset)
     </script>
-</body>
+  </body>
 </html>
