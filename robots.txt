@@ -1,3 +1,7 @@
 User-agent: *
 Allow: /
-Sitemap: https://product-builder.pages.dev/sitemap.xml
+
+User-agent: Mediapartners-Google
+Allow: /
+
+Sitemap: https://product-builder-3d5.pages.dev/sitemap.xml
