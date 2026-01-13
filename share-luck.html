@@ -147,13 +147,15 @@
             padding: 40px;
             border: 2px solid var(--btn-border);
             border-radius: 8px;
-            background: rgba(0, 0, 0, 0.4);
+            background: #2a2a2a; /* Custom brighter background for Dark Mode */
             transition: background 0.5s ease;
             text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
         }
 
         [data-theme="light"] .contact-page-container {
             background: rgba(255, 255, 255, 0.6);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
         }
 
         .form-title {
@@ -223,21 +225,15 @@
         /* Disqus Container Style */
         .disqus-container {
             margin-top: 30px;
-            padding: 20px;
-            background: #f4f4f4; /* Always light background for readability */
-            border-radius: 8px;
-            border: 1px solid #ddd;
+            padding-top: 20px;
+            border-top: 1px dashed var(--btn-border);
             text-align: left;
-        }
-        
-        /* In dark mode, slightly dim the container so it's not too blinding, but keep text readable */
-        [data-theme="dark"] .disqus-container {
-             background: #e0e0e0;
-             border-color: #555;
+            min-height: 200px;
         }
     </style>
 </head>
 <body>
+
     <button class="theme-toggle" id="themeToggle" aria-label="Toggle Theme">
         🌙
     </button>
@@ -294,6 +290,19 @@
                 document.documentElement.setAttribute('data-theme', 'light');
                 themeToggle.textContent = '☀️';
                 localStorage.setItem('theme', 'light');
+            }
+
+            // Reload Disqus to adapt to new theme
+            if (typeof DISQUS !== 'undefined') {
+                setTimeout(() => {
+                    DISQUS.reset({
+                        reload: true,
+                        config: function () {  
+                            this.page.identifier = 'share_luck_page';  
+                            this.page.url = window.location.href;  
+                        }
+                    });
+                }, 200); // Small delay to ensure CSS bg color transition starts
             }
         });
     </script>
