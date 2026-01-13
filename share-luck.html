@@ -219,10 +219,25 @@
             color: var(--text-color);
             border-bottom-style: solid;
         }
+
+        /* Disqus Container Style */
+        .disqus-container {
+            margin-top: 30px;
+            padding: 20px;
+            background: #f4f4f4; /* Always light background for readability */
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        
+        /* In dark mode, slightly dim the container so it's not too blinding, but keep text readable */
+        [data-theme="dark"] .disqus-container {
+             background: #e0e0e0;
+             border-color: #555;
+        }
     </style>
 </head>
 <body>
-
     <button class="theme-toggle" id="themeToggle" aria-label="Toggle Theme">
         🌙
     </button>
@@ -234,7 +249,9 @@
             기쁨을 나누면 행운이 배가 되어 돌아옵니다.
         </p>
 
-        <div id="disqus_thread" style="margin-top: 20px; padding-top: 20px; border-top: 1px dashed var(--btn-border); text-align: left;"></div>
+        <div class="disqus-container">
+            <div id="disqus_thread"></div>
+        </div>
         <script>
             var disqus_config = function () {
                 this.page.url = window.location.href;  
