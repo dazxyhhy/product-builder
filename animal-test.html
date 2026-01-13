@@ -277,19 +277,25 @@
         position: absolute;
         top: 20px;
         right: 20px;
-        background: transparent;
-        border: 1px solid var(--btn-border);
-        color: var(--btn-text);
+        background: var(--text-color);
+        border: none;
+        color: var(--bg-color);
         border-radius: 50%;
-        width: 40px;
-        height: 40px;
+        width: 44px;
+        height: 44px;
         display: flex;
         align-items: center;
         justify-content: center;
         cursor: pointer;
         transition: all 0.3s ease;
-        font-size: 1.2rem;
+        font-size: 1.3rem;
         z-index: 100;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      }
+
+      .theme-toggle:hover {
+        transform: scale(1.1);
+        filter: brightness(1.2);
       }
 
       /* Loading Spinner */

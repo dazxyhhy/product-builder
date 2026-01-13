@@ -38,9 +38,37 @@
         .cta-container { margin-top: 50px; text-align: center; padding: 30px; background: rgba(184, 134, 11, 0.05); border: 1px dashed var(--line-color); border-radius: 8px; }
         .btn-generate { display: inline-block; background: transparent; border: 2px solid var(--text-color); color: var(--text-color); padding: 15px 30px; font-weight: 700; text-decoration: none; transition: all 0.3s; }
         .btn-generate:hover { background: var(--text-color); color: var(--bg-color); }
+
+        /* Toggle Button */
+        .theme-toggle {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            background: var(--text-color);
+            border: none;
+            color: var(--bg-color);
+            border-radius: 50%;
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1.3rem;
+            z-index: 100;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.1);
+            filter: brightness(1.2);
+        }
     </style>
 </head>
 <body>
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle Theme">🌙</button>
+
     <article>
         <h1>📊 로또 번호의 통계학적 분포와 진실</h1>
         <span class="meta">2026년 1월 12일 · 운명의 기록관</span>
@@ -63,5 +91,29 @@
         </div>
     </article>
     <a href="blog.html" class="back-link">← 목록으로 돌아가기</a>
+
+    <script>
+        const themeToggle = document.getElementById("themeToggle")
+        let isDark = true
+        const savedTheme = localStorage.getItem("theme")
+        if (savedTheme === "light") {
+            isDark = false
+            document.documentElement.setAttribute("data-theme", "light")
+            themeToggle.textContent = "☀️"
+        }
+
+        themeToggle.addEventListener("click", () => {
+            isDark = !isDark
+            if (isDark) {
+                document.documentElement.removeAttribute("data-theme")
+                themeToggle.textContent = "🌙"
+                localStorage.setItem("theme", "dark")
+            } else {
+                document.documentElement.setAttribute("data-theme", "light")
+                themeToggle.textContent = "☀️"
+                localStorage.setItem("theme", "light")
+            }
+        })
+    </script>
 </body>
 </html>

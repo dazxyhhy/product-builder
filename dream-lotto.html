@@ -216,9 +216,9 @@
             position: absolute;
             top: -60px;
             right: 0;
-            background: transparent;
-            border: 1px solid var(--btn-border);
-            color: var(--btn-text);
+            background: var(--text-color);
+            border: none;
+            color: var(--bg-color);
             border-radius: 50%;
             width: 44px;
             height: 44px;
@@ -228,11 +228,12 @@
             cursor: pointer;
             transition: all 0.3s ease;
             font-size: 1.3rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
         }
         
         .theme-toggle:hover {
-            background: var(--btn-hover-bg);
-            color: var(--btn-hover-text);
+            transform: scale(1.1);
+            filter: brightness(1.2);
         }
     </style>
 </head>

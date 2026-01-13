@@ -118,9 +118,37 @@
         color: var(--text-color);
         border-radius: 4px;
       }
+
+      /* Toggle Button */
+      .theme-toggle {
+        position: fixed;
+        top: 30px;
+        right: 30px;
+        background: var(--text-color);
+        border: none;
+        color: var(--bg-color);
+        border-radius: 50%;
+        width: 44px;
+        height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-size: 1.3rem;
+        z-index: 100;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      }
+
+      .theme-toggle:hover {
+        transform: scale(1.1);
+        filter: brightness(1.2);
+      }
     </style>
   </head>
   <body>
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle Theme">🌙</button>
+
     <header>
       <h1>ARCHIVES OF FATE</h1>
       <div class="subtitle">운명과 확률, 그리고 숫자에 관한 이야기</div>
@@ -159,5 +187,29 @@
     </div>
 
     <a href="index.html" class="back-btn">메인으로 돌아가기</a>
+
+    <script>
+      const themeToggle = document.getElementById("themeToggle")
+      let isDark = true
+      const savedTheme = localStorage.getItem("theme")
+      if (savedTheme === "light") {
+        isDark = false
+        document.documentElement.setAttribute("data-theme", "light")
+        themeToggle.textContent = "☀️"
+      }
+
+      themeToggle.addEventListener("click", () => {
+        isDark = !isDark
+        if (isDark) {
+          document.documentElement.removeAttribute("data-theme")
+          themeToggle.textContent = "🌙"
+          localStorage.setItem("theme", "dark")
+        } else {
+          document.documentElement.setAttribute("data-theme", "light")
+          themeToggle.textContent = "☀️"
+          localStorage.setItem("theme", "light")
+        }
+      })
+    </script>
   </body>
 </html>
