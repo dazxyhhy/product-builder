@@ -655,18 +655,10 @@
           <div class="one-ring">One Ring to Rule Them All - One Ring to Find Them - One Ring to Bring Them All - and in the Darkness Bind Them</div>
 
           <div class="ticket" id="lottoTicket">
-            <div class="ticket-header">
+            <div class="ticket-header" style="justify-content: center;">
               <div class="lotto-logo">
                 LOTTO
                 <span>6/45</span>
-              </div>
-              <div class="issue-info">
-                <br />
-                발행일:
-                <span id="issueDate">2026/01/10 (토)</span>
-                <br />
-                추첨일:
-                <span id="drawDate">2026/01/10 (토)</span>
               </div>
             </div>
 
@@ -749,18 +741,6 @@
           textSaveBtn.classList.add('disabled');
           textSaveBtn.textContent = "[ 운명 각인 ]";
       }
-
-      function updateDates() {
-        const now = new Date()
-        const days = ["일", "월", "화", "수", "목", "금", "토"]
-        const formatDate = (d) => `${d.getFullYear()}/${String(d.getMonth() + 1).padStart(2, "0")}/${String(d.getDate()).padStart(2, "0")} (${days[d.getDay()]})`
-        document.getElementById("issueDate").textContent = formatDate(now)
-        const drawDate = new Date(now)
-        const daysUntilSat = 6 - now.getDay()
-        drawDate.setDate(now.getDate() + (daysUntilSat < 0 ? 6 : daysUntilSat))
-        document.getElementById("drawDate").textContent = formatDate(drawDate)
-      }
-      updateDates()
 
       // ... (Prophecies array remains same)
       const prophecies = [
@@ -875,10 +855,13 @@
         if(!textSaveBtn || textSaveBtn.classList.contains('disabled')) return;
         if(currentNumbers.length !== 6) return;
         
+        const now = new Date();
+        const shortDate = `${String(now.getFullYear()).slice(-2)}.${now.getMonth() + 1}.${now.getDate()}`;
+
         const history = JSON.parse(localStorage.getItem('lottoHistory')) || [];
         const record = {
             id: Date.now(),
-            date: new Date().toLocaleDateString(), 
+            date: shortDate, 
             numbers: currentNumbers
         };
         
