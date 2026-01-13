@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>행운 공유소 - 신비한 반지 로또</title>
+    <meta name="description" content="당신의 행운을 공유하고 긍정적인 에너지를 나누는 공간입니다.">
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="행운 공유소 - 신비한 반지 로또">
+    <meta property="og:description" content="당신의 행운을 공유하고 긍정적인 에너지를 나누는 공간입니다.">
+    <meta property="og:image" content="https://product-builder-3d5.pages.dev/assets/main-image.png">
+
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💍</text></svg>">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-DLFQSNY2FE"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-DLFQSNY2FE');
+    </script>
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2307043093255162" crossorigin="anonymous"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Nanum+Myeongjo:wght@400;700;800&family=Libre+Barcode+39&display=swap');
+
+        :root {
+            /* Common */
+            --paper-bg: #f4e4bc;
+            --paper-shadow: #d4c29a;
+            --lotto-red: #d32f2f;
+            --lotto-blue: #1976d2;
+            --ink-black: #2c2c2c;
+
+            /* Default (Dark Mode) */
+            --bg-color: #1a1a1a;
+            --text-color: #b8860b; /* mystic-gold */
+            --subtitle-color: rgba(184, 134, 11, 0.8);
+            --bg-image: 
+                radial-gradient(circle at 50% 50%, rgba(184, 134, 11, 0.1) 0%, transparent 70%),
+                url('https://www.transparenttextures.com/patterns/dark-leather.png');
+            --ring-color: rgba(184, 134, 11, 0.05);
+            --btn-border: #b8860b;
+            --btn-text: #b8860b;
+            --btn-hover-bg: #b8860b;
+            --btn-hover-text: #1a1a1a;
+            --mystic-text-color: rgba(184, 134, 11, 0.6);
+            --shadow-color: rgba(184, 134, 11, 0.5);
+        }
+
+        [data-theme="light"] {
+            /* Light Mode (Map/Parchment Style) */
+            --bg-color: #e8e4d9; /* Light parchment color */
+            --text-color: #5d4037; /* Dark leather brown */
+            --subtitle-color: rgba(93, 64, 55, 0.8);
+            --bg-image: 
+                radial-gradient(circle at 50% 50%, rgba(93, 64, 55, 0.05) 0%, transparent 70%),
+                url('https://www.transparenttextures.com/patterns/cream-paper.png');
+            --ring-color: rgba(93, 64, 55, 0.08);
+            --btn-border: #5d4037;
+            --btn-text: #5d4037;
+            --btn-hover-bg: #5d4037;
+            --btn-hover-text: #e8e4d9;
+            --mystic-text-color: rgba(93, 64, 55, 0.7);
+            --shadow-color: rgba(93, 64, 55, 0.3);
+        }
+
+        body {
+            background-color: var(--bg-color);
+            background-image: var(--bg-image);
+            font-family: 'Nanum Myeongjo', serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+            color: var(--text-color);
+            overflow-x: hidden;
+            transition: background 0.5s ease, color 0.5s ease;
+        }
+
+        /* Buttons */
+        .btn {
+            background: transparent;
+            border: 2px solid var(--btn-border);
+            color: var(--btn-text);
+            padding: 12px 30px;
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+            white-space: nowrap;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            background: var(--btn-hover-bg);
+            color: var(--btn-hover-text);
+            box-shadow: 0 0 20px var(--shadow-color);
+        }
+
+        .btn:active {
+            transform: scale(0.95);
+        }
+
+        /* Toggle Button */
+        .theme-toggle {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            background: transparent;
+            border: 1px solid var(--btn-border);
+            color: var(--btn-text);
+            border-radius: 50%;
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1.3rem;
+            z-index: 100;
+        }
+        
+        .theme-toggle:hover {
+            background: var(--btn-hover-bg);
+            color: var(--btn-hover-text);
+        }
+
+        /* Contact Form Styling */
+        .contact-page-container {
+            width: 100%;
+            max-width: 600px;
+            padding: 40px;
+            border: 2px solid var(--btn-border);
+            border-radius: 8px;
+            background: rgba(0, 0, 0, 0.4);
+            transition: background 0.5s ease;
+            text-align: center;
+        }
+
+        [data-theme="light"] .contact-page-container {
+            background: rgba(255, 255, 255, 0.6);
+        }
+
+        .form-title {
+            font-family: 'Cinzel', serif;
+            font-size: 2rem;
+            margin: 0 0 15px 0;
+            color: var(--text-color);
+            text-shadow: 0 0 10px var(--shadow-color);
+        }
+
+        .form-desc {
+            font-size: 1rem;
+            margin-bottom: 30px;
+            color: var(--mystic-text-color);
+            line-height: 1.6;
+        }
+
+        .mystic-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            text-align: left;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid var(--btn-border);
+            color: var(--text-color);
+            font-family: 'Nanum Myeongjo', serif;
+            font-size: 1rem;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        [data-theme="light"] .form-group input, 
+        [data-theme="light"] .form-group textarea {
+            background: rgba(255, 255, 255, 0.4);
+        }
+
+        .form-group input::placeholder, .form-group textarea::placeholder {
+            color: var(--mystic-text-color);
+            opacity: 0.7;
+        }
+
+        .btn-form {
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        .back-link {
+            margin-top: 20px;
+            display: inline-block;
+            color: var(--mystic-text-color);
+            text-decoration: none;
+            font-size: 0.9rem;
+            border-bottom: 1px dashed var(--mystic-text-color);
+            transition: color 0.3s;
+        }
+
+        .back-link:hover {
+            color: var(--text-color);
+            border-bottom-style: solid;
+        }
+    </style>
+</head>
+<body>
+
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle Theme">
+        🌙
+    </button>
+
+    <div class="contact-page-container">
+        <h2 class="form-title">행운의 공유소</h2>
+        <p class="form-desc">
+            당신의 작은 행운을 이곳에 남겨주세요.<br>
+            기쁨을 나누면 행운이 배가 되어 돌아옵니다.
+        </p>
+
+        <div id="disqus_thread" style="margin-top: 20px; padding-top: 20px; border-top: 1px dashed var(--btn-border); text-align: left;"></div>
+        <script>
+            var disqus_config = function () {
+                this.page.url = window.location.href;  
+                this.page.identifier = 'share_luck_page'; 
+            };
+            
+            (function() { 
+                var d = document, s = d.createElement('script');
+                s.src = 'https://productbuilder.disqus.com/embed.js'; 
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+        <a href="index.html" class="back-link">← 예언소로 돌아가기</a>
+    </div>
+
+    <script>
+        const themeToggle = document.getElementById('themeToggle');
+
+        // Theme Toggle Logic
+        let isDark = true;
+        
+        // Check local storage
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'light') {
+            isDark = false;
+            document.documentElement.setAttribute('data-theme', 'light');
+            themeToggle.textContent = '☀️';
+        }
+
+        themeToggle.addEventListener('click', () => {
+            isDark = !isDark;
+            if (isDark) {
+                document.documentElement.removeAttribute('data-theme');
+                themeToggle.textContent = '🌙';
+                localStorage.setItem('theme', 'dark');
+            } else {
+                document.documentElement.setAttribute('data-theme', 'light');
+                themeToggle.textContent = '☀️';
+                localStorage.setItem('theme', 'light');
+            }
+        });
+    </script>
+</body>
+</html>

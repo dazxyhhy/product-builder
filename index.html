@@ -292,13 +292,25 @@
         font-weight: 800;
         font-size: 1.1rem;
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-        transform: translateY(20px);
-        opacity: 0;
         transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       }
 
+      .lotto-ball.placeholder {
+        background: rgba(0, 0, 0, 0.05);
+        border: 2px dashed var(--btn-border);
+        box-shadow: none;
+        color: transparent;
+        opacity: 0.3;
+        transform: scale(0.9);
+      }
+
+      .lotto-ball:not(.placeholder) {
+        transform: translateY(20px);
+        opacity: 0;
+      }
+
       .lotto-ball.show {
-        transform: translateY(0);
+        transform: translateY(0) scale(1);
         opacity: 1;
       }
 
@@ -553,13 +565,21 @@
           <button class="btn" style="border-color: rgba(184, 134, 11, 0.3)" id="resetBtn">정화하기</button>
         </div>
 
-        <div class="selected-nums mobile-only" id="mobileResultBalls"></div>
+        <div class="selected-nums mobile-only" id="mobileResultBalls">
+          <div class="lotto-ball placeholder"></div>
+          <div class="lotto-ball placeholder"></div>
+          <div class="lotto-ball placeholder"></div>
+          <div class="lotto-ball placeholder"></div>
+          <div class="lotto-ball placeholder"></div>
+          <div class="lotto-ball placeholder"></div>
+        </div>
 
         <div class="mystic-text" id="prophecyText">"서두르지 마라. 운명은 기다림 속에서 모양을 갖춘다..."</div>
 
         <div class="extra-links">
-          <a href="contact.html" class="btn dash-btn">📜 전문적인 예언 신청하기</a>
-          <a href="animal-test.html" class="btn dash-btn">🐾 힐링쉼터 (동물상 테스트)</a>
+          <a href="contact.html" class="btn dash-btn">📜 전문 예언</a>
+          <a href="animal-test.html" class="btn dash-btn">🐾 힐링 쉼터</a>
+          <a href="share-luck.html" class="btn dash-btn">💍 행운 공유소</a>
         </div>
 
         <div style="margin-top: 40px; font-size: 0.75rem; opacity: 0.6; text-align: left" class="footer-links">
@@ -594,7 +614,14 @@
               </div>
             </div>
 
-            <div class="selected-nums desktop-only" id="resultBalls"></div>
+            <div class="selected-nums desktop-only" id="resultBalls">
+              <div class="lotto-ball placeholder"></div>
+              <div class="lotto-ball placeholder"></div>
+              <div class="lotto-ball placeholder"></div>
+              <div class="lotto-ball placeholder"></div>
+              <div class="lotto-ball placeholder"></div>
+              <div class="lotto-ball placeholder"></div>
+            </div>
 
             <div style="margin-top: 15px; font-size: 0.6rem; border-top: 1px solid rgba(0, 0, 0, 0.1); padding-top: 5px; text-align: center">
               TR-782-LOTR-2026-GEN01
@@ -677,8 +704,17 @@
 
       function generateNumbers() {
         document.querySelectorAll(".num-box").forEach((el) => el.classList.remove("active"))
-        resultBalls.innerHTML = ""
-        mobileResultBalls.innerHTML = ""
+        
+        // Reset to placeholders if re-running
+        const resetBalls = (container) => {
+             Array.from(container.children).forEach(ball => {
+                 ball.className = 'lotto-ball placeholder';
+                 ball.textContent = '';
+             });
+        };
+        resetBalls(resultBalls);
+        resetBalls(mobileResultBalls);
+
         const ticket = document.getElementById("lottoTicket")
         ticket.classList.add("shaking")
         const nums = []
@@ -690,18 +726,22 @@
         nums.forEach((n, index) => {
           setTimeout(() => {
             document.getElementById(`num-${n}`).classList.add("active")
-            const createBall = () => {
-              const ball = document.createElement("div")
-              ball.className = `lotto-ball ${getBallColorClass(n)}`
-              ball.textContent = n
-              return ball
-            }
-            const desktopBall = createBall()
-            resultBalls.appendChild(desktopBall)
-            setTimeout(() => desktopBall.classList.add("show"), 50)
-            const mobileBall = createBall()
-            mobileResultBalls.appendChild(mobileBall)
-            setTimeout(() => mobileBall.classList.add("show"), 50)
+            
+            const updateBall = (container) => {
+                const ball = container.children[index];
+                if(ball) {
+                    ball.className = `lotto-ball ${getBallColorClass(n)}`;
+                    ball.textContent = n;
+                    // Force reflow or slight delay to ensure transition triggers if needed
+                    requestAnimationFrame(() => {
+                        ball.classList.add("show");
+                    });
+                }
+            };
+            
+            updateBall(resultBalls);
+            updateBall(mobileResultBalls);
+            
           }, index * 200)
         })
         setTimeout(() => {
@@ -716,8 +756,16 @@
 
       function reset() {
         document.querySelectorAll(".num-box").forEach((el) => el.classList.remove("active"))
-        resultBalls.innerHTML = ""
-        mobileResultBalls.innerHTML = ""
+        
+        const resetBalls = (container) => {
+             Array.from(container.children).forEach(ball => {
+                 ball.className = 'lotto-ball placeholder';
+                 ball.textContent = '';
+             });
+        };
+        resetBalls(resultBalls);
+        resetBalls(mobileResultBalls);
+        
         prophecyText.textContent = "정화가 완료되었습니다. 다시 운명을 물으십시오."
       }
 
