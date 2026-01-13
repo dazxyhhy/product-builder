@@ -59,6 +59,28 @@
         color: inherit;
         opacity: 0.8;
       }
+      .cta-container {
+        margin-top: 50px;
+        text-align: center;
+        padding: 30px;
+        background: rgba(184, 134, 11, 0.05);
+        border: 1px dashed var(--line-color);
+        border-radius: 8px;
+      }
+      .btn-generate {
+        display: inline-block;
+        background: transparent;
+        border: 2px solid var(--text-color);
+        color: var(--text-color);
+        padding: 15px 30px;
+        font-weight: 700;
+        text-decoration: none;
+        transition: all 0.3s;
+      }
+      .btn-generate:hover {
+        background: var(--text-color);
+        color: var(--bg-color);
+      }
     </style>
   </head>
   <body>
@@ -90,6 +112,10 @@
         본 사이트 '신비한 반지 로또'는 단순한 번호 생성을 넘어, 당신의 일상에 작은 서사적 재미를 부여하고자 합니다. 오늘 당신이 뽑은 번호가 중간계의 영웅들이 가졌던 그 신비로운 힘의 일부라고 믿어보는
         건 어떨까요? 행운은 그 가치를 믿는 자에게 더 선명하게 다가옵니다.
       </p>
+      <div class="cta-container">
+        <p>오늘의 운명을 시험해볼 준비가 되셨나요?</p>
+        <a href="index.html" class="btn-generate">💍 오늘의 행운 번호 생성하기</a>
+      </div>
     </article>
     <a href="blog.html" class="back-link">← 목록으로 돌아가기</a>
   </body>

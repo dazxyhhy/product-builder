@@ -95,6 +95,28 @@
         color: inherit;
         opacity: 0.8;
       }
+      .cta-container {
+        margin-top: 50px;
+        text-align: center;
+        padding: 30px;
+        background: rgba(184, 134, 11, 0.05);
+        border: 1px dashed var(--line-color);
+        border-radius: 8px;
+      }
+      .btn-generate {
+        display: inline-block;
+        background: transparent;
+        border: 2px solid var(--text-color);
+        color: var(--text-color);
+        padding: 15px 30px;
+        font-weight: 700;
+        text-decoration: none;
+        transition: all 0.3s;
+      }
+      .btn-generate:hover {
+        background: var(--text-color);
+        color: var(--bg-color);
+      }
     </style>
   </head>
   <body>
@@ -145,6 +167,10 @@
         로또는 당첨되면 기적이고, 당첨되지 않아도 일주일을 버티게 해주는 희망 비용입니다. 1등이 되지 않더라도 실망하지 마세요. 당신의 운명은 숫자 6개로 결정되는 것이 아니라, 매일매일 당신이 내리는
         수많은 선택들로 만들어지는 것이니까요.
       </p>
+      <div class="cta-container">
+        <p>오늘의 운명을 시험해볼 준비가 되셨나요?</p>
+        <a href="index.html" class="btn-generate">💍 오늘의 행운 번호 생성하기</a>
+      </div>
     </article>
 
     <a href="blog.html" class="back-link">← 목록으로 돌아가기</a>
