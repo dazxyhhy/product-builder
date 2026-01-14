@@ -247,7 +247,7 @@
       .container {
         width: 100%;
         max-width: 600px;
-        padding: 150px 20px 60px 20px;
+        padding: 80px 20px 60px 20px;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -258,34 +258,35 @@
       }
 
       .container.result-mode {
-          max-width: 1100px;
+        max-width: 1100px;
       }
 
       .content-wrapper {
-          display: flex;
-          flex-direction: column;
-          width: 100%;
-          justify-content: center;
-          align-items: center;
-          gap: 30px;
-          margin-top: 20px;
-          transition: all 0.5s ease;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        gap: 30px;
+        margin-top: 20px;
+        transition: all 0.5s ease;
       }
 
       .container.result-mode .content-wrapper {
-          flex-direction: row;
-          align-items: flex-start;
-          gap: 50px;
+        flex-direction: row;
+        align-items: flex-start;
+        gap: 50px;
       }
 
-      .left-panel, .right-panel {
-          flex: 1;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          width: 100%;
-          max-width: 500px;
-          transition: all 0.5s ease;
+      .left-panel,
+      .right-panel {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        max-width: 500px;
+        transition: all 0.5s ease;
       }
 
       h1 {
@@ -324,10 +325,10 @@
         margin-bottom: 20px;
         box-sizing: border-box;
       }
-      
+
       .container.result-mode .upload-area {
-          min-height: 400px;
-          max-width: 100%;
+        min-height: 400px;
+        max-width: 100%;
       }
 
       .upload-area:hover {
@@ -527,29 +528,32 @@
           font-size: 1.3rem;
         }
 
-        .container, .container.result-mode {
+        .container,
+        .container.result-mode {
           padding: 100px 20px 60px 20px;
           max-width: 100%;
         }
-        
+
         h1 {
           font-size: 2rem;
         }
-        
-        .content-wrapper, .container.result-mode .content-wrapper {
-            flex-direction: column;
-            align-items: center;
-            gap: 30px;
+
+        .content-wrapper,
+        .container.result-mode .content-wrapper {
+          flex-direction: column;
+          align-items: center;
+          gap: 30px;
         }
-        
-        .upload-area, .container.result-mode .upload-area {
-            min-height: 300px;
-            max-width: 400px;
+
+        .upload-area,
+        .container.result-mode .upload-area {
+          min-height: 300px;
+          max-width: 400px;
         }
-        
+
         .result-area {
-            border-top: 1px dashed var(--btn-border);
-            padding-top: 30px;
+          border-top: 1px dashed var(--btn-border);
+          padding-top: 30px;
         }
       }
 
@@ -562,7 +566,8 @@
           font-size: 0.9rem;
           margin-bottom: 30px;
         }
-        .upload-area, .container.result-mode .upload-area {
+        .upload-area,
+        .container.result-mode .upload-area {
           min-height: 250px;
           width: 90%;
         }
@@ -572,7 +577,7 @@
           box-sizing: border-box;
         }
         .result-desc {
-            width: 90%;
+          width: 90%;
         }
       }
     </style>
@@ -669,36 +674,43 @@
       </p>
 
       <div class="content-wrapper">
-          <div class="left-panel">
-              <div class="upload-area" id="uploadArea">
-                <input type="file" id="imageInput" accept="image/*" />
-                <div class="upload-label" id="uploadLabel">
-                  <span class="icon">📸</span>
-                  <span>클릭하여 사진 업로드</span>
-                </div>
-                <img id="previewImage" class="preview-img" alt="Preview" />
-              </div>
-              <button class="btn" id="predictBtn" style="display: none" onclick="predict()">분석 시작하기</button>
+        <div class="left-panel">
+          <div class="upload-area" id="uploadArea">
+            <input type="file" id="imageInput" accept="image/*" />
+            <div class="upload-label" id="uploadLabel">
+              <span class="icon">📸</span>
+              <span>클릭하여 사진 업로드</span>
+            </div>
+            <img id="previewImage" class="preview-img" alt="Preview" />
+          </div>
+          <button class="btn" id="predictBtn" style="display: none" onclick="predict()">분석 시작하기</button>
+        </div>
+
+        <div class="right-panel">
+          <div class="loading" id="loadingBox">
+            <div class="spinner"></div>
+            <br />
+            운명의 거울을 닦고 있습니다...
+            <br />
+            <span style="font-size: 0.75rem">(잠시만 기다려주세요)</span>
           </div>
 
-          <div class="right-panel">
-              <div class="loading" id="loadingBox">
-                <div class="spinner"></div>
-                <br />
-                운명의 거울을 닦고 있습니다...
-                <br />
-                <span style="font-size: 0.75rem">(잠시만 기다려주세요)</span>
-              </div>
-
-              <div class="result-area" id="resultArea">
-                <div class="result-title" id="resultTitle">분석 결과</div>
-                <div class="result-desc" id="resultDesc"></div>
-                <div id="labelContainer"></div>
-              </div>
+          <div class="result-area" id="resultArea">
+            <div class="result-title" id="resultTitle">분석 결과</div>
+            <div class="result-desc" id="resultDesc"></div>
+            <div id="labelContainer"></div>
+            <button class="btn" id="retryBtn" style="display: none" onclick="retry()">다른 사진 분석하기</button>
           </div>
+        </div>
       </div>
 
-      <a href="index.html" class="back-link" style="margin-top: 40px; display: inline-block; color: var(--mystic-text-color); text-decoration: none; font-size: 0.9rem; border-bottom: 1px dashed var(--mystic-text-color);">← 예언소로 돌아가기</a>
+      <a
+        href="index.html"
+        class="back-link"
+        style="margin-top: 40px; display: inline-block; color: var(--mystic-text-color); text-decoration: none; font-size: 0.9rem; border-bottom: 1px dashed var(--mystic-text-color)"
+      >
+        ← 예언소로 돌아가기
+      </a>
     </div>
 
     <footer>
@@ -726,6 +738,7 @@
       const resultDesc = document.getElementById("resultDesc")
       const labelContainer = document.getElementById("labelContainer")
       const predictBtn = document.getElementById("predictBtn")
+      const retryBtn = document.getElementById("retryBtn")
 
       // Header & Drawer Logic
       const menuBtn = document.getElementById("menuBtn")
@@ -831,12 +844,28 @@
             uploadLabel.style.display = "none"
             resultArea.style.display = "none"
             predictBtn.style.display = "inline-block"
-            // Reset layout
-            document.querySelector('.container').classList.remove('result-mode')
+            retryBtn.style.display = "none"
+
+            // Reset layout just in case
+            document.querySelector(".container").classList.remove("result-mode")
           }
           reader.readAsDataURL(file)
         }
       })
+
+      // Retry Logic (Reset to initial state)
+      function retry() {
+        previewImage.src = ""
+        previewImage.style.display = "none"
+        uploadLabel.style.display = "flex"
+        resultArea.style.display = "none"
+        loadingBox.style.display = "none"
+        predictBtn.style.display = "none"
+        retryBtn.style.display = "none"
+        imageInput.value = "" // Clear file input
+
+        document.querySelector(".container").classList.remove("result-mode")
+      }
 
       // Prediction Logic
       async function predict() {
@@ -901,11 +930,12 @@
 
           loadingBox.style.display = "none"
           resultArea.style.display = "block"
-          predictBtn.style.display = "inline-block"
-          predictBtn.textContent = "다른 사진 분석하기"
-          
+
+          // Show Retry Button instead of Predict Button
+          retryBtn.style.display = "inline-block"
+
           // Switch to result layout
-          document.querySelector('.container').classList.add('result-mode')
+          document.querySelector(".container").classList.add("result-mode")
         }, 500)
       }
     </script>
