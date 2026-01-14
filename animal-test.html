@@ -2,9 +2,10 @@
 <html lang="ko">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>힐링 쉼터 - 동물상 테스트</title>
     <meta name="description" content="AI가 분석하는 나의 동물상은? 강아지상, 고양이상 등 내 얼굴에 숨겨진 동물 영혼을 찾아보세요." />
+    <link rel="canonical" href="https://product-builder-3d5.pages.dev/animal-test.html" />
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
@@ -18,11 +19,13 @@
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-DLFQSNY2FE"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+      window.dataLayer = window.dataLayer || []
+      function gtag() {
+        dataLayer.push(arguments)
+      }
+      gtag("js", new Date())
 
-      gtag('config', 'G-DLFQSNY2FE');
+      gtag("config", "G-DLFQSNY2FE")
     </script>
 
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2307043093255162" crossorigin="anonymous"></script>
@@ -37,6 +40,7 @@
         --btn-hover-text: #1a1a1a;
         --mystic-text-color: rgba(184, 134, 11, 0.6);
         --shadow-color: rgba(184, 134, 11, 0.5);
+        --header-bg: rgba(0, 0, 0, 0.2);
 
         /* Default (Dark Mode) */
         --bg-color: #1a1a1a;
@@ -55,6 +59,7 @@
         --btn-hover-text: #e8e4d9;
         --mystic-text-color: rgba(93, 64, 55, 0.7);
         --shadow-color: rgba(93, 64, 55, 0.3);
+        --header-bg: rgba(255, 255, 255, 0.2);
       }
 
       body {
@@ -62,47 +67,208 @@
         background-image: var(--bg-image);
         font-family: "Nanum Myeongjo", serif;
         display: flex;
+        flex-direction: column;
         align-items: center;
-        justify-content: center;
         min-height: 100vh;
         margin: 0;
-        padding: 20px;
+        padding: 0;
         box-sizing: border-box;
         color: var(--text-color);
         overflow-x: hidden;
         transition: background 0.5s ease, color 0.5s ease;
       }
 
-      .container {
+      /* === Header Navigation === */
+      .main-header {
         width: 100%;
-        max-width: 500px;
-        padding: 30px;
-        border: 2px solid var(--btn-border);
-        border-radius: 8px;
-        background: rgba(0, 0, 0, 0.5);
-        transition: background 0.5s ease;
-        text-align: center;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 60px;
+        background: transparent;
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 30px;
+        box-sizing: border-box;
+        z-index: 1000;
+        transition: background 0.4s ease, backdrop-filter 0.4s ease, border-bottom 0.4s ease;
+        border-bottom: 1px solid transparent;
       }
 
-      [data-theme="light"] .container {
-        background: rgba(255, 255, 255, 0.8);
+      .main-header.scrolled {
+        background: var(--header-bg);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border-bottom: 1px solid rgba(184, 134, 11, 0.1);
+      }
+
+      .logo-area {
+        font-family: "Cinzel", serif;
+        font-weight: 900;
+        font-size: 1.2rem;
+        color: var(--text-color);
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .nav-menu {
+        display: flex;
+        gap: 20px;
+      }
+
+      .nav-item {
+        color: var(--text-color);
+        text-decoration: none;
+        font-size: 0.95rem;
+        font-weight: 700;
+        opacity: 0.8;
+        transition: all 0.3s;
+        font-family: "Cinzel", serif;
+        letter-spacing: 1px;
+      }
+      .nav-item:lang(ko) {
+        font-family: "Nanum Myeongjo", serif;
+      }
+
+      .nav-item:hover {
+        opacity: 1;
+        text-shadow: 0 0 10px var(--shadow-color);
+      }
+
+      .desktop-theme-toggle {
+        opacity: 0.8 !important;
+      }
+
+      .desktop-theme-toggle:hover {
+        opacity: 1 !important;
+        text-shadow: 0 0 5px var(--shadow-color);
+      }
+
+      /* === Mobile Drawer Styles === */
+      .mobile-header-controls {
+        display: none;
+      }
+
+      .hamburger-btn {
+        background: transparent;
+        border: none;
+        color: var(--text-color);
+        font-size: 1.5rem;
+        cursor: pointer;
+        padding: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-left: 10px;
+      }
+
+      .mobile-drawer {
+        position: fixed;
+        top: 0;
+        right: -280px;
+        width: 260px;
+        height: 100vh;
+        background: var(--bg-color);
+        border-left: 1px solid var(--btn-border);
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.5);
+        z-index: 2000;
+        transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        box-sizing: border-box;
+      }
+
+      .mobile-drawer.open {
+        right: 0;
+      }
+
+      .drawer-header {
+        width: 100%;
+        padding-bottom: 10px;
+        border-bottom: 1px solid rgba(184, 134, 11, 0.2);
+        margin-bottom: 20px !important;
+      }
+
+      .close-btn {
+        background: transparent;
+        border: none;
+        color: var(--text-color);
+        font-size: 2.2rem;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        line-height: 1;
+      }
+
+      .drawer-nav {
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+      }
+
+      .drawer-item {
+        color: var(--text-color);
+        text-decoration: none;
+        font-size: 1.1rem;
+        font-weight: bold;
+        padding-bottom: 10px;
+        border-bottom: 1px dashed rgba(184, 134, 11, 0.3);
+        font-family: "Nanum Myeongjo", serif;
+        display: block;
+      }
+
+      /* Overlay */
+      .drawer-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.7);
+        z-index: 1500;
+        display: none;
+        opacity: 0;
+        transition: opacity 0.3s;
+        backdrop-filter: blur(3px);
+      }
+      .drawer-overlay.active {
+        display: block;
+        opacity: 1;
+      }
+
+      /* === Main Layout === */
+      .container {
+        width: 100%;
+        max-width: 600px;
+        padding: 100px 10px 60px 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        flex: 1;
       }
 
       h1 {
         font-family: "Cinzel", serif;
-        font-size: 1.8rem;
+        font-size: 2.5rem;
         margin: 0 0 10px 0;
         color: var(--text-color);
         text-shadow: 0 0 10px var(--shadow-color);
         word-break: keep-all;
       }
 
-      p {
+      p.subtitle {
         color: var(--mystic-text-color);
-        margin-bottom: 25px;
-        font-size: 0.95rem;
-        line-height: 1.5;
+        margin-bottom: 20px;
+        font-size: 1rem;
+        line-height: 1.6;
         word-break: keep-all;
       }
 
@@ -110,16 +276,20 @@
       .upload-area {
         border: 2px dashed var(--btn-border);
         border-radius: 10px;
-        padding: 10px;
+        padding: 20px;
         cursor: pointer;
         transition: background 0.3s;
         position: relative;
         overflow: hidden;
-        min-height: 250px;
+        min-height: 300px;
+        width: 100%;
+        max-width: 400px;
         display: flex;
         align-items: center;
         justify-content: center;
         background: rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+        box-sizing: border-box;
       }
 
       .upload-area:hover {
@@ -132,7 +302,7 @@
 
       .preview-img {
         max-width: 100%;
-        max-height: 300px; /* Limit height */
+        max-height: 100%;
         width: auto;
         border-radius: 6px;
         display: none;
@@ -161,6 +331,8 @@
         animation: fadeIn 0.5s ease;
         padding-top: 20px;
         border-top: 1px dashed var(--btn-border);
+        width: 100%;
+        max-width: 450px;
       }
 
       .result-title {
@@ -176,6 +348,15 @@
         margin-bottom: 15px;
         word-break: keep-all;
         line-height: 1.5;
+        background: rgba(184, 134, 11, 0.05);
+        padding: 15px;
+        border-radius: 8px;
+        border: 1px solid rgba(184, 134, 11, 0.1);
+      }
+
+      [data-theme="light"] .result-desc {
+        background: rgba(93, 64, 55, 0.05);
+        border-color: rgba(93, 64, 55, 0.1);
       }
 
       .bar-container {
@@ -216,7 +397,7 @@
         background: transparent;
         border: 2px solid var(--btn-border);
         color: var(--btn-text);
-        padding: 12px 30px;
+        padding: 12px 20px;
         font-family: "Cinzel", serif;
         font-weight: 700;
         font-size: 1rem;
@@ -228,7 +409,6 @@
         text-decoration: none;
         display: inline-block;
         margin-top: 20px;
-        max-width: 100%;
         border-radius: 4px;
       }
 
@@ -257,47 +437,6 @@
         }
       }
 
-      .back-link {
-        margin-top: 30px;
-        display: inline-block;
-        color: var(--mystic-text-color);
-        text-decoration: none;
-        font-size: 0.9rem;
-        border-bottom: 1px dashed var(--mystic-text-color);
-        transition: color 0.3s;
-      }
-
-      .back-link:hover {
-        color: var(--text-color);
-        border-bottom-style: solid;
-      }
-
-      /* Toggle Button */
-      .theme-toggle {
-        position: absolute;
-        top: 20px;
-        right: 20px;
-        background: var(--text-color);
-        border: none;
-        color: var(--bg-color);
-        border-radius: 50%;
-        width: 44px;
-        height: 44px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        font-size: 1.3rem;
-        z-index: 100;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-      }
-
-      .theme-toggle:hover {
-        transform: scale(1.1);
-        filter: brightness(1.2);
-      }
-
       /* Loading Spinner */
       .spinner {
         display: inline-block;
@@ -319,34 +458,150 @@
         }
       }
 
-      /* Mobile Optimization */
-      @media (max-width: 480px) {
+      footer {
+        width: 100%;
+        text-align: center;
+        padding: 20px;
+        margin-top: auto;
+        font-size: 0.8rem;
+        opacity: 0.6;
+        border-top: 1px solid rgba(184, 134, 11, 0.1);
+      }
+
+      @media (max-width: 900px) {
+        .main-header {
+          justify-content: space-between;
+          padding: 0 25px;
+        }
+        .nav-menu {
+          display: none;
+        }
+        .desktop-theme-toggle {
+          display: none !important;
+        }
+        .mobile-header-controls {
+          display: flex;
+          align-items: center;
+          gap: 15px;
+        }
+        .logo-area {
+          font-size: 1.3rem;
+        }
+
         .container {
-          padding: 20px;
-          width: 95%;
+          padding-top: 100px;
         }
         h1 {
-          font-size: 1.5rem;
+          font-size: 2rem;
+        }
+      }
+
+      @media (max-width: 600px) {
+        h1 {
+          font-size: 1.8rem;
+          word-break: keep-all;
+        }
+        .subtitle {
+          font-size: 0.9rem;
+          margin-bottom: 30px;
         }
         .upload-area {
-          min-height: 200px;
-        }
-        .icon {
-          font-size: 2.5rem;
+          min-height: 250px;
         }
         .btn {
-          width: 100%; /* Full width button on mobile */
-          padding: 12px 0;
+          width: 85%;
+          max-width: 320px;
+          box-sizing: border-box;
         }
       }
     </style>
   </head>
   <body>
-    <button class="theme-toggle" id="themeToggle" aria-label="Toggle Theme">🌙</button>
+    <!-- Overlay for Drawer -->
+    <div class="drawer-overlay" id="drawerOverlay"></div>
+
+    <!-- Global Header -->
+    <header class="main-header">
+      <a href="index.html" class="logo-area">
+        <span style="font-size: 1.5rem">💍</span>
+        MRL
+      </a>
+
+      <!-- Desktop Menu -->
+      <nav class="nav-menu">
+        <a href="dream-lotto.html" class="nav-item">DREAM</a>
+        <a href="animal-test.html" class="nav-item">ANIMAL</a>
+        <a href="blog.html" class="nav-item">ARCHIVE</a>
+        <a href="share-luck.html" class="nav-item">COMMUNITY</a>
+        <a href="contact.html" class="nav-item">CONTACT</a>
+      </nav>
+
+      <button
+        id="desktopThemeToggleText"
+        style="
+          background: transparent;
+          border: none;
+          color: var(--mystic-text-color);
+          font-family: 'Nanum Myeongjo', serif;
+          font-size: 0.9rem;
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          opacity: 0.8;
+          transition: opacity 0.3s;
+        "
+        class="desktop-theme-toggle"
+      >
+        <span>다크 모드</span>
+        <span id="desktopThemeStatus" style="font-weight: bold; color: var(--text-color)">ON</span>
+      </button>
+
+      <!-- Mobile Controls -->
+      <div class="mobile-header-controls">
+        <button class="hamburger-btn" id="menuBtn" aria-label="Open Menu">☰</button>
+      </div>
+    </header>
+
+    <!-- Mobile Drawer -->
+    <div class="mobile-drawer" id="mobileDrawer">
+      <div class="drawer-header" style="display: flex; justify-content: flex-end; align-items: center; margin-bottom: 30px">
+        <button class="close-btn" id="closeBtn" style="margin: 0">×</button>
+      </div>
+      <nav class="drawer-nav" style="flex-grow: 1">
+        <a href="dream-lotto.html" class="drawer-item">🌙 꿈해몽 변환기</a>
+        <a href="animal-test.html" class="drawer-item">🐾 동물상 테스트</a>
+        <a href="blog.html" class="drawer-item">📜 운명의 기록관</a>
+        <a href="share-luck.html" class="drawer-item">💬 행운 공유소</a>
+        <a href="contact.html" class="drawer-item">✉️ 예언 신청</a>
+      </nav>
+      <div class="drawer-footer" style="margin-top: auto; padding-top: 20px; border-top: 1px solid rgba(184, 134, 11, 0.1)">
+        <button
+          id="mobileThemeToggleText"
+          style="
+            background: transparent;
+            border: none;
+            color: var(--mystic-text-color);
+            font-family: 'Nanum Myeongjo', serif;
+            font-size: 0.9rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            padding: 10px 0;
+            opacity: 0.8;
+          "
+        >
+          <span>다크 모드</span>
+          <span id="themeStatus" style="font-weight: bold; color: var(--text-color)">ON</span>
+        </button>
+      </div>
+    </div>
 
     <div class="container">
       <h1>힐링 쉼터</h1>
-      <p>
+      <p class="subtitle">
         당신의 영혼은 어떤 동물과 닮아있을까요?
         <br />
         사진을 올려주시면 인공지능이 분석해드립니다.
@@ -372,21 +627,23 @@
       <div class="result-area" id="resultArea">
         <div class="result-title" id="resultTitle">분석 결과</div>
         <div class="result-desc" id="resultDesc"></div>
-
         <div id="labelContainer"></div>
       </div>
 
       <button class="btn" id="predictBtn" style="display: none" onclick="predict()">분석 시작하기</button>
-
-      <a href="index.html" class="back-link">← 예언소로 돌아가기</a>
     </div>
+
+    <footer>
+      <a href="privacy.html" style="color: inherit; margin-right: 15px; text-decoration: none">개인정보처리방침</a>
+      <span>© 2026 Mystic Ring Lotto</span>
+    </footer>
 
     <!-- Tensorflow & Teachable Machine Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
 
     <script>
-      // ⚠️ [중요] Teachable Machine에서 복사한 '전체 링크'를 아래에 넣어주세요 ⚠️
+      // ⚠️ Teachable Machine Link ⚠️
       const URL = "https://teachablemachine.withgoogle.com/models/15RFyCSxl/"
 
       let model, maxPredictions
@@ -401,34 +658,79 @@
       const resultDesc = document.getElementById("resultDesc")
       const labelContainer = document.getElementById("labelContainer")
       const predictBtn = document.getElementById("predictBtn")
-      const themeToggle = document.getElementById("themeToggle")
 
-      // Theme Logic
-      let isDark = true
-      const savedTheme = localStorage.getItem("theme")
-      if (savedTheme === "light") {
-        isDark = false
-        document.documentElement.setAttribute("data-theme", "light")
-        themeToggle.textContent = "☀️"
+      // Header & Drawer Logic
+      const menuBtn = document.getElementById("menuBtn")
+      const closeBtn = document.getElementById("closeBtn")
+      const mobileDrawer = document.getElementById("mobileDrawer")
+      const overlay = document.getElementById("drawerOverlay")
+
+      function openDrawer() {
+        mobileDrawer.classList.add("open")
+        overlay.classList.add("active")
+        document.body.style.overflow = "hidden"
       }
 
-      themeToggle.addEventListener("click", () => {
-        isDark = !isDark
-        if (isDark) {
-          document.documentElement.removeAttribute("data-theme")
-          themeToggle.textContent = "🌙"
-          localStorage.setItem("theme", "dark")
+      function closeDrawer() {
+        mobileDrawer.classList.remove("open")
+        overlay.classList.remove("active")
+        document.body.style.overflow = ""
+      }
+
+      if (menuBtn) menuBtn.addEventListener("click", openDrawer)
+      if (closeBtn) closeBtn.addEventListener("click", closeDrawer)
+      if (overlay) overlay.addEventListener("click", closeDrawer)
+
+      // Header Scroll Effect
+      const header = document.querySelector(".main-header")
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 50) {
+          header.classList.add("scrolled")
         } else {
-          document.documentElement.setAttribute("data-theme", "light")
-          themeToggle.textContent = "☀️"
-          localStorage.setItem("theme", "light")
+          header.classList.remove("scrolled")
         }
       })
+
+      // Theme Logic (Unified)
+      const desktopThemeToggleText = document.getElementById("desktopThemeToggleText")
+      const desktopThemeStatus = document.getElementById("desktopThemeStatus")
+      const mobileThemeToggleText = document.getElementById("mobileThemeToggleText")
+      const themeStatus = document.getElementById("themeStatus")
+
+      let isDark = true
+      const savedTheme = localStorage.getItem("theme")
+
+      function updateThemeUI(dark) {
+        if (dark) {
+          document.documentElement.removeAttribute("data-theme")
+          if (desktopThemeStatus) desktopThemeStatus.textContent = "ON"
+          if (themeStatus) themeStatus.textContent = "ON"
+        } else {
+          document.documentElement.setAttribute("data-theme", "light")
+          if (desktopThemeStatus) desktopThemeStatus.textContent = "OFF"
+          if (themeStatus) themeStatus.textContent = "OFF"
+        }
+      }
+
+      if (savedTheme === "light") {
+        isDark = false
+        updateThemeUI(false)
+      } else {
+        updateThemeUI(true)
+      }
+
+      function toggleTheme() {
+        isDark = !isDark
+        updateThemeUI(isDark)
+        localStorage.setItem("theme", isDark ? "dark" : "light")
+      }
+
+      if (desktopThemeToggleText) desktopThemeToggleText.addEventListener("click", toggleTheme)
+      if (mobileThemeToggleText) mobileThemeToggleText.addEventListener("click", toggleTheme)
 
       // Initialize Model
       async function init() {
         try {
-          // If URL is placeholder, warn user
           if (URL.includes("YOUR_MODEL_ID")) {
             alert("모델 연결이 필요합니다! 코드를 열어 URL 변수에 티처블 머신 링크를 넣어주세요.")
             loadingBox.style.display = "none"
@@ -486,8 +788,6 @@
 
           const bestClass = prediction[0].className
 
-          // Customize messages based on class name
-          // Note: Ensure your Teachable Machine class names match these or are handled generically
           if (bestClass.includes("강아지") || bestClass.includes("Dog")) {
             resultTitle.textContent = "🐶 당신은 '강아지상'입니다!"
             resultDesc.textContent = "충성심이 강하고 활발하며, 주변 사람들에게 사랑받는 따뜻한 마음을 가지셨군요."
@@ -515,7 +815,6 @@
             const probability = (classPrediction.probability * 100).toFixed(1)
 
             if (probability > 1) {
-              // Show only significant ones
               const barDiv = document.createElement("div")
               barDiv.innerHTML = `
                             <div class="bar-text">
