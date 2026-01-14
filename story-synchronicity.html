@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>동시성의 법칙과 운명 - 운명의 기록관</title>
+    <meta name="description" content="우연히 생각한 친구에게서 전화가 온 적이 있나요? 칼 융이 말하는 의미 있는 우연, 동시성에 대해 이야기합니다." />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="우연인 듯 우연 아닌: 동시성의 법칙" />
+    <meta property="og:description" content="단순한 우연의 일치일까, 아니면 우주가 보내는 신호일까? 칼 융의 동시성 이론." />
+    <meta property="og:image" content="https://product-builder-3d5.pages.dev/assets/main-image.png" />
+
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📜</text></svg>" />
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-DLFQSNY2FE"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-DLFQSNY2FE');
+    </script>
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2307043093255162" crossorigin="anonymous"></script>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap");
+
+      :root {
+        --bg-color: #1a1a1a;
+        --text-color: #b8860b;
+        --line-color: rgba(184, 134, 11, 0.3);
+      }
+
+      [data-theme="light"] {
+        --bg-color: #e8e4d9;
+        --text-color: #5d4037;
+        --line-color: rgba(93, 64, 55, 0.3);
+      }
+
+      body {
+        background-color: var(--bg-color);
+        color: var(--text-color);
+        font-family: "Nanum Myeongjo", serif;
+        line-height: 1.8;
+        padding: 20px;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      article {
+        margin-top: 40px;
+      }
+      h1 {
+        font-size: 2rem;
+        margin-bottom: 10px;
+        border-bottom: 2px solid var(--line-color);
+        padding-bottom: 20px;
+        word-break: keep-all;
+      }
+      .meta {
+        font-size: 0.9rem;
+        opacity: 0.7;
+        margin-bottom: 40px;
+        display: block;
+      }
+
+      h2 {
+        margin-top: 40px;
+        font-size: 1.4rem;
+        color: var(--text-color);
+      }
+      p {
+        margin-bottom: 20px;
+        font-size: 1rem;
+        opacity: 0.9;
+      }
+
+      .highlight {
+        background: rgba(184, 134, 11, 0.1);
+        padding: 20px;
+        border-left: 4px solid #b8860b;
+        margin: 30px 0;
+        font-style: italic;
+      }
+
+      .back-link {
+        display: block;
+        margin-top: 60px;
+        padding-top: 20px;
+        border-top: 1px solid var(--line-color);
+        text-decoration: none;
+        color: inherit;
+        opacity: 0.8;
+      }
+      .cta-container {
+        margin-top: 50px;
+        text-align: center;
+        padding: 30px;
+        background: rgba(184, 134, 11, 0.05);
+        border: 1px dashed var(--line-color);
+        border-radius: 8px;
+      }
+      .btn-generate {
+        display: inline-block;
+        background: transparent;
+        border: 2px solid var(--text-color);
+        color: var(--text-color);
+        padding: 15px 30px;
+        font-weight: 700;
+        text-decoration: none;
+        transition: all 0.3s;
+      }
+      .btn-generate:hover {
+        background: var(--text-color);
+        color: var(--bg-color);
+      }
+
+      /* Toggle Button */
+      .theme-toggle {
+        position: fixed;
+        top: 30px;
+        right: 30px;
+        background: var(--text-color);
+        border: none;
+        color: var(--bg-color);
+        border-radius: 50%;
+        width: 44px;
+        height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-size: 1.3rem;
+        z-index: 100;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      }
+
+      .theme-toggle:hover {
+        transform: scale(1.1);
+        filter: brightness(1.2);
+      }
+    </style>
+  </head>
+  <body>
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle Theme">🌙</button>
+
+    <article>
+      <h1>우연인 듯 우연 아닌: 동시성의 법칙</h1>
+      <span class="meta">2026년 1월 15일 · 운명의 기록관</span>
+
+      <p>
+        오랫동안 연락이 끊겼던 친구를 문득 생각했는데, 그 순간 전화벨이 울려 그 친구의 이름을 화면에서 본 적이 있나요?
+        혹은 며칠 동안 특정 숫자가 눈에 계속 밟히더니, 정말로 그 숫자와 관련된 일이 일어난 적은요?
+      </p>
+      <p>
+        우리는 이것을 단순한 '우연의 일치(Coincidence)'로 치부하곤 합니다. 하지만 심리학의 거장 칼 융(Carl Jung)은 이를 다르게 해석했습니다. 그는 이것을 **'동시성(Synchronicity)'**이라고 불렀습니다.
+      </p>
+
+      <h2>인과관계를 넘어서는 연결</h2>
+      <p>
+        우리가 배우는 과학적 사고는 '인과율'에 기초합니다. A가 원인이 되어 B라는 결과가 나온다는 것이죠. 하지만 동시성은 인과관계로 설명되지 않는 두 사건이 '의미적으로' 연결되어 일어나는 현상을 말합니다.
+      </p>
+
+      <div class="highlight">"마음속의 주관적 상태와 외부 세계의 객관적 사건이 의미 있게 일치하는 순간, 우주는 우리에게 말을 겁니다."</div>
+
+      <p>
+        융은 치료 중에 환자가 황금 풍뎅이 꿈 이야기를 하고 있을 때, 창문에 실제 황금 풍뎅이와 유사한 곤충이 날아와 부딪히는 경험을 예로 들었습니다. 이 사건은 확률적으로는 설명하기 힘들지만, 환자의 내면 치료에는 결정적인 전환점이 되었습니다.
+      </p>
+
+      <h2>로또와 동시성</h2>
+      <p>
+        많은 사람들이 로또 번호를 고를 때 무의식적으로 이 동시성을 기대합니다. 꿈에서 본 숫자, 길을 걷다 우연히 마주친 자동차 번호판, 책을 펼쳤을 때 눈에 들어온 페이지 번호.
+      </p>
+      <p>
+        이것들이 정말로 당첨 번호와 인과관계가 있을까요? 과학적으로는 "아니요"입니다. 하지만 당신이 그 숫자에 특별한 의미를 부여하고, 그것을 통해 희망을 품고 긍정적인 에너지를 얻는다면, 그것은 심리적으로 '유의미한 우연'이 됩니다.
+      </p>
+
+      <h2>우연을 맞이하는 마음</h2>
+      <p>
+        동시성의 법칙이 우리에게 주는 교훈은, 세상이 삭막한 기계적 톱니바퀴가 아니라 서로 보이지 않는 끈으로 연결되어 있을지도 모른다는 따뜻한 가능성입니다.
+      </p>
+      <p>
+        오늘 당신의 눈앞에 반복해서 나타나는 징조가 있나요? 그것이 꼭 로또 당첨을 의미하지는 않을지라도, 당신의 무의식이 보내는 신호일 수 있습니다. 그 우연을 즐겨보세요. 행운은 마음을 열고 기다리는 사람에게 더 자주, 의미 있는 모습으로 찾아오니까요.
+      </p>
+
+      <div class="cta-container">
+        <p>당신의 직감이 이끄는 숫자는 무엇인가요?</p>
+        <a href="index.html" class="btn-generate">🔮 직감을 믿고 번호 확인하기</a>
+      </div>
+    </article>
+
+    <a href="blog.html" class="back-link">← 목록으로 돌아가기</a>
+
+    <script>
+      const themeToggle = document.getElementById("themeToggle")
+      let isDark = true
+      const savedTheme = localStorage.getItem("theme")
+      if (savedTheme === "light") {
+        isDark = false
+        document.documentElement.setAttribute("data-theme", "light")
+        themeToggle.textContent = "☀️"
+      }
+
+      themeToggle.addEventListener("click", () => {
+        isDark = !isDark
+        if (isDark) {
+          document.documentElement.removeAttribute("data-theme")
+          themeToggle.textContent = "🌙"
+          localStorage.setItem("theme", "dark")
+        } else {
+          document.documentElement.setAttribute("data-theme", "light")
+          themeToggle.textContent = "☀️"
+          localStorage.setItem("theme", "light")
+        }
+      })
+    </script>
+  </body>
+</html>
