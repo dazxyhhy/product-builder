@@ -247,12 +247,45 @@
       .container {
         width: 100%;
         max-width: 600px;
-        padding: 100px 10px 60px 20px;
+        padding: 150px 20px 60px 20px;
         display: flex;
         flex-direction: column;
         align-items: center;
         text-align: center;
         flex: 1;
+        transition: max-width 0.5s ease;
+        box-sizing: border-box;
+      }
+
+      .container.result-mode {
+          max-width: 1100px;
+      }
+
+      .content-wrapper {
+          display: flex;
+          flex-direction: column;
+          width: 100%;
+          justify-content: center;
+          align-items: center;
+          gap: 30px;
+          margin-top: 20px;
+          transition: all 0.5s ease;
+      }
+
+      .container.result-mode .content-wrapper {
+          flex-direction: row;
+          align-items: flex-start;
+          gap: 50px;
+      }
+
+      .left-panel, .right-panel {
+          flex: 1;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          width: 100%;
+          max-width: 500px;
+          transition: all 0.5s ease;
       }
 
       h1 {
@@ -278,7 +311,7 @@
         border-radius: 10px;
         padding: 20px;
         cursor: pointer;
-        transition: background 0.3s;
+        transition: background 0.3s, min-height 0.3s;
         position: relative;
         overflow: hidden;
         min-height: 300px;
@@ -290,6 +323,11 @@
         background: rgba(0, 0, 0, 0.1);
         margin-bottom: 20px;
         box-sizing: border-box;
+      }
+      
+      .container.result-mode .upload-area {
+          min-height: 400px;
+          max-width: 100%;
       }
 
       .upload-area:hover {
@@ -326,32 +364,30 @@
 
       /* Result Area */
       .result-area {
-        margin-top: 30px;
         display: none;
         animation: fadeIn 0.5s ease;
-        padding-top: 20px;
-        border-top: 1px dashed var(--btn-border);
         width: 100%;
-        max-width: 450px;
       }
 
       .result-title {
-        font-size: 1.6rem;
+        font-size: 1.8rem;
         font-weight: bold;
-        margin-bottom: 12px;
+        margin-bottom: 20px;
         color: var(--text-color);
       }
 
       .result-desc {
         font-size: 1rem;
         color: var(--mystic-text-color);
-        margin-bottom: 15px;
+        margin-bottom: 25px;
         word-break: keep-all;
-        line-height: 1.5;
+        line-height: 1.6;
         background: rgba(184, 134, 11, 0.05);
-        padding: 15px;
+        padding: 20px;
         border-radius: 8px;
         border: 1px solid rgba(184, 134, 11, 0.1);
+        width: 100%;
+        box-sizing: border-box;
       }
 
       [data-theme="light"] .result-desc {
@@ -365,7 +401,7 @@
         border-radius: 10px;
         margin: 10px 0;
         overflow: hidden;
-        height: 20px;
+        height: 24px;
         position: relative;
         border: 1px solid rgba(255, 255, 255, 0.1);
       }
@@ -386,10 +422,11 @@
       .bar-text {
         display: flex;
         justify-content: space-between;
-        font-size: 0.8rem;
+        font-size: 0.9rem;
         color: var(--mystic-text-color);
         margin-bottom: 5px;
         margin-top: 15px;
+        font-weight: bold;
       }
 
       /* Buttons */
@@ -397,10 +434,10 @@
         background: transparent;
         border: 2px solid var(--btn-border);
         color: var(--btn-text);
-        padding: 12px 20px;
+        padding: 12px 30px;
         font-family: "Cinzel", serif;
         font-weight: 700;
-        font-size: 1rem;
+        font-size: 1.1rem;
         cursor: pointer;
         transition: all 0.3s;
         position: relative;
@@ -410,6 +447,8 @@
         display: inline-block;
         margin-top: 20px;
         border-radius: 4px;
+        width: 100%;
+        max-width: 400px;
       }
 
       .btn:hover {
@@ -423,7 +462,7 @@
         margin-top: 30px;
         color: var(--mystic-text-color);
         font-style: italic;
-        font-size: 0.9rem;
+        font-size: 1rem;
       }
 
       @keyframes fadeIn {
@@ -440,16 +479,16 @@
       /* Loading Spinner */
       .spinner {
         display: inline-block;
-        width: 30px;
-        height: 30px;
-        border: 3px solid rgba(255, 255, 255, 0.3);
+        width: 40px;
+        height: 40px;
+        border: 4px solid rgba(255, 255, 255, 0.3);
         border-radius: 50%;
         border-top-color: var(--text-color);
         animation: spin 1s ease-in-out infinite;
         margin-bottom: 10px;
       }
       [data-theme="light"] .spinner {
-        border: 3px solid rgba(0, 0, 0, 0.1);
+        border: 4px solid rgba(0, 0, 0, 0.1);
         border-top-color: var(--text-color);
       }
       @keyframes spin {
@@ -488,11 +527,29 @@
           font-size: 1.3rem;
         }
 
-        .container {
-          padding-top: 100px;
+        .container, .container.result-mode {
+          padding: 100px 20px 60px 20px;
+          max-width: 100%;
         }
+        
         h1 {
           font-size: 2rem;
+        }
+        
+        .content-wrapper, .container.result-mode .content-wrapper {
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+        }
+        
+        .upload-area, .container.result-mode .upload-area {
+            min-height: 300px;
+            max-width: 400px;
+        }
+        
+        .result-area {
+            border-top: 1px dashed var(--btn-border);
+            padding-top: 30px;
         }
       }
 
@@ -505,13 +562,17 @@
           font-size: 0.9rem;
           margin-bottom: 30px;
         }
-        .upload-area {
+        .upload-area, .container.result-mode .upload-area {
           min-height: 250px;
+          width: 90%;
         }
         .btn {
-          width: 85%;
+          width: 90%;
           max-width: 320px;
           box-sizing: border-box;
+        }
+        .result-desc {
+            width: 90%;
         }
       }
     </style>
@@ -607,30 +668,37 @@
         사진을 올려주시면 인공지능이 분석해드립니다.
       </p>
 
-      <div class="upload-area" id="uploadArea">
-        <input type="file" id="imageInput" accept="image/*" />
-        <div class="upload-label" id="uploadLabel">
-          <span class="icon">📸</span>
-          <span>클릭하여 사진 업로드</span>
-        </div>
-        <img id="previewImage" class="preview-img" alt="Preview" />
+      <div class="content-wrapper">
+          <div class="left-panel">
+              <div class="upload-area" id="uploadArea">
+                <input type="file" id="imageInput" accept="image/*" />
+                <div class="upload-label" id="uploadLabel">
+                  <span class="icon">📸</span>
+                  <span>클릭하여 사진 업로드</span>
+                </div>
+                <img id="previewImage" class="preview-img" alt="Preview" />
+              </div>
+              <button class="btn" id="predictBtn" style="display: none" onclick="predict()">분석 시작하기</button>
+          </div>
+
+          <div class="right-panel">
+              <div class="loading" id="loadingBox">
+                <div class="spinner"></div>
+                <br />
+                운명의 거울을 닦고 있습니다...
+                <br />
+                <span style="font-size: 0.75rem">(잠시만 기다려주세요)</span>
+              </div>
+
+              <div class="result-area" id="resultArea">
+                <div class="result-title" id="resultTitle">분석 결과</div>
+                <div class="result-desc" id="resultDesc"></div>
+                <div id="labelContainer"></div>
+              </div>
+          </div>
       </div>
 
-      <div class="loading" id="loadingBox">
-        <div class="spinner"></div>
-        <br />
-        운명의 거울을 닦고 있습니다...
-        <br />
-        <span style="font-size: 0.75rem">(잠시만 기다려주세요)</span>
-      </div>
-
-      <div class="result-area" id="resultArea">
-        <div class="result-title" id="resultTitle">분석 결과</div>
-        <div class="result-desc" id="resultDesc"></div>
-        <div id="labelContainer"></div>
-      </div>
-
-      <button class="btn" id="predictBtn" style="display: none" onclick="predict()">분석 시작하기</button>
+      <a href="index.html" class="back-link" style="margin-top: 40px; display: inline-block; color: var(--mystic-text-color); text-decoration: none; font-size: 0.9rem; border-bottom: 1px dashed var(--mystic-text-color);">← 예언소로 돌아가기</a>
     </div>
 
     <footer>
@@ -763,6 +831,8 @@
             uploadLabel.style.display = "none"
             resultArea.style.display = "none"
             predictBtn.style.display = "inline-block"
+            // Reset layout
+            document.querySelector('.container').classList.remove('result-mode')
           }
           reader.readAsDataURL(file)
         }
@@ -833,6 +903,9 @@
           resultArea.style.display = "block"
           predictBtn.style.display = "inline-block"
           predictBtn.textContent = "다른 사진 분석하기"
+          
+          // Switch to result layout
+          document.querySelector('.container').classList.add('result-mode')
         }, 500)
       }
     </script>
