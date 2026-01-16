@@ -3,13 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>운명의 기록관 - 신비한 반지 로또</title>
-    <meta name="description" content="운명과 확률, 그리고 로또에 관한 흥미로운 이야기들을 기록하는 공간입니다." />
+    <title>뜻밖의 행운: 삶의 방향을 바꾸는 작은 전환점 - 운명의 기록관</title>
+    <meta name="description" content="예상치 못한 순간 찾아오는 행운의 기회들. 작은 우연이 어떻게 삶의 큰 전환점이 되는지, 그 비밀을 탐험합니다." />
 
     <!-- Open Graph -->
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="운명의 기록관" />
-    <meta property="og:description" content="운명과 확률에 관한 신비로운 이야기들. 로또 1등 확률의 진실부터 심리학까지." />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="뜻밖의 행운: 삶의 방향을 바꾸는 작은 전환점" />
+    <meta property="og:description" content="세렌디피티처럼 찾아오는 행운은 준비된 자의 것입니다. 변화를 받아들이는 용기에 대한 이야기." />
     <meta property="og:image" content="https://product-builder-3d5.pages.dev/assets/main-image.png" />
 
     <!-- Favicon -->
@@ -39,6 +39,7 @@
         --header-bg: rgba(0, 0, 0, 0.2); /* Very transparent black */
         --mystic-text-color: rgba(184, 134, 11, 0.6);
         --shadow-color: rgba(184, 134, 11, 0.5);
+        --line-color: rgba(184, 134, 11, 0.3);
       }
 
       [data-theme="light"] {
@@ -49,6 +50,7 @@
         --header-bg: rgba(255, 255, 255, 0.2); /* Very transparent white */
         --mystic-text-color: rgba(93, 64, 55, 0.7);
         --shadow-color: rgba(93, 64, 55, 0.3);
+        --line-color: rgba(93, 64, 55, 0.3);
       }
 
       body {
@@ -66,63 +68,78 @@
 
       .container {
         width: 100%;
-        max-width: 1000px;
-        padding: 80px 20px 40px 20px;
+        max-width: 800px;
+        padding: 120px 20px 40px 20px;
         box-sizing: border-box;
+        line-height: 1.8;
       }
 
-      header {
-        text-align: center;
-        margin-bottom: 60px;
-      }
-      h1 {
-        font-family: "Cinzel", serif;
-        font-size: 2.5rem;
-        margin-bottom: 10px;
-      }
-      .subtitle {
-        opacity: 0.8;
-        font-size: 0.9rem;
-      }
-
-      .grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 20px;
+      article {
         width: 100%;
       }
+      article h1 {
+        font-size: 2rem;
+        margin-bottom: 10px;
+        border-bottom: 2px solid var(--line-color);
+        padding-bottom: 20px;
+        word-break: keep-all;
+      }
+      .meta {
+        font-size: 0.9rem;
+        opacity: 0.7;
+        margin-bottom: 40px;
+        display: block;
+      }
 
-      .card {
-        background: var(--card-bg);
-        border: 1px solid var(--btn-border);
-        border-radius: 8px;
-        padding: 25px;
-        transition: transform 0.3s;
-        cursor: pointer;
+      article h2 {
+        margin-top: 40px;
+        font-size: 1.4rem;
+        color: var(--text-color);
+      }
+      article p {
+        margin-bottom: 20px;
+        font-size: 1rem;
+        opacity: 0.9;
+      }
+
+      .highlight {
+        background: rgba(184, 134, 11, 0.1);
+        padding: 20px;
+        border-left: 4px solid #b8860b;
+        margin: 30px 0;
+        font-style: italic;
+      }
+
+      .back-link {
+        display: block;
+        margin-top: 60px;
+        padding-top: 20px;
+        border-top: 1px solid var(--line-color);
         text-decoration: none;
         color: inherit;
-        display: block;
-      }
-
-      .card:hover {
-        transform: translateY(-5px);
-        background: rgba(184, 134, 11, 0.1);
-      }
-
-      .card h2 {
-        font-size: 1.3rem;
-        margin: 0 0 10px 0;
-      }
-      .card p {
-        font-size: 0.9rem;
         opacity: 0.8;
-        line-height: 1.5;
       }
-      .date {
-        font-size: 0.8rem;
-        opacity: 0.5;
-        margin-top: 15px;
-        display: block;
+      .cta-container {
+        margin-top: 50px;
+        text-align: center;
+        padding: 30px;
+        background: rgba(184, 134, 11, 0.05);
+        border: 1px dashed var(--line-color);
+        border-radius: 8px;
+      }
+      .btn-generate {
+        display: inline-block;
+        background: transparent;
+        border: 2px solid var(--text-color);
+        color: var(--text-color);
+        padding: 15px 30px;
+        font-weight: 700;
+        text-decoration: none;
+        transition: all 0.3s;
+      }
+      .btn-generate:hover {
+        background: var(--text-color);
+        color: var(--bg-color);
       }
 
       /* === Header Navigation === */
@@ -142,7 +159,7 @@
         box-sizing: border-box;
         z-index: 1000;
         transition: background 0.4s ease, backdrop-filter 0.4s ease, border-bottom 0.4s ease;
-        border-bottom: 1px solid transparent;
+        border-bottom: 1px solid rgba(184, 134, 11, 0.1);
       }
 
       .main-header.scrolled {
@@ -396,94 +413,54 @@
     </div>
 
     <div class="container">
-      <header>
-        <h1>ARCHIVES OF FATE</h1>
-        <div class="subtitle">운명과 확률, 그리고 숫자에 관한 이야기</div>
-      </header>
+      <article>
+        <h1>뜻밖의 행운: 삶의 방향을 바꾸는 작은 전환점</h1>
+        <span class="meta">2026년 1월 17일 · 운명의 기록관</span>
 
-      <div class="grid">
-        <a href="story-hope-path.html" class="card">
-          <h2>✨ 어둠 속 한 줄기 빛: 희망이 이끄는 길</h2>
-          <p>가장 어두운 밤에도 별은 빛나듯, 어떤 시련 속에서도 희망은 길을 밝힙니다. 내면의 빛을 따라 운명을 개척하세요.</p>
-          <span class="date">2026.01.17</span>
-        </a>
+        <p>
+          살다 보면 예상치 못한 순간에 행운이 찾아와 삶의 방향을 완전히 바꿔놓는 경우가 있습니다. 간절히 바라던 결과는 아니었지만, 뜻밖의 기회가 새로운 길을 열어주거나, 작은 우연이 거대한 행운으로
+          이어지는 경험 말입니다. 우리는 이것을 '뜻밖의 행운(Lucky Turn)' 혹은 '세렌디피티(Serendipity)'라고 부르기도 합니다.
+        </p>
 
-        <a href="story-lucky-turn.html" class="card">
-          <h2>🍀 뜻밖의 행운: 삶의 방향을 바꾸는 작은 전환점</h2>
-          <p>예상치 못한 순간 찾아오는 행운의 기회들. 작은 우연이 어떻게 삶의 큰 전환점이 되는지, 그 비밀을 탐험합니다.</p>
-          <span class="date">2026.01.17</span>
-        </a>
+        <h2>변화에 대한 열린 마음</h2>
+        <p>
+          행운은 준비된 자에게 찾아온다고 합니다. 여기서 '준비'란 단순히 노력만을 의미하는 것이 아니라, 예상치 못한 변화와 기회를 받아들일 수 있는 '열린 마음'을 포함합니다. 때로는 계획대로 되지 않는
+          상황 속에서 더 큰 잠재력을 발견할 수 있습니다. 예를 들어, 원하던 직장을 얻지 못했지만, 대신 얻은 새로운 기회에서 당신의 진정한 재능을 찾을 수도 있습니다.
+        </p>
 
-        <a href="story-synchronicity.html" class="card">
-          <h2>🌠 우연인 듯 우연 아닌: 동시성의 법칙</h2>
-          <p>칼 융이 말하는 '의미 있는 우연'. 생각하던 친구에게 전화가 오거나 특정 숫자가 반복되는 현상은 단순한 우연일까요?</p>
-          <span class="date">2026.01.15</span>
-        </a>
+        <div class="highlight">
+          "인생은 예측 불가능한 여정입니다. 하지만 그 예측 불가능성 속에서 우리는 가장 아름답고 소중한 순간들을 만날 수 있습니다. 변화를 두려워 마세요."
+        </div>
 
-        <a href="story-gamblers-fallacy.html" class="card">
-          <h2>🎲 붉은 용의 눈물: 도박사의 오류가 주는 교훈</h2>
-          <p>"이만큼 잃었으니 이제 딸 때가 됐어"라는 생각의 함정. 독립 시행의 냉정한 진실과 우리가 빠지기 쉬운 착각에 대하여.</p>
-          <span class="date">2026.01.15</span>
-        </a>
+        <h2>작은 행동이 만들어내는 나비효과</h2>
+        <p>
+          때로는 당신의 작은 행동 하나가 나비효과처럼 퍼져나가 예상치 못한 큰 행운으로 돌아오기도 합니다. 누군가에게 베푼 작은 친절, 시도해보지 않았던 새로운 도전, 혹은 단지 평소와 다른 길로 가본
+          것이 당신의 운명을 긍정적인 방향으로 이끌 수 있습니다. 이 모든 것은 당신이 변화에 얼마나 열려 있고, 기회를 포착할 준비가 되어 있는지에 달려 있습니다.
+        </p>
+        <p>
+          이러한 작은 전환점들을 알아보고 소중히 여기는 것이 중요합니다. 모든 순간은 잠재적인 행운을 품고 있으며, 그것을 현실로 만드는 것은 당신의 몫입니다.
+        </p>
 
-        <a href="story-butterfly-effect.html" class="card">
-          <h2>🦋 나비효과: 작은 선행이 불러오는 거대한 행운</h2>
-          <p>오늘 베푼 작은 친절이 어떻게 거대한 행운으로 돌아오는지, 긍정의 에너지가 만드는 기적 같은 연결고리에 대하여.</p>
-          <span class="date">2026.01.14</span>
-        </a>
+        <h2>당신의 행운을 믿고 행동하세요</h2>
+        <p>
+          신비한 반지 로또가 제시하는 숫자는 단순한 숫자가 아닙니다. 그것은 당신에게 찾아올 수 있는 '뜻밖의 행운'에 대한 상징일 수 있습니다. 이 숫자들이 당신의 삶에 긍정적인 변화를 가져올 것이라는
+          믿음으로, 오늘 하루를 새롭게 시작해 보세요.
+        </p>
+        <p>
+          행운은 가끔 숨어 있다가도, 당신이 발견해주기를 기다리고 있습니다. 당신의 직감을 믿고, 삶의 작은 전환점을 소중히 여기며 앞으로 나아가세요.
+        </p>
 
-        <a href="story-serendipity.html" class="card">
-          <h2>✨ 세렌디피티: 우연 속에서 발견하는 뜻밖의 기쁨</h2>
-          <p>계획된 길 밖에서 만나는 행복. 무작위가 주는 선물과 뜻밖의 행운(Serendipity)을 즐기는 마음가짐.</p>
-          <span class="date">2026.01.14</span>
-        </a>
+        <div class="cta-container">
+          <p>오늘, 당신의 삶을 바꿀 뜻밖의 행운의 숫자는 무엇일까요?</p>
+          <a href="index.html" class="btn-generate">🍀 오늘의 행운 번호 확인하기</a>
+        </div>
+      </article>
 
-        <a href="story-murphy-sally.html" class="card">
-          <h2>🌀 머피의 법칙 vs 샐리의 법칙</h2>
-          <p>왜 나에게만 불운이 닥치는 것 같을까? 불운을 행운으로 바꾸는 심리학적 '선택적 주의' 이론에 대하여.</p>
-          <span class="date">2026.01.13</span>
-        </a>
-
-        <a href="story-lucky-seven.html" class="card">
-          <h2>🎰 숫자 7은 왜 행운의 상징이 되었을까?</h2>
-          <p>럭키 세븐(Lucky Seven)의 유래와 역사. 완전수 3과 4의 만남, 그리고 수학적 비밀까지.</p>
-          <span class="date">2026.01.13</span>
-        </a>
-
-        <a href="story-probability.html" class="card">
-          <h2>🔮 로또 1등 확률의 진실과 심리학</h2>
-          <p>814만 분의 1이라는 숫자가 가지는 의미와, 사람들이 로또를 구매하는 심리적 이유에 대해 분석합니다.</p>
-          <span class="date">2026.01.10</span>
-        </a>
-
-        <a href="story-ring-power.html" class="card">
-          <h2>🧙‍♂️ 신비한 반지 속 운명의 힘</h2>
-          <p>프로도와 샘의 여정에서 '행운'은 어떤 역할을 했을까요? 중간계의 서사를 통해 본 운명론과 우리가 숫자를 선택하는 태도에 대한 고찰.</p>
-          <span class="date">2026.01.11</span>
-        </a>
-
-        <a href="story-animal-face.html" class="card">
-          <h2>🐾 동물상이 말해주는 당신의 성격</h2>
-          <p>AI 관점에서 본 강아지상과 고양이상의 차이점. 재미로 보는 것이지만, 오랜 데이터가 축적된 인공지능이 분석하는 나의 이미지 테스트.</p>
-          <span class="date">2026.01.11</span>
-        </a>
-
-        <a href="story-lucky-habits.html" class="card">
-          <h2>🍀 행운을 부르는 일상의 작은 습관들</h2>
-          <p>행운은 타고나는 것이 아니라 만들어가는 것입니다. 긍정적인 에너지를 끌어당기는 심리학적 습관 5가지를 소개합니다.</p>
-          <span class="date">2026.01.11</span>
-        </a>
-
-        <a href="story-statistics-lotto.html" class="card">
-          <h2>📊 로또 번호의 통계학적 분포와 진실</h2>
-          <p>무작위의 세계 속에서도 질서는 존재합니다. 통계학적으로 본 당첨 번호의 분포와 무작위성의 법칙에 대하여.</p>
-          <span class="date">2026.01.11</span>
-        </a>
-      </div>
+      <a href="blog.html" class="back-link">← 목록으로 돌아가기</a>
     </div>
 
     <footer
-      style="margin-top: 20px; font-size: 0.8rem; opacity: 0.6; padding: 20px; border-top: 1px solid var(--btn-border); width: 100%; max-width: 1000px; box-sizing: border-box; text-align: center"
+      style="margin-top: 20px; font-size: 0.8rem; opacity: 0.6; padding: 20px; border-top: 1px solid var(--btn-border); width: 100%; max-width: 800px; box-sizing: border-box; text-align: center"
     >
       <a href="privacy.html" style="color: inherit; margin-right: 15px">개인정보처리방침</a>
       <span>© 2026 Mystic Ring Lotto</span>
