@@ -18,11 +18,13 @@
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-DLFQSNY2FE"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+      window.dataLayer = window.dataLayer || []
+      function gtag() {
+        dataLayer.push(arguments)
+      }
+      gtag("js", new Date())
 
-      gtag('config', 'G-DLFQSNY2FE');
+      gtag("config", "G-DLFQSNY2FE")
     </script>
 
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2307043093255162" crossorigin="anonymous"></script>
@@ -61,17 +63,17 @@
         min-height: 100vh;
         overflow-x: hidden;
       }
-      
+
       .container {
         width: 100%;
         max-width: 1000px;
-        padding: 120px 20px 40px 20px;
+        padding: 80px 20px 40px 20px;
         box-sizing: border-box;
       }
 
       header {
         text-align: center;
-        margin-bottom: 40px;
+        margin-bottom: 60px;
       }
       h1 {
         font-family: "Cinzel", serif;
@@ -122,7 +124,7 @@
         margin-top: 15px;
         display: block;
       }
-      
+
       /* === Header Navigation === */
       .main-header {
         width: 100%;
@@ -151,7 +153,7 @@
       }
 
       .logo-area {
-        font-family: 'Cinzel', serif;
+        font-family: "Cinzel", serif;
         font-weight: 900;
         font-size: 1.2rem;
         color: var(--text-color);
@@ -173,132 +175,140 @@
         font-weight: 700;
         opacity: 0.8;
         transition: all 0.3s;
-        font-family: 'Cinzel', serif;
+        font-family: "Cinzel", serif;
         letter-spacing: 1px;
       }
-      .nav-item:lang(ko) { font-family: 'Nanum Myeongjo', serif; }
+      .nav-item:lang(ko) {
+        font-family: "Nanum Myeongjo", serif;
+      }
 
       .nav-item:hover {
         opacity: 1;
         text-shadow: 0 0 10px var(--shadow-color);
       }
-      
+
       .desktop-theme-toggle {
-          opacity: 0.8 !important;
+        opacity: 0.8 !important;
       }
 
       .desktop-theme-toggle:hover {
-          opacity: 1 !important;
-          text-shadow: 0 0 5px var(--shadow-color);
+        opacity: 1 !important;
+        text-shadow: 0 0 5px var(--shadow-color);
       }
-      
+
       /* === Mobile Drawer Styles === */
       .mobile-header-controls {
-          display: none; /* Hidden on desktop */
+        display: none; /* Hidden on desktop */
       }
 
       .hamburger-btn {
-          background: transparent;
-          border: none;
-          color: var(--text-color);
-          font-size: 1.5rem;
-          cursor: pointer;
-          padding: 5px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          margin-left: 10px;
+        background: transparent;
+        border: none;
+        color: var(--text-color);
+        font-size: 1.5rem;
+        cursor: pointer;
+        padding: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-left: 10px;
       }
-      
+
       .mobile-drawer {
-          position: fixed;
-          top: 0;
-          right: -280px; /* Hidden by default */
-          width: 260px;
-          height: 100vh;
-          background: var(--bg-color);
-          border-left: 1px solid var(--btn-border);
-          box-shadow: -5px 0 15px rgba(0,0,0,0.5);
-          z-index: 2000;
-          transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-          padding: 20px;
-          display: flex;
-          flex-direction: column;
-          box-sizing: border-box;
+        position: fixed;
+        top: 0;
+        right: -280px; /* Hidden by default */
+        width: 260px;
+        height: 100vh;
+        background: var(--bg-color);
+        border-left: 1px solid var(--btn-border);
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.5);
+        z-index: 2000;
+        transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        box-sizing: border-box;
       }
-      
+
       .mobile-drawer.open {
-          right: 0;
+        right: 0;
       }
 
       .drawer-header {
-          width: 100%;
-          padding-bottom: 10px;
-          border-bottom: 1px solid rgba(184, 134, 11, 0.2);
-          margin-bottom: 20px !important; /* Ensure spacing */
+        width: 100%;
+        padding-bottom: 10px;
+        border-bottom: 1px solid rgba(184, 134, 11, 0.2);
+        margin-bottom: 20px !important; /* Ensure spacing */
       }
 
       .close-btn {
-          background: transparent;
-          border: none;
-          color: var(--text-color);
-          font-size: 2.2rem; /* Slightly larger for touch */
-          cursor: pointer;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          line-height: 1;
+        background: transparent;
+        border: none;
+        color: var(--text-color);
+        font-size: 2.2rem; /* Slightly larger for touch */
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        line-height: 1;
       }
 
       .drawer-nav {
-          display: flex;
-          flex-direction: column;
-          gap: 25px;
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
       }
 
       .drawer-item {
-          color: var(--text-color);
-          text-decoration: none;
-          font-size: 1.1rem;
-          font-weight: bold;
-          padding-bottom: 10px;
-          border-bottom: 1px dashed rgba(184, 134, 11, 0.3);
-          font-family: 'Nanum Myeongjo', serif;
-          display: block;
+        color: var(--text-color);
+        text-decoration: none;
+        font-size: 1.1rem;
+        font-weight: bold;
+        padding-bottom: 10px;
+        border-bottom: 1px dashed rgba(184, 134, 11, 0.3);
+        font-family: "Nanum Myeongjo", serif;
+        display: block;
       }
-      
+
       /* Overlay */
       .drawer-overlay {
-          position: fixed;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          background: rgba(0,0,0,0.7);
-          z-index: 1500;
-          display: none;
-          opacity: 0;
-          transition: opacity 0.3s;
-          backdrop-filter: blur(3px);
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.7);
+        z-index: 1500;
+        display: none;
+        opacity: 0;
+        transition: opacity 0.3s;
+        backdrop-filter: blur(3px);
       }
       .drawer-overlay.active {
-          display: block;
-          opacity: 1;
+        display: block;
+        opacity: 1;
       }
 
       @media (max-width: 900px) {
         .main-header {
-            justify-content: space-between; /* Important for alignment */
-            padding: 0 20px;
+          justify-content: space-between; /* Important for alignment */
+          padding: 0 20px;
         }
-        .nav-menu { display: none; }
-        .desktop-theme-toggle { display: none !important; }
+        .nav-menu {
+          display: none;
+        }
+        .desktop-theme-toggle {
+          display: none !important;
+        }
         .mobile-header-controls {
-            display: flex;
-            align-items: center;
-            gap: 15px;
+          display: flex;
+          align-items: center;
+          gap: 15px;
         }
-        .logo-area { font-size: 1.3rem; }
+        .logo-area {
+          font-size: 1.3rem;
+        }
       }
     </style>
   </head>
@@ -308,153 +318,188 @@
 
     <!-- Global Header -->
     <header class="main-header">
-        <a href="index.html" class="logo-area">
-            <span style="font-size: 1.5rem;">💍</span> MRL
-        </a>
-        
-        <!-- Desktop Menu -->
-        <nav class="nav-menu">
-            <a href="dream-lotto.html" class="nav-item">DREAM</a>
-            <a href="animal-test.html" class="nav-item">ANIMAL</a>
-            <a href="blog.html" class="nav-item">ARCHIVE</a>
-            <a href="share-luck.html" class="nav-item">COMMUNITY</a>
-            <a href="contact.html" class="nav-item">CONTACT</a>
-        </nav>
-        
-        <button id="desktopThemeToggleText" style="background: transparent; border: none; color: var(--mystic-text-color); font-family: 'Nanum Myeongjo', serif; font-size: 0.9rem; cursor: pointer; display: flex; align-items: center; gap: 8px; opacity: 0.8; transition: opacity 0.3s;" class="desktop-theme-toggle">
-            <span>다크 모드</span>
-            <span id="desktopThemeStatus" style="font-weight: bold; color: var(--text-color);">ON</span>
-        </button>
+      <a href="index.html" class="logo-area">
+        <span style="font-size: 1.5rem">💍</span>
+        MRL
+      </a>
 
-        <!-- Mobile Controls -->
-        <div class="mobile-header-controls">
-            <button class="hamburger-btn" id="menuBtn" aria-label="Open Menu">☰</button>
-        </div>
+      <!-- Desktop Menu -->
+      <nav class="nav-menu">
+        <a href="dream-lotto.html" class="nav-item">DREAM</a>
+        <a href="animal-test.html" class="nav-item">ANIMAL</a>
+        <a href="blog.html" class="nav-item">ARCHIVE</a>
+        <a href="share-luck.html" class="nav-item">COMMUNITY</a>
+        <a href="contact.html" class="nav-item">CONTACT</a>
+      </nav>
+
+      <button
+        id="desktopThemeToggleText"
+        style="
+          background: transparent;
+          border: none;
+          color: var(--mystic-text-color);
+          font-family: 'Nanum Myeongjo', serif;
+          font-size: 0.9rem;
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          opacity: 0.8;
+          transition: opacity 0.3s;
+        "
+        class="desktop-theme-toggle"
+      >
+        <span>다크 모드</span>
+        <span id="desktopThemeStatus" style="font-weight: bold; color: var(--text-color)">ON</span>
+      </button>
+
+      <!-- Mobile Controls -->
+      <div class="mobile-header-controls">
+        <button class="hamburger-btn" id="menuBtn" aria-label="Open Menu">☰</button>
+      </div>
     </header>
 
     <!-- Mobile Drawer -->
     <div class="mobile-drawer" id="mobileDrawer">
-        <div class="drawer-header" style="display: flex; justify-content: flex-end; align-items: center; margin-bottom: 30px;">
-            <button class="close-btn" id="closeBtn" style="margin: 0;">×</button>
-        </div>
-        <nav class="drawer-nav" style="flex-grow: 1;">
-            <a href="dream-lotto.html" class="drawer-item">🌙 꿈해몽 변환기</a>
-            <a href="animal-test.html" class="drawer-item">🐾 동물상 테스트</a>
-            <a href="blog.html" class="drawer-item">📜 운명의 기록관</a>
-            <a href="share-luck.html" class="drawer-item">💬 행운 공유소</a>
-            <a href="contact.html" class="drawer-item">✉️ 예언 신청</a>
-        </nav>
-        <div class="drawer-footer" style="margin-top: auto; padding-top: 20px; border-top: 1px solid rgba(184, 134, 11, 0.1);">
-            <button id="mobileThemeToggleText" style="background: transparent; border: none; color: var(--mystic-text-color); font-family: 'Nanum Myeongjo', serif; font-size: 0.9rem; cursor: pointer; display: flex; align-items: center; justify-content: space-between; width: 100%; padding: 10px 0; opacity: 0.8;">
-                <span>다크 모드</span>
-                <span id="themeStatus" style="font-weight: bold; color: var(--text-color);">ON</span>
-            </button>
-        </div>
+      <div class="drawer-header" style="display: flex; justify-content: flex-end; align-items: center; margin-bottom: 30px">
+        <button class="close-btn" id="closeBtn" style="margin: 0">×</button>
+      </div>
+      <nav class="drawer-nav" style="flex-grow: 1">
+        <a href="dream-lotto.html" class="drawer-item">🌙 꿈해몽 변환기</a>
+        <a href="animal-test.html" class="drawer-item">🐾 동물상 테스트</a>
+        <a href="blog.html" class="drawer-item">📜 운명의 기록관</a>
+        <a href="share-luck.html" class="drawer-item">💬 행운 공유소</a>
+        <a href="contact.html" class="drawer-item">✉️ 예언 신청</a>
+      </nav>
+      <div class="drawer-footer" style="margin-top: auto; padding-top: 20px; border-top: 1px solid rgba(184, 134, 11, 0.1)">
+        <button
+          id="mobileThemeToggleText"
+          style="
+            background: transparent;
+            border: none;
+            color: var(--mystic-text-color);
+            font-family: 'Nanum Myeongjo', serif;
+            font-size: 0.9rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            padding: 10px 0;
+            opacity: 0.8;
+          "
+        >
+          <span>다크 모드</span>
+          <span id="themeStatus" style="font-weight: bold; color: var(--text-color)">ON</span>
+        </button>
+      </div>
     </div>
-    
+
     <div class="container">
-        <header>
-          <h1>ARCHIVES OF FATE</h1>
-          <div class="subtitle">운명과 확률, 그리고 숫자에 관한 이야기</div>
-        </header>
+      <header>
+        <h1>ARCHIVES OF FATE</h1>
+        <div class="subtitle">운명과 확률, 그리고 숫자에 관한 이야기</div>
+      </header>
 
-        <div class="grid">
-          <a href="story-synchronicity.html" class="card">
-            <h2>🌠 우연인 듯 우연 아닌: 동시성의 법칙</h2>
-            <p>칼 융이 말하는 '의미 있는 우연'. 생각하던 친구에게 전화가 오거나 특정 숫자가 반복되는 현상은 단순한 우연일까요?</p>
-            <span class="date">2026.01.15</span>
-          </a>
+      <div class="grid">
+        <a href="story-synchronicity.html" class="card">
+          <h2>🌠 우연인 듯 우연 아닌: 동시성의 법칙</h2>
+          <p>칼 융이 말하는 '의미 있는 우연'. 생각하던 친구에게 전화가 오거나 특정 숫자가 반복되는 현상은 단순한 우연일까요?</p>
+          <span class="date">2026.01.15</span>
+        </a>
 
-          <a href="story-gamblers-fallacy.html" class="card">
-            <h2>🎲 붉은 용의 눈물: 도박사의 오류가 주는 교훈</h2>
-            <p>"이만큼 잃었으니 이제 딸 때가 됐어"라는 생각의 함정. 독립 시행의 냉정한 진실과 우리가 빠지기 쉬운 착각에 대하여.</p>
-            <span class="date">2026.01.15</span>
-          </a>
+        <a href="story-gamblers-fallacy.html" class="card">
+          <h2>🎲 붉은 용의 눈물: 도박사의 오류가 주는 교훈</h2>
+          <p>"이만큼 잃었으니 이제 딸 때가 됐어"라는 생각의 함정. 독립 시행의 냉정한 진실과 우리가 빠지기 쉬운 착각에 대하여.</p>
+          <span class="date">2026.01.15</span>
+        </a>
 
-          <a href="story-butterfly-effect.html" class="card">
-            <h2>🦋 나비효과: 작은 선행이 불러오는 거대한 행운</h2>
-            <p>오늘 베푼 작은 친절이 어떻게 거대한 행운으로 돌아오는지, 긍정의 에너지가 만드는 기적 같은 연결고리에 대하여.</p>
-            <span class="date">2026.01.14</span>
-          </a>
+        <a href="story-butterfly-effect.html" class="card">
+          <h2>🦋 나비효과: 작은 선행이 불러오는 거대한 행운</h2>
+          <p>오늘 베푼 작은 친절이 어떻게 거대한 행운으로 돌아오는지, 긍정의 에너지가 만드는 기적 같은 연결고리에 대하여.</p>
+          <span class="date">2026.01.14</span>
+        </a>
 
-          <a href="story-serendipity.html" class="card">
-            <h2>✨ 세렌디피티: 우연 속에서 발견하는 뜻밖의 기쁨</h2>
-            <p>계획된 길 밖에서 만나는 행복. 무작위가 주는 선물과 뜻밖의 행운(Serendipity)을 즐기는 마음가짐.</p>
-            <span class="date">2026.01.14</span>
-          </a>
+        <a href="story-serendipity.html" class="card">
+          <h2>✨ 세렌디피티: 우연 속에서 발견하는 뜻밖의 기쁨</h2>
+          <p>계획된 길 밖에서 만나는 행복. 무작위가 주는 선물과 뜻밖의 행운(Serendipity)을 즐기는 마음가짐.</p>
+          <span class="date">2026.01.14</span>
+        </a>
 
-          <a href="story-murphy-sally.html" class="card">
-            <h2>🌀 머피의 법칙 vs 샐리의 법칙</h2>
-            <p>왜 나에게만 불운이 닥치는 것 같을까? 불운을 행운으로 바꾸는 심리학적 '선택적 주의' 이론에 대하여.</p>
-            <span class="date">2026.01.13</span>
-          </a>
+        <a href="story-murphy-sally.html" class="card">
+          <h2>🌀 머피의 법칙 vs 샐리의 법칙</h2>
+          <p>왜 나에게만 불운이 닥치는 것 같을까? 불운을 행운으로 바꾸는 심리학적 '선택적 주의' 이론에 대하여.</p>
+          <span class="date">2026.01.13</span>
+        </a>
 
-          <a href="story-lucky-seven.html" class="card">
-            <h2>🎰 숫자 7은 왜 행운의 상징이 되었을까?</h2>
-            <p>럭키 세븐(Lucky Seven)의 유래와 역사. 완전수 3과 4의 만남, 그리고 수학적 비밀까지.</p>
-            <span class="date">2026.01.13</span>
-          </a>
+        <a href="story-lucky-seven.html" class="card">
+          <h2>🎰 숫자 7은 왜 행운의 상징이 되었을까?</h2>
+          <p>럭키 세븐(Lucky Seven)의 유래와 역사. 완전수 3과 4의 만남, 그리고 수학적 비밀까지.</p>
+          <span class="date">2026.01.13</span>
+        </a>
 
-          <a href="story-probability.html" class="card">
-            <h2>🔮 로또 1등 확률의 진실과 심리학</h2>
-            <p>814만 분의 1이라는 숫자가 가지는 의미와, 사람들이 로또를 구매하는 심리적 이유에 대해 분석합니다.</p>
-            <span class="date">2026.01.10</span>
-          </a>
+        <a href="story-probability.html" class="card">
+          <h2>🔮 로또 1등 확률의 진실과 심리학</h2>
+          <p>814만 분의 1이라는 숫자가 가지는 의미와, 사람들이 로또를 구매하는 심리적 이유에 대해 분석합니다.</p>
+          <span class="date">2026.01.10</span>
+        </a>
 
-          <a href="story-ring-power.html" class="card">
-            <h2>🧙‍♂️ 신비한 반지 속 운명의 힘</h2>
-            <p>프로도와 샘의 여정에서 '행운'은 어떤 역할을 했을까요? 중간계의 서사를 통해 본 운명론과 우리가 숫자를 선택하는 태도에 대한 고찰.</p>
-            <span class="date">2026.01.11</span>
-          </a>
+        <a href="story-ring-power.html" class="card">
+          <h2>🧙‍♂️ 신비한 반지 속 운명의 힘</h2>
+          <p>프로도와 샘의 여정에서 '행운'은 어떤 역할을 했을까요? 중간계의 서사를 통해 본 운명론과 우리가 숫자를 선택하는 태도에 대한 고찰.</p>
+          <span class="date">2026.01.11</span>
+        </a>
 
-          <a href="story-animal-face.html" class="card">
-            <h2>🐾 동물상이 말해주는 당신의 성격</h2>
-            <p>AI 관점에서 본 강아지상과 고양이상의 차이점. 재미로 보는 것이지만, 오랜 데이터가 축적된 인공지능이 분석하는 나의 이미지 테스트.</p>
-            <span class="date">2026.01.11</span>
-          </a>
+        <a href="story-animal-face.html" class="card">
+          <h2>🐾 동물상이 말해주는 당신의 성격</h2>
+          <p>AI 관점에서 본 강아지상과 고양이상의 차이점. 재미로 보는 것이지만, 오랜 데이터가 축적된 인공지능이 분석하는 나의 이미지 테스트.</p>
+          <span class="date">2026.01.11</span>
+        </a>
 
-          <a href="story-lucky-habits.html" class="card">
-            <h2>🍀 행운을 부르는 일상의 작은 습관들</h2>
-            <p>행운은 타고나는 것이 아니라 만들어가는 것입니다. 긍정적인 에너지를 끌어당기는 심리학적 습관 5가지를 소개합니다.</p>
-            <span class="date">2026.01.11</span>
-          </a>
+        <a href="story-lucky-habits.html" class="card">
+          <h2>🍀 행운을 부르는 일상의 작은 습관들</h2>
+          <p>행운은 타고나는 것이 아니라 만들어가는 것입니다. 긍정적인 에너지를 끌어당기는 심리학적 습관 5가지를 소개합니다.</p>
+          <span class="date">2026.01.11</span>
+        </a>
 
-          <a href="story-statistics-lotto.html" class="card">
-            <h2>📊 로또 번호의 통계학적 분포와 진실</h2>
-            <p>무작위의 세계 속에서도 질서는 존재합니다. 통계학적으로 본 당첨 번호의 분포와 무작위성의 법칙에 대하여.</p>
-            <span class="date">2026.01.11</span>
-          </a>
-        </div>
+        <a href="story-statistics-lotto.html" class="card">
+          <h2>📊 로또 번호의 통계학적 분포와 진실</h2>
+          <p>무작위의 세계 속에서도 질서는 존재합니다. 통계학적으로 본 당첨 번호의 분포와 무작위성의 법칙에 대하여.</p>
+          <span class="date">2026.01.11</span>
+        </a>
+      </div>
     </div>
-    
-    <footer style="margin-top: 20px; font-size: 0.8rem; opacity: 0.6; padding: 20px; border-top: 1px solid var(--btn-border); width: 100%; max-width: 1000px; box-sizing: border-box; text-align: center;">
-        <a href="privacy.html" style="color: inherit; margin-right: 15px;">개인정보처리방침</a>
-        <span>© 2026 Mystic Ring Lotto</span>
+
+    <footer
+      style="margin-top: 20px; font-size: 0.8rem; opacity: 0.6; padding: 20px; border-top: 1px solid var(--btn-border); width: 100%; max-width: 1000px; box-sizing: border-box; text-align: center"
+    >
+      <a href="privacy.html" style="color: inherit; margin-right: 15px">개인정보처리방침</a>
+      <span>© 2026 Mystic Ring Lotto</span>
     </footer>
 
     <script>
       // Mobile Drawer Logic
-      const menuBtn = document.getElementById("menuBtn");
-      const closeBtn = document.getElementById("closeBtn");
-      const mobileDrawer = document.getElementById("mobileDrawer");
-      const overlay = document.getElementById("drawerOverlay");
+      const menuBtn = document.getElementById("menuBtn")
+      const closeBtn = document.getElementById("closeBtn")
+      const mobileDrawer = document.getElementById("mobileDrawer")
+      const overlay = document.getElementById("drawerOverlay")
 
       function openDrawer() {
-          mobileDrawer.classList.add('open');
-          overlay.classList.add('active');
-          document.body.style.overflow = 'hidden'; // Prevent scrolling
+        mobileDrawer.classList.add("open")
+        overlay.classList.add("active")
+        document.body.style.overflow = "hidden" // Prevent scrolling
       }
 
       function closeDrawer() {
-          mobileDrawer.classList.remove('open');
-          overlay.classList.remove('active');
-          document.body.style.overflow = '';
+        mobileDrawer.classList.remove("open")
+        overlay.classList.remove("active")
+        document.body.style.overflow = ""
       }
 
-      if(menuBtn) menuBtn.addEventListener('click', openDrawer);
-      if(closeBtn) closeBtn.addEventListener('click', closeDrawer);
-      if(overlay) overlay.addEventListener('click', closeDrawer);
-      
+      if (menuBtn) menuBtn.addEventListener("click", openDrawer)
+      if (closeBtn) closeBtn.addEventListener("click", closeDrawer)
+      if (overlay) overlay.addEventListener("click", closeDrawer)
+
       // Theme Logic
       const desktopThemeToggleText = document.getElementById("desktopThemeToggleText")
       const desktopThemeStatus = document.getElementById("desktopThemeStatus")
@@ -466,31 +511,31 @@
       if (savedTheme === "light") {
         isDark = false
         document.documentElement.setAttribute("data-theme", "light")
-        if(desktopThemeStatus) desktopThemeStatus.textContent = "OFF"
-        if(themeStatus) themeStatus.textContent = "OFF"
+        if (desktopThemeStatus) desktopThemeStatus.textContent = "OFF"
+        if (themeStatus) themeStatus.textContent = "OFF"
       }
 
       function toggleTheme() {
         isDark = !isDark
         if (isDark) {
           document.documentElement.removeAttribute("data-theme")
-          if(desktopThemeStatus) desktopThemeStatus.textContent = "ON"
-          if(themeStatus) themeStatus.textContent = "ON"
+          if (desktopThemeStatus) desktopThemeStatus.textContent = "ON"
+          if (themeStatus) themeStatus.textContent = "ON"
           localStorage.setItem("theme", "dark")
         } else {
           document.documentElement.setAttribute("data-theme", "light")
-          if(desktopThemeStatus) desktopThemeStatus.textContent = "OFF"
-          if(themeStatus) themeStatus.textContent = "OFF"
+          if (desktopThemeStatus) desktopThemeStatus.textContent = "OFF"
+          if (themeStatus) themeStatus.textContent = "OFF"
           localStorage.setItem("theme", "light")
         }
       }
 
-      if(desktopThemeToggleText) desktopThemeToggleText.addEventListener("click", toggleTheme)
-      if(mobileThemeToggleText) mobileThemeToggleText.addEventListener("click", toggleTheme)
-      
+      if (desktopThemeToggleText) desktopThemeToggleText.addEventListener("click", toggleTheme)
+      if (mobileThemeToggleText) mobileThemeToggleText.addEventListener("click", toggleTheme)
+
       // Scroll Effect for Header
       const header = document.querySelector(".main-header")
-      
+
       window.addEventListener("scroll", () => {
         if (window.scrollY > 50) {
           header.classList.add("scrolled")
