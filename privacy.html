@@ -23,73 +23,192 @@
 
       gtag('config', 'G-DLFQSNY2FE');
     </script>
-
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2307043093255162" crossorigin="anonymous"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap');
+      @import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Nanum+Myeongjo:wght@400;700;800&display=swap");
 
-        :root {
-            --bg-color: #1a1a1a;
-            --text-color: #b8860b;
-            --btn-border: #b8860b;
-        }
+      :root {
+        --bg-color: #1a1a1a;
+        --text-color: #b8860b;
+        --btn-border: #b8860b;
+        --header-bg: rgba(0, 0, 0, 0.2);
+        --mystic-text-color: rgba(184, 134, 11, 0.6);
+        --shadow-color: rgba(184, 134, 11, 0.5);
+        --line-color: rgba(184, 134, 11, 0.3);
+      }
 
-        [data-theme="light"] {
-            --bg-color: #e8e4d9;
-            --text-color: #5d4037;
-            --btn-border: #5d4037;
-        }
+      [data-theme="light"] {
+        --bg-color: #e8e4d9;
+        --text-color: #5d4037;
+        --btn-border: #5d4037;
+        --header-bg: rgba(255, 255, 255, 0.2);
+        --mystic-text-color: rgba(93, 64, 55, 0.7);
+        --shadow-color: rgba(93, 64, 55, 0.3);
+        --line-color: rgba(93, 64, 55, 0.3);
+      }
 
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            font-family: 'Nanum Myeongjo', serif;
-            line-height: 1.6;
-            padding: 20px;
-            max-width: 800px;
-            margin: 0 auto;
-        }
+      body { background-color: var(--bg-color); color: var(--text-color); font-family: 'Nanum Myeongjo', serif; margin: 0; padding:0; display: flex; flex-direction: column; align-items: center; min-height: 100vh; overflow-x: hidden; }
+      .container { width: 100%; max-width: 800px; padding: 120px 20px 40px 20px; box-sizing: border-box; line-height: 1.8; }
+      article { width: 100%; }
+      article h1 { font-size: 2rem; margin-bottom: 20px; border-bottom: 2px solid var(--line-color); padding-bottom: 20px; word-break: keep-all; }
+      article h2 { margin-top: 40px; font-size: 1.4rem; color: var(--text-color); }
+      article p, article ul { margin-bottom: 20px; font-size: 1rem; opacity: 0.9; }
+      article a { color: var(--text-color); }
+      .back-link { display: inline-block; margin-top: 40px; color: var(--mystic-text-color); text-decoration: none; font-size: 0.9rem; border-bottom: 1px dashed var(--mystic-text-color); transition: color 0.3s; }
+      .back-link:hover { color: var(--text-color); }
 
-        h1 { margin-bottom: 20px; border-bottom: 1px solid var(--btn-border); padding-bottom: 10px; }
-        h2 { margin-top: 30px; font-size: 1.2rem; }
-        p { margin-bottom: 15px; font-size: 0.95rem; opacity: 0.9; }
-        
-        a { color: var(--text-color); text-decoration: none; border-bottom: 1px dashed var(--btn-border); }
-        .back-btn { display: inline-block; margin-bottom: 30px; }
+      /* === Header Navigation === */
+      .main-header { width: 100%; position: fixed; top: 0; left: 0; height: 60px; background: transparent; backdrop-filter: none; -webkit-backdrop-filter: none; display: flex; align-items: center; justify-content: space-between; padding: 0 30px; box-sizing: border-box; z-index: 1000; transition: background 0.4s ease, backdrop-filter 0.4s ease, border-bottom 0.4s ease; border-bottom: 1px solid transparent; }
+      .main-header.scrolled { background: var(--header-bg); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid rgba(184, 134, 11, 0.1); }
+      .logo-area { font-family: 'Cinzel', serif; font-weight: 900; font-size: 1.2rem; color: var(--text-color); text-decoration: none; display: flex; align-items: center; gap: 8px; }
+      .nav-menu { display: flex; gap: 20px; }
+      .nav-item { color: var(--text-color); text-decoration: none; font-size: 0.95rem; font-weight: 700; opacity: 0.8; transition: all 0.3s; font-family: 'Cinzel', serif; letter-spacing: 1px; }
+      .nav-item:lang(ko) { font-family: 'Nanum Myeongjo', serif; }
+      .nav-item:hover { opacity: 1; text-shadow: 0 0 10px var(--shadow-color); }
+      .desktop-theme-toggle { opacity: 0.8 !important; }
+      .desktop-theme-toggle:hover { opacity: 1 !important; text-shadow: 0 0 5px var(--shadow-color); }
+      .mobile-header-controls { display: none; }
+      .hamburger-btn { background: transparent; border: none; color: var(--text-color); font-size: 1.5rem; cursor: pointer; padding: 5px; display: flex; align-items: center; justify-content: center; margin-left: 10px; }
+      .mobile-drawer { position: fixed; top: 0; right: -280px; width: 260px; height: 100vh; background: var(--bg-color); border-left: 1px solid var(--btn-border); box-shadow: -5px 0 15px rgba(0,0,0,0.5); z-index: 2000; transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1); padding: 20px; display: flex; flex-direction: column; box-sizing: border-box; }
+      .mobile-drawer.open { right: 0; }
+      .drawer-header { width: 100%; padding-bottom: 10px; border-bottom: 1px solid rgba(184, 134, 11, 0.2); margin-bottom: 20px !important; }
+      .close-btn { background: transparent; border: none; color: var(--text-color); font-size: 2.2rem; cursor: pointer; display: flex; align-items: center; justify-content: center; line-height: 1; }
+      .drawer-nav { display: flex; flex-direction: column; gap: 25px; }
+      .drawer-item { color: var(--text-color); text-decoration: none; font-size: 1.1rem; font-weight: bold; padding-bottom: 10px; border-bottom: 1px dashed rgba(184, 134, 11, 0.3); font-family: 'Nanum Myeongjo', serif; display: block; }
+      .drawer-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 1500; display: none; opacity: 0; transition: opacity 0.3s; backdrop-filter: blur(3px); }
+      .drawer-overlay.active { display: block; opacity: 1; }
+      @media (max-width: 900px) { .main-header { justify-content: space-between; padding: 0 20px; } .nav-menu { display: none; } .desktop-theme-toggle { display: none !important; } .mobile-header-controls { display: flex; align-items: center; gap: 15px; } .logo-area { font-size: 1.3rem; } }
     </style>
 </head>
 <body>
-    <a href="index.html" class="back-btn">← 메인으로 돌아가기</a>
+    <div class="drawer-overlay" id="drawerOverlay"></div>
+    <header class="main-header">
+        <a href="index.html" class="logo-area">
+            <span style="font-size: 1.5rem;">💍</span> MRL
+        </a>
+        <nav class="nav-menu">
+            <a href="dream-lotto.html" class="nav-item">DREAM</a>
+            <a href="animal-test.html" class="nav-item">ANIMAL</a>
+            <a href="blog.html" class="nav-item">ARCHIVE</a>
+            <a href="share-luck.html" class="nav-item">COMMUNITY</a>
+            <a href="contact.html" class="nav-item">CONTACT</a>
+        </nav>
+        <button id="desktopThemeToggleText" style="background: transparent; border: none; color: var(--mystic-text-color); font-family: 'Nanum Myeongjo', serif; font-size: 0.9rem; cursor: pointer; display: flex; align-items: center; gap: 8px; opacity: 0.8; transition: opacity 0.3s;" class="desktop-theme-toggle">
+            <span>다크 모드</span>
+            <span id="desktopThemeStatus" style="font-weight: bold; color: var(--text-color);">ON</span>
+        </button>
+        <div class="mobile-header-controls">
+            <button class="hamburger-btn" id="menuBtn" aria-label="Open Menu">☰</button>
+        </div>
+    </header>
+    <div class="mobile-drawer" id="mobileDrawer">
+        <div class="drawer-header" style="display: flex; justify-content: flex-end; align-items: center; margin-bottom: 30px;">
+            <button class="close-btn" id="closeBtn" style="margin: 0;">×</button>
+        </div>
+        <nav class="drawer-nav" style="flex-grow: 1;">
+            <a href="dream-lotto.html" class="drawer-item">🌙 꿈해몽 변환기</a>
+            <a href="animal-test.html" class="drawer-item">🐾 동물상 테스트</a>
+            <a href="blog.html" class="drawer-item">📜 운명의 기록관</a>
+            <a href="share-luck.html" class="drawer-item">💬 행운 공유소</a>
+            <a href="contact.html" class="drawer-item">✉️ 예언 신청</a>
+        </nav>
+        <div class="drawer-footer" style="margin-top: auto; padding-top: 20px; border-top: 1px solid rgba(184, 134, 11, 0.1);">
+            <button id="mobileThemeToggleText" style="background: transparent; border: none; color: var(--mystic-text-color); font-family: 'Nanum Myeongjo', serif; font-size: 0.9rem; cursor: pointer; display: flex; align-items: center; justify-content: space-between; width: 100%; padding: 10px 0; opacity: 0.8;">
+                <span>다크 모드</span>
+                <span id="themeStatus" style="font-weight: bold; color: var(--text-color);">ON</span>
+            </button>
+        </div>
+    </div>
 
-    <h1>개인정보처리방침</h1>
+    <div class="container">
+        <article>
+            <h1>개인정보처리방침</h1>
+            <p>본 '신비한 반지 로또'(이하 '사이트')는 이용자의 개인정보를 중요시하며, '개인정보 보호법' 등 관련 법령을 준수하고 있습니다.</p>
 
-    <p>본 '신비한 반지 로또'(이하 '사이트')는 이용자의 개인정보를 중요시하며, '개인정보 보호법' 등 관련 법령을 준수하고 있습니다.</p>
+            <h2>1. 수집하는 개인정보 항목</h2>
+            <p>본 사이트는 별도의 회원가입 없이 이용 가능하며, 서비스 이용 과정에서 다음과 같은 정보가 자동으로 생성되어 수집될 수 있습니다.</p>
+            <ul>
+                <li>IP 주소, 쿠키(Cookie), 방문 일시, 서비스 이용 기록, 기기 정보</li>
+            </ul>
+            <p>* 동물상 테스트를 위해 업로드된 이미지는 서버에 저장되지 않으며, 브라우저 내에서만 처리됩니다.</p>
 
-    <h2>1. 수집하는 개인정보 항목</h2>
-    <p>본 사이트는 별도의 회원가입 없이 이용 가능하며, 서비스 이용 과정에서 다음과 같은 정보가 자동으로 생성되어 수집될 수 있습니다.</p>
-    <ul>
-        <li>IP 주소, 쿠키(Cookie), 방문 일시, 서비스 이용 기록, 기기 정보</li>
-    </ul>
-    <p>* 동물상 테스트를 위해 업로드된 이미지는 서버에 저장되지 않으며, 브라우저 내에서만 처리됩니다.</p>
+            <h2>2. 개인정보의 수집 및 이용 목적</h2>
+            <p>수집된 정보는 다음의 목적을 위해서만 이용됩니다.</p>
+            <ul>
+                <li>서비스 제공 및 기능 개선</li>
+                <li>Google AdSense 광고 게재 및 최적화</li>
+                <li>접속 빈도 파악 및 서비스 이용 통계</li>
+            </ul>
 
-    <h2>2. 개인정보의 수집 및 이용 목적</h2>
-    <p>수집된 정보는 다음의 목적을 위해서만 이용됩니다.</p>
-    <ul>
-        <li>서비스 제공 및 기능 개선</li>
-        <li>Google AdSense 광고 게재 및 최적화</li>
-        <li>접속 빈도 파악 및 서비스 이용 통계</li>
-    </ul>
+            <h2>3. 쿠키(Cookie)의 운용 및 거부</h2>
+            <p>본 사이트는 이용자에게 맞춤형 서비스를 제공하기 위해 쿠키를 사용합니다. 쿠키는 웹사이트 서버가 이용자의 브라우저에게 전송하는 소량의 정보입니다.</p>
+            <p><strong>Google AdSense 쿠키:</strong> 타사 공급업체(Google 등)는 쿠키를 사용하여 사용자의 이전 웹사이트 방문 기록을 기반으로 광고를 게재합니다. 사용자는 <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener noreferrer">광고 설정</a>을 방문하여 맞춤광고를 사용 중지할 수 있습니다.</p>
 
-    <h2>3. 쿠키(Cookie)의 운용 및 거부</h2>
-    <p>본 사이트는 이용자에게 맞춤형 서비스를 제공하기 위해 쿠키를 사용합니다. 쿠키는 웹사이트 서버가 이용자의 브라우저에게 전송하는 소량의 정보입니다.</p>
-    <p><strong>Google AdSense 쿠키:</strong> 타사 공급업체(Google 등)는 쿠키를 사용하여 사용자의 이전 웹사이트 방문 기록을 기반으로 광고를 게재합니다. 사용자는 광고 설정(www.google.com/settings/ads)을 방문하여 맞춤광고를 사용 중지할 수 있습니다.</p>
+            <h2>4. 제3자 제공</h2>
+            <p>본 사이트는 법령에 근거하거나 이용자의 동의가 있는 경우를 제외하고는 개인정보를 제3자에게 제공하지 않습니다.</p>
 
-    <h2>4. 제3자 제공</h2>
-    <p>본 사이트는 법령에 근거하거나 이용자의 동의가 있는 경우를 제외하고는 개인정보를 제3자에게 제공하지 않습니다.</p>
+            <h2>5. 문의처</h2>
+            <p>개인정보 관련 문의는 사이트 내 <a href="contact.html">예언 신청</a> 폼을 통해 문의해주시기 바랍니다.</p>
 
-    <h2>5. 문의처</h2>
-    <p>개인정보 관련 문의는 사이트 내 '전문적인 예언 신청하기' 폼을 통해 문의해주시기 바랍니다.</p>
+            <p style="margin-top: 50px; font-size: 0.8rem; opacity: 0.7;">시행일자: 2026년 1월 10일</p>
+        </article>
+        <a href="index.html" class="back-link">← 메인으로 돌아가기</a>
+    </div>
 
-    <p style="margin-top: 50px; font-size: 0.8rem; opacity: 0.7;">시행일자: 2026년 1월 10일</p>
+    <footer style="margin-top: 20px; font-size: 0.8rem; opacity: 0.6; padding: 20px; border-top: 1px solid var(--btn-border); width: 100%; max-width: 800px; box-sizing: border-box; text-align: center;">
+        <a href="privacy.html" style="color: inherit; margin-right: 15px;">개인정보처리방침</a>
+        <span>© 2026 Mystic Ring Lotto</span>
+    </footer>
+
+    <script>
+      // Mobile Drawer Logic
+      const menuBtn = document.getElementById("menuBtn");
+      const closeBtn = document.getElementById("closeBtn");
+      const mobileDrawer = document.getElementById("mobileDrawer");
+      const overlay = document.getElementById("drawerOverlay");
+
+      function openDrawer() { mobileDrawer.classList.add('open'); overlay.classList.add('active'); document.body.style.overflow = 'hidden'; }
+      function closeDrawer() { mobileDrawer.classList.remove('open'); overlay.classList.remove('active'); document.body.style.overflow = ''; }
+
+      if(menuBtn) menuBtn.addEventListener('click', openDrawer);
+      if(closeBtn) closeBtn.addEventListener('click', closeDrawer);
+      if(overlay) overlay.addEventListener('click', closeDrawer);
+      
+      // Theme Logic
+      const desktopThemeToggleText = document.getElementById("desktopThemeToggleText");
+      const desktopThemeStatus = document.getElementById("desktopThemeStatus");
+      const mobileThemeToggleText = document.getElementById("mobileThemeToggleText");
+      const themeStatus = document.getElementById("themeStatus");
+
+      let isDark = true;
+      const savedTheme = localStorage.getItem("theme");
+      function updateThemeUI(dark) {
+        if (dark) {
+          document.documentElement.removeAttribute("data-theme");
+          if(desktopThemeStatus) desktopThemeStatus.textContent = "ON";
+          if(themeStatus) themeStatus.textContent = "ON";
+        } else {
+          document.documentElement.setAttribute("data-theme", "light");
+          if(desktopThemeStatus) desktopThemeStatus.textContent = "OFF";
+          if(themeStatus) themeStatus.textContent = "OFF";
+        }
+      }
+      if (savedTheme === "light") { isDark = false; updateThemeUI(false); } else { updateThemeUI(true); }
+      function toggleTheme() {
+          isDark = !isDark;
+          updateThemeUI(isDark);
+          localStorage.setItem("theme", isDark ? "dark" : "light");
+      }
+
+      if(desktopThemeToggleText) desktopThemeToggleText.addEventListener("click", toggleTheme);
+      if(mobileThemeToggleText) mobileThemeToggleText.addEventListener("click", toggleTheme);
+      
+      // Scroll Effect for Header
+      const header = document.querySelector(".main-header");
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 50) { header.classList.add("scrolled"); } 
+        else { header.classList.remove("scrolled"); }
+      });
+    </script>
 </body>
 </html>
