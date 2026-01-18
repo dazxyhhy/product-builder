@@ -2,11 +2,13 @@
 
 **"운명을 확인하는 신비한 공간"**
 
-**[MYSTIC RING]**은 반지의 제왕 세계관의 신비로운 분위기를 테마로 한 **웹 애플리케이션 플랫폼**입니다. 단순한 로또 번호 생성을 넘어, 꿈해몽, 관상 테스트, 운세 스토리 등 다양한 서브 콘텐츠를 통해 사용자에게 특별한 서사적 경험과 소소한 즐거움을 제공합니다.
+
+**[MYSTIC RING]**은 반지의 제왕 세계관의 신비로운 분위기를 테마로 한 웹 애플리케이션 플랫폼입니다. 단순한 로또 번호 생성을 넘어, 꿈해몽, 관상 테스트, 운세 스토리 등 다양한 서브 콘텐츠를 통해 사용자에게 특별한 서사적 경험과 소소한 즐거움을 제공합니다.
 
 ## ✨ 주요 기능 및 프로젝트
 
 ### 1. 🔮 신비한 반지 로또 (Main Generator)
+<img width="1892" height="894" alt="image" src="https://github.com/user-attachments/assets/f08138e0-29a2-49c6-9303-cf908efd5cbc" />
 *   **파일**: `index.html`
 *   **핵심 기능**:
     *   **랜덤 번호 생성**: 절대 반지의 힘을 빌린다는 컨셉의 로또 6/45 번호 추첨 애니메이션.
@@ -14,18 +16,23 @@
     *   **반응형 디자인**: 모바일과 데스크톱 모두에 최적화된 실제 복권 용지 스타일의 UI.
 
 ### 2. 🌙 꿈해몽 번호 변환기 (Dream Interpreter)
+<img width="1908" height="888" alt="image" src="https://github.com/user-attachments/assets/384017ab-c91e-4dd1-9718-d1cff999e747" />
 *   **파일**: `dream-lotto.html`
 *   **기능**: 사용자가 꾼 꿈의 키워드(예: 돼지, 불, 똥)를 입력하면 고유 알고리즘을 통해 관련된 행운의 숫자로 변환해 줍니다.
 
 ### 3. 🐾 힐링 쉼터 (Animal Face AI)
+<img width="1884" height="894" alt="image" src="https://github.com/user-attachments/assets/c4224164-bbe7-46bd-8034-c2fb9c088803" />
 *   **파일**: `animal-test.html`
 *   **기능**: 사용자의 사진을 분석하여 강아지상, 고양이상 등 닮은 동물상을 찾아주는 AI 기반 심리 테스트입니다. (이미지는 서버로 전송되지 않습니다)
+*   **모델**: Teachable Machine 활용
 
 ### 4. 🗣️ 행운 공유소 (Community)
+<img width="1886" height="868" alt="image" src="https://github.com/user-attachments/assets/3af4dd75-4f65-497c-9e9c-a851cbe7b59b" />
 *   **파일**: `share-luck.html`
 *   **기능**: 사용자들이 자신의 행운을 공유하고 댓글을 남길 수 있는 소통 공간입니다.
 
 ### 5. 📜 운명의 기록관 (Blog)
+<img width="1892" height="892" alt="image" src="https://github.com/user-attachments/assets/34a6b158-3048-4378-b8f4-2a93c73647e6" />
 *   **파일**: `blog.html`
 *   **콘텐츠**: 확률, 통계, 운명론에 관한 흥미로운 읽을거리를 제공하며, 각 스토리 하단에서 바로 번호를 생성해볼 수 있도록 연동되어 있습니다.
 
