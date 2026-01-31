@@ -7,4 +7,4 @@ Allow: /
 User-agent: Mediapartners-Google
 Allow: /
 
-Sitemap: https://product-builder-3d5.pages.dev/sitemap.xml
+Sitemap: https://novanoto.net/sitemap.xml
