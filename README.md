@@ -2,32 +2,57 @@
 
 **"운명을 확인하는 신비한 공간"**
 
-**[MYSTIC RING]**은 반지의 제왕 세계관의 신비로운 분위기를 테마로 한 **웹 애플리케이션 플랫폼**입니다. 단순한 로또 번호 생성을 넘어, 꿈해몽, 관상 테스트, 운세 스토리 등 다양한 서브 콘텐츠를 통해 사용자에게 특별한 서사적 경험과 소소한 즐거움을 제공합니다.
+
+**MYSTIC RING**은 반지의 제왕 세계관의 신비로운 분위기를 테마로 한 웹 애플리케이션 플랫폼입니다. 단순한 로또 번호 생성을 넘어, 꿈해몽, 관상 테스트, 운세 스토리 등 다양한 서브 콘텐츠를 통해 사용자에게 특별한 서사적 경험과 소소한 즐거움을 제공합니다.
 
 ## ✨ 주요 기능 및 프로젝트
 
 ### 1. 🔮 신비한 반지 로또 (Main Generator)
+<img width="1892" height="874" alt="image" src="https://github.com/user-attachments/assets/673d6502-f23b-4685-83bd-1db72e4fef98" />
+
 *   **파일**: `index.html`
 *   **핵심 기능**:
     *   **랜덤 번호 생성**: 절대 반지의 힘을 빌린다는 컨셉의 로또 6/45 번호 추첨 애니메이션.
     *   **운명 각인 (History)**: 마음에 드는 번호를 로컬 스토리지에 영구 저장하고 언제든 열람 가능 (영수증 스타일 UI).
     *   **반응형 디자인**: 모바일과 데스크톱 모두에 최적화된 실제 복권 용지 스타일의 UI.
+      
+
 
 ### 2. 🌙 꿈해몽 번호 변환기 (Dream Interpreter)
+<img width="1894" height="898" alt="image" src="https://github.com/user-attachments/assets/77ecc08c-3444-4046-ad2c-a8378dc83d44" />
+
 *   **파일**: `dream-lotto.html`
 *   **기능**: 사용자가 꾼 꿈의 키워드(예: 돼지, 불, 똥)를 입력하면 고유 알고리즘을 통해 관련된 행운의 숫자로 변환해 줍니다.
 
+
+
 ### 3. 🐾 힐링 쉼터 (Animal Face AI)
+<img width="1882" height="880" alt="image" src="https://github.com/user-attachments/assets/f42b72ca-5652-43a2-a658-7ab1d77e9226" />
+
 *   **파일**: `animal-test.html`
 *   **기능**: 사용자의 사진을 분석하여 강아지상, 고양이상 등 닮은 동물상을 찾아주는 AI 기반 심리 테스트입니다. (이미지는 서버로 전송되지 않습니다)
+*   **모델**: Teachable Machine 활용
+
+
 
 ### 4. 🗣️ 행운 공유소 (Community)
+<img width="1886" height="868" alt="image" src="https://github.com/user-attachments/assets/3af4dd75-4f65-497c-9e9c-a851cbe7b59b" />
+<img width="1888" height="894" alt="image" src="https://github.com/user-attachments/assets/56ad37d6-210f-4aa4-b929-81e7ea8eb7d7" />
+
 *   **파일**: `share-luck.html`
 *   **기능**: 사용자들이 자신의 행운을 공유하고 댓글을 남길 수 있는 소통 공간입니다.
 
+
 ### 5. 📜 운명의 기록관 (Blog)
+<img width="1892" height="892" alt="image" src="https://github.com/user-attachments/assets/34a6b158-3048-4378-b8f4-2a93c73647e6" />
+<img width="1892" height="894" alt="image" src="https://github.com/user-attachments/assets/be75baf5-35a3-4a9c-af54-4ba9dfea94b0" />
+
 *   **파일**: `blog.html`
 *   **콘텐츠**: 확률, 통계, 운명론에 관한 흥미로운 읽을거리를 제공하며, 각 스토리 하단에서 바로 번호를 생성해볼 수 있도록 연동되어 있습니다.
+
+### 모바일 화면
+<img width="790" height="634" alt="image" src="https://github.com/user-attachments/assets/c5978981-8a1c-488a-8b93-84593a3eb5eb" />
+
 
 ## 🛠 기술 스택 (Tech Stack)
 
