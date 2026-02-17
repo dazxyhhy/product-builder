@@ -6,17 +6,11 @@
     <title>운명의 기록관 - 신비한 반지 로또</title>
     <meta name="description" content="로또 1등 확률의 진실, 도박사의 오류, 나비 효과 등 운명과 숫자에 얽힌 흥미로운 이야기들을 운명의 기록관에서 만나보세요." />
     <link rel="canonical" href="https://novanoto.net/blog" />
-
-    <!-- Open Graph -->
     <meta property="og:type" content="website" />
     <meta property="og:title" content="운명의 기록관" />
     <meta property="og:description" content="운명과 확률에 관한 신비로운 이야기들. 로또 1등 확률의 진실부터 심리학까지." />
     <meta property="og:image" content="https://novanoto.net/assets/main-image.png" />
-
-    <!-- Favicon -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📜</text></svg>" />
-
-    <!-- Structured Data -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -26,317 +20,57 @@
       "description": "로또 1등 확률의 진실, 도박사의 오류, 나비 효과 등 운명과 숫자에 얽힌 흥미로운 이야기들을 운명의 기록관에서 만나보세요."
     }
     </script>
-
-
-    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-DLFQSNY2FE"></script>
     <script>
-      window.dataLayer = window.dataLayer || []
-      function gtag() {
-        dataLayer.push(arguments)
-      }
-      gtag("js", new Date())
-
-      gtag("config", "G-DLFQSNY2FE")
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { dataLayer.push(arguments) }
+      gtag("js", new Date());
+      gtag("config", "G-DLFQSNY2FE");
     </script>
-
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2307043093255162" crossorigin="anonymous"></script>
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Nanum+Myeongjo:wght@400;700;800&display=swap");
-
-      :root {
-        --bg-color: #1a1a1a;
-        --text-color: #b8860b;
-        --btn-border: #b8860b;
-        --card-bg: rgba(255, 255, 255, 0.05);
-        --header-bg: rgba(0, 0, 0, 0.2); /* Very transparent black */
-        --mystic-text-color: rgba(184, 134, 11, 0.6);
-        --shadow-color: rgba(184, 134, 11, 0.5);
-      }
-
-      [data-theme="light"] {
-        --bg-color: #e8e4d9;
-        --text-color: #5d4037;
-        --btn-border: #5d4037;
-        --card-bg: rgba(0, 0, 0, 0.05);
-        --header-bg: rgba(255, 255, 255, 0.2); /* Very transparent white */
-        --mystic-text-color: rgba(93, 64, 55, 0.7);
-        --shadow-color: rgba(93, 64, 55, 0.3);
-      }
-
-      body {
-        background-color: var(--bg-color);
-        color: var(--text-color);
-        font-family: "Nanum Myeongjo", serif;
-        margin: 0;
-        padding: 0;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        min-height: 100vh;
-        overflow-x: hidden;
-      }
-
-      .container {
-        width: 100%;
-        max-width: 1000px;
-        padding: 80px 20px 40px 20px;
-        box-sizing: border-box;
-      }
-
-      header {
-        text-align: center;
-        margin-bottom: 60px;
-      }
-      h1 {
-        font-family: "Cinzel", serif;
-        font-size: 2.5rem;
-        margin-bottom: 10px;
-      }
-      .subtitle {
-        opacity: 0.8;
-        font-size: 0.9rem;
-      }
-
-      .grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 20px;
-        width: 100%;
-      }
-
-      .card {
-        background: var(--card-bg);
-        border: 1px solid var(--btn-border);
-        border-radius: 8px;
-        padding: 25px;
-        transition: transform 0.3s;
-        cursor: pointer;
-        text-decoration: none;
-        color: inherit;
-        display: block;
-      }
-
-      .card:hover {
-        transform: translateY(-5px);
-        background: rgba(184, 134, 11, 0.1);
-      }
-
-      .card h2 {
-        font-size: 1.3rem;
-        margin: 0 0 10px 0;
-      }
-      .card p {
-        font-size: 0.9rem;
-        opacity: 0.8;
-        line-height: 1.5;
-      }
-      .date {
-        font-size: 0.8rem;
-        opacity: 0.5;
-        margin-top: 15px;
-        display: block;
-      }
-
-      /* === Header Navigation === */
-      .main-header {
-        width: 100%;
-        position: fixed;
-        top: 0;
-        left: 0;
-        height: 60px;
-        background: transparent; /* Initially transparent */
-        backdrop-filter: none; /* Initially no blur */
-        -webkit-backdrop-filter: none;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 0 30px;
-        box-sizing: border-box;
-        z-index: 1000;
-        transition: background 0.4s ease, backdrop-filter 0.4s ease, border-bottom 0.4s ease;
-        border-bottom: 1px solid transparent;
-      }
-
-      .main-header.scrolled {
-        background: var(--header-bg); /* Glassmorphism background */
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
-        border-bottom: 1px solid rgba(184, 134, 11, 0.1); /* Subtle border when scrolled */
-      }
-
-      .logo-area {
-        font-family: "Cinzel", serif;
-        font-weight: 900;
-        font-size: 1.2rem;
-        color: var(--text-color);
-        text-decoration: none;
-        display: flex;
-        align-items: center;
-        gap: 8px;
-      }
-
-      .nav-menu {
-        display: flex;
-        gap: 20px;
-      }
-
-      .nav-item {
-        color: var(--text-color);
-        text-decoration: none;
-        font-size: 0.95rem;
-        font-weight: 700;
-        opacity: 0.8;
-        transition: all 0.3s;
-        font-family: "Cinzel", serif;
-        letter-spacing: 1px;
-      }
-      .nav-item:lang(ko) {
-        font-family: "Nanum Myeongjo", serif;
-      }
-
-      .nav-item:hover {
-        opacity: 1;
-        text-shadow: 0 0 10px var(--shadow-color);
-      }
-
-      .desktop-theme-toggle {
-        opacity: 0.8 !important;
-      }
-
-      .desktop-theme-toggle:hover {
-        opacity: 1 !important;
-        text-shadow: 0 0 5px var(--shadow-color);
-      }
-
-      /* === Mobile Drawer Styles === */
-      .mobile-header-controls {
-        display: none; /* Hidden on desktop */
-      }
-
-      .hamburger-btn {
-        background: transparent;
-        border: none;
-        color: var(--text-color);
-        font-size: 1.5rem;
-        cursor: pointer;
-        padding: 5px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-left: 10px;
-      }
-
-      .mobile-drawer {
-        position: fixed;
-        top: 0;
-        right: -280px; /* Hidden by default */
-        width: 260px;
-        height: 100vh;
-        background: var(--bg-color);
-        border-left: 1px solid var(--btn-border);
-        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.5);
-        z-index: 2000;
-        transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        padding: 20px;
-        display: flex;
-        flex-direction: column;
-        box-sizing: border-box;
-      }
-
-      .mobile-drawer.open {
-        right: 0;
-      }
-
-      .drawer-header {
-        width: 100%;
-        padding-bottom: 10px;
-        border-bottom: 1px solid rgba(184, 134, 11, 0.2);
-        margin-bottom: 20px !important; /* Ensure spacing */
-      }
-
-      .close-btn {
-        background: transparent;
-        border: none;
-        color: var(--text-color);
-        font-size: 2.2rem; /* Slightly larger for touch */
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        line-height: 1;
-      }
-
-      .drawer-nav {
-        display: flex;
-        flex-direction: column;
-        gap: 25px;
-      }
-
-      .drawer-item {
-        color: var(--text-color);
-        text-decoration: none;
-        font-size: 1.1rem;
-        font-weight: bold;
-        padding-bottom: 10px;
-        border-bottom: 1px dashed rgba(184, 134, 11, 0.3);
-        font-family: "Nanum Myeongjo", serif;
-        display: block;
-      }
-
-      /* Overlay */
-      .drawer-overlay {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.7);
-        z-index: 1500;
-        display: none;
-        opacity: 0;
-        transition: opacity 0.3s;
-        backdrop-filter: blur(3px);
-      }
-      .drawer-overlay.active {
-        display: block;
-        opacity: 1;
-      }
-
-      @media (max-width: 900px) {
-        .main-header {
-          justify-content: space-between; /* Important for alignment */
-          padding: 0 20px;
-        }
-        .nav-menu {
-          display: none;
-        }
-        .desktop-theme-toggle {
-          display: none !important;
-        }
-        .mobile-header-controls {
-          display: flex;
-          align-items: center;
-          gap: 15px;
-        }
-        .logo-area {
-          font-size: 1.3rem;
-        }
-      }
+      :root { --bg-color: #1a1a1a; --text-color: #b8860b; --btn-border: #b8860b; --card-bg: rgba(255, 255, 255, 0.05); --header-bg: rgba(0, 0, 0, 0.2); --mystic-text-color: rgba(184, 134, 11, 0.6); --shadow-color: rgba(184, 134, 11, 0.5); }
+      [data-theme="light"] { --bg-color: #e8e4d9; --text-color: #5d4037; --btn-border: #5d4037; --card-bg: rgba(0, 0, 0, 0.05); --header-bg: rgba(255, 255, 255, 0.2); --mystic-text-color: rgba(93, 64, 55, 0.7); --shadow-color: rgba(93, 64, 55, 0.3); }
+      body { background-color: var(--bg-color); color: var(--text-color); font-family: "Nanum Myeongjo", serif; margin: 0; padding: 0; display: flex; flex-direction: column; align-items: center; min-height: 100vh; overflow-x: hidden; }
+      .container { width: 100%; max-width: 1000px; padding: 120px 20px 40px 20px; box-sizing: border-box; }
+      .page-header { text-align: center; margin-bottom: 60px; }
+      .page-header h1 { font-family: "Cinzel", serif; font-size: 2.5rem; margin-bottom: 10px; }
+      .page-header .subtitle { opacity: 0.8; font-size: 0.9rem; }
+      .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; width: 100%; }
+      .card { background: var(--card-bg); border: 1px solid var(--btn-border); border-radius: 8px; padding: 25px; transition: transform 0.3s; text-decoration: none; color: inherit; display: flex; flex-direction: column; }
+      .card:hover { transform: translateY(-5px); background: rgba(184, 134, 11, 0.1); }
+      .card h2 { font-size: 1.3rem; margin: 0 0 10px 0; }
+      .card p { font-size: 0.9rem; opacity: 0.8; line-height: 1.5; flex-grow: 1; }
+      .card .date { font-size: 0.8rem; opacity: 0.5; margin-top: 15px; display: block; }
+      .main-header { width: 100%; position: fixed; top: 0; left: 0; height: 60px; background: transparent; backdrop-filter: none; -webkit-backdrop-filter: none; display: flex; align-items: center; justify-content: space-between; padding: 0 30px; box-sizing: border-box; z-index: 1000; transition: background 0.4s ease, backdrop-filter 0.4s ease, border-bottom 0.4s ease; border-bottom: 1px solid transparent; }
+      .main-header.scrolled { background: var(--header-bg); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid rgba(184, 134, 11, 0.1); }
+      .logo-area { font-family: "Cinzel", serif; font-weight: 900; font-size: 1.2rem; color: var(--text-color); text-decoration: none; display: flex; align-items: center; gap: 8px; }
+      .nav-menu { display: flex; gap: 20px; }
+      .nav-item { color: var(--text-color); text-decoration: none; font-size: 0.95rem; font-weight: 700; opacity: 0.8; transition: all 0.3s; font-family: "Cinzel", serif; letter-spacing: 1px; }
+      .nav-item:lang(ko) { font-family: "Nanum Myeongjo", serif; }
+      .nav-item:hover { opacity: 1; text-shadow: 0 0 10px var(--shadow-color); }
+      .desktop-theme-toggle { opacity: 0.8 !important; }
+      .desktop-theme-toggle:hover { opacity: 1 !important; text-shadow: 0 0 5px var(--shadow-color); }
+      .mobile-header-controls { display: none; }
+      .hamburger-btn { background: transparent; border: none; color: var(--text-color); font-size: 1.5rem; cursor: pointer; padding: 5px; display: flex; align-items: center; justify-content: center; margin-left: 10px; }
+      .mobile-drawer { position: fixed; top: 0; right: -280px; width: 260px; height: 100vh; background: var(--bg-color); border-left: 1px solid var(--btn-border); box-shadow: -5px 0 15px rgba(0, 0, 0, 0.5); z-index: 2000; transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1); padding: 20px; display: flex; flex-direction: column; box-sizing: border-box; }
+      .mobile-drawer.open { right: 0; }
+      .drawer-header { width: 100%; padding-bottom: 10px; border-bottom: 1px solid rgba(184, 134, 11, 0.2); margin-bottom: 20px !important; }
+      .close-btn { background: transparent; border: none; color: var(--text-color); font-size: 2.2rem; cursor: pointer; display: flex; align-items: center; justify-content: center; line-height: 1; }
+      .drawer-nav { display: flex; flex-direction: column; gap: 25px; }
+      .drawer-item { color: var(--text-color); text-decoration: none; font-size: 1.1rem; font-weight: bold; padding-bottom: 10px; border-bottom: 1px dashed rgba(184, 134, 11, 0.3); font-family: "Nanum Myeongjo", serif; display: block; }
+      .drawer-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.7); z-index: 1500; display: none; opacity: 0; transition: opacity 0.3s; backdrop-filter: blur(3px); }
+      .drawer-overlay.active { display: block; opacity: 1; }
+      @media (max-width: 900px) { .main-header { justify-content: space-between; padding: 0 20px; } .nav-menu { display: none; } .desktop-theme-toggle { display: none !important; } .mobile-header-controls { display: flex; align-items: center; gap: 15px; } .logo-area { font-size: 1.3rem; } }
     </style>
-  <script type="text/javascript">    (function(c,l,a,r,i,t,y){        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);    })(window, document, "clarity", "script", "v2qkcj2xxv");</script></head>
+  </head>
   <body>
-    <!-- Overlay for Drawer -->
     <div class="drawer-overlay" id="drawerOverlay"></div>
-
-    <!-- Global Header -->
     <header class="main-header">
       <a href="index.html" class="logo-area">
-        <span style="font-size: 1.5rem">💍</span>
-        MRL
+        <span style="font-size: 1.5rem">💍</span> MRL
       </a>
-
-      <!-- Desktop Menu -->
       <nav class="nav-menu">
         <a href="dream-lotto.html" class="nav-item">DREAM</a>
         <a href="animal-test.html" class="nav-item">ANIMAL</a>
@@ -344,35 +78,14 @@
         <a href="share-luck.html" class="nav-item">COMMUNITY</a>
         <a href="contact.html" class="nav-item">CONTACT</a>
       </nav>
-
-      <button
-        id="desktopThemeToggleText"
-        style="
-          background: transparent;
-          border: none;
-          color: var(--mystic-text-color);
-          font-family: 'Nanum Myeongjo', serif;
-          font-size: 0.9rem;
-          cursor: pointer;
-          display: flex;
-          align-items: center;
-          gap: 8px;
-          opacity: 0.8;
-          transition: opacity 0.3s;
-        "
-        class="desktop-theme-toggle"
-      >
+      <button id="desktopThemeToggleText" style="background: transparent; border: none; color: var(--mystic-text-color); font-family: 'Nanum Myeongjo', serif; font-size: 0.9rem; cursor: pointer; display: flex; align-items: center; gap: 8px; opacity: 0.8; transition: opacity 0.3s;" class="desktop-theme-toggle">
         <span>다크 모드</span>
         <span id="desktopThemeStatus" style="font-weight: bold; color: var(--text-color)">ON</span>
       </button>
-
-      <!-- Mobile Controls -->
       <div class="mobile-header-controls">
         <button class="hamburger-btn" id="menuBtn" aria-label="Open Menu">☰</button>
       </div>
     </header>
-
-    <!-- Mobile Drawer -->
     <div class="mobile-drawer" id="mobileDrawer">
       <div class="drawer-header" style="display: flex; justify-content: flex-end; align-items: center; margin-bottom: 30px">
         <button class="close-btn" id="closeBtn" style="margin: 0">×</button>
@@ -385,23 +98,7 @@
         <a href="contact.html" class="drawer-item">✉️ 예언 신청</a>
       </nav>
       <div class="drawer-footer" style="margin-top: auto; padding-top: 20px; border-top: 1px solid rgba(184, 134, 11, 0.1)">
-        <button
-          id="mobileThemeToggleText"
-          style="
-            background: transparent;
-            border: none;
-            color: var(--mystic-text-color);
-            font-family: 'Nanum Myeongjo', serif;
-            font-size: 0.9rem;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            width: 100%;
-            padding: 10px 0;
-            opacity: 0.8;
-          "
-        >
+        <button id="mobileThemeToggleText" style="background: transparent; border: none; color: var(--mystic-text-color); font-family: 'Nanum Myeongjo', serif; font-size: 0.9rem; cursor: pointer; display: flex; align-items: center; justify-content: space-between; width: 100%; padding: 10px 0; opacity: 0.8;">
           <span>다크 모드</span>
           <span id="themeStatus" style="font-weight: bold; color: var(--text-color)">ON</span>
         </button>
@@ -409,111 +106,107 @@
     </div>
 
     <div class="container">
-      <header>
+      <header class="page-header">
         <h1>운명의 기록관</h1>
         <div class="subtitle">운명과 확률, 그리고 숫자에 관한 이야기</div>
       </header>
-
+      
       <div class="grid">
+        <a href="story-mbti-lotto.html" class="card">
+          <h2>🤔 MBTI 유형별 로또 구매 스타일</h2>
+          <p>MBTI 성격 유형별 로또 구매 습관과 번호 선택 방식을 심층 분석합니다. ISTJ, ENFP 등 각 유형의 특징을 알아보고 나의 로또 스타일을 찾아보세요.</p>
+          <span class="date">2026.02.17</span>
+        </a>
+        <a href="story-dream-analysis.html" class="card">
+          <h2>🧠 꿈이 정말 로또 번호를 알려줄까?</h2>
+          <p>돼지꿈, 조상님 꿈은 정말 로또 당첨을 예지할까요? 꿈과 숫자의 관계를 뇌과학과 심리학적 관점에서 심층 분석합니다.</p>
+          <span class="date">2026.02.17</span>
+        </a>
         <a href="story-lotto-data-analysis.html" class="card">
-          <h2>📈 데이터로 해부한 로또 1등 당첨자: 구매 습관과 숨겨진 심리</h2>
+          <h2>📈 데이터로 본 로또 1등 당첨 습관</h2>
           <p>로또 1등 당첨자들의 실제 구매 습관, 심리적 공통점, 그리고 당첨 확률에 대한 오해와 진실을 데이터와 심리학적 관점에서 심층 분석합니다.</p>
           <span class="date">2026.02.07</span>
         </a>
         <a href="story-mirror-destiny.html" class="card">
-          <h2>🔮 운명의 순간: 거울 속 나를 마주하는 시간</h2>
-          <p>운명은 외부에서 주어지는 것이 아니라, 자신의 선택과 의지에 따라 만들어집니다. 내면의 목소리에 귀 기울여 당신만의 운명을 개척하세요.</p>
+          <h2>🔮 거울, 또 다른 세계로의 창</h2>
+          <p>백설공주의 마법 거울부터 심리학의 '거울 단계'까지, 거울이 어떻게 인류의 문화와 정신 세계에 영향을 미쳤는지 탐구합니다.</p>
           <span class="date">2026.02.07</span>
         </a>
         <a href="story-number-secret.html" class="card">
-          <h2>💎 숫자의 비밀: 탄생석처럼 숨겨진 당신의 행운 번호</h2>
-          <p>탄생월이나 특별한 날짜에 숨겨진 숫자의 의미를 탐색하고, 자신만의 행운 번호를 발견하여 삶에 긍정적인 에너지를 불어넣으세요.</p>
+          <h2>💎 수비학으로 풀어보는 당신의 '인생 숫자'</h2>
+          <p>생년월일로 당신의 인생 숫자를 계산하는 방법을 알아보고, 각 숫자가 가진 고유한 성격, 재능, 그리고 운명의 방향성을 탐구합니다.</p>
           <span class="date">2026.02.07</span>
         </a>
         <a href="story-new-year-luck.html" class="card">
-          <h2>✨ 1월의 마무리, 2월의 새로운 시작을 위한 행운의 주문</h2>
-          <p>1월을 잘 마무리하고 다가오는 2월을 기대하는 당신을 위해, 행운을 부르는 마음가짐과 새로운 시작을 위한 다짐을 이야기합니다.</p>
+          <h2>✨ 새해 복, 이렇게 불러들이세요</h2>
+          <p>떡국부터 포도 12알까지, 희망찬 새해를 위해 전 세계 사람들이 행하는 독특하고 흥미로운 행운 의식과 그 의미를 알아봅니다.</p>
           <span class="date">2026.01.31</span>
         </a>
-
         <a href="story-february-blessing.html" class="card">
-          <h2>💖 얼어붙은 땅을 뚫고 피어나는, 2월의 축복</h2>
-          <p>겨울의 끝자락, 2월은 새로운 생명과 희망을 잉태하는 시간입니다. 당신의 2월이 따스한 축복으로 가득하기를 기원합니다.</p>
+          <h2>💖 2월의 상징: 자수정, 제비꽃, 발렌타인</h2>
+          <p>2월의 탄생석 자수정과 탄생화 제비꽃에 담긴 의미를 알아보고, 발렌타인 데이의 유래와 사랑의 상징들을 탐구합니다.</p>
           <span class="date">2026.01.31</span>
         </a>
-
         <a href="story-hope-path.html" class="card">
           <h2>✨ 어둠 속 한 줄기 빛: 희망이 이끄는 길</h2>
           <p>가장 어두운 밤에도 별은 빛나듯, 어떤 시련 속에서도 희망은 길을 밝힙니다. 내면의 빛을 따라 운명을 개척하세요.</p>
           <span class="date">2026.01.17</span>
         </a>
-
         <a href="story-lucky-turn.html" class="card">
           <h2>🍀 뜻밖의 행운: 삶의 방향을 바꾸는 작은 전환점</h2>
           <p>예상치 못한 순간 찾아오는 행운의 기회들. 작은 우연이 어떻게 삶의 큰 전환점이 되는지, 그 비밀을 탐험합니다.</p>
           <span class="date">2026.01.17</span>
         </a>
-
         <a href="story-synchronicity.html" class="card">
           <h2>🌠 우연인 듯 우연 아닌: 동시성의 법칙</h2>
           <p>칼 융이 말하는 '의미 있는 우연'. 생각하던 친구에게 전화가 오거나 특정 숫자가 반복되는 현상은 단순한 우연일까요?</p>
           <span class="date">2026.01.15</span>
         </a>
-
         <a href="story-gamblers-fallacy.html" class="card">
           <h2>🎲 붉은 용의 눈물: 도박사의 오류가 주는 교훈</h2>
           <p>"이만큼 잃었으니 이제 딸 때가 됐어"라는 생각의 함정. 독립 시행의 냉정한 진실과 우리가 빠지기 쉬운 착각에 대하여.</p>
           <span class="date">2026.01.15</span>
         </a>
-
         <a href="story-butterfly-effect.html" class="card">
           <h2>🦋 나비효과: 작은 선행이 불러오는 거대한 행운</h2>
           <p>오늘 베푼 작은 친절이 어떻게 거대한 행운으로 돌아오는지, 긍정의 에너지가 만드는 기적 같은 연결고리에 대하여.</p>
           <span class="date">2026.01.14</span>
         </a>
-
         <a href="story-serendipity.html" class="card">
           <h2>✨ 세렌디피티: 우연 속에서 발견하는 뜻밖의 기쁨</h2>
           <p>계획된 길 밖에서 만나는 행복. 무작위가 주는 선물과 뜻밖의 행운(Serendipity)을 즐기는 마음가짐.</p>
           <span class="date">2026.01.14</span>
         </a>
-
         <a href="story-murphy-sally.html" class="card">
           <h2>🌀 머피의 법칙 vs 샐리의 법칙</h2>
           <p>왜 나에게만 불운이 닥치는 것 같을까? 불운을 행운으로 바꾸는 심리학적 '선택적 주의' 이론에 대하여.</p>
           <span class="date">2026.01.13</span>
         </a>
-
         <a href="story-lucky-seven.html" class="card">
-          <h2>🎰 숫자 7은 왜 행운의 상징이 되었을까?</h2>
-          <p>럭키 세븐(Lucky Seven)의 유래와 역사. 완전수 3과 4의 만남, 그리고 수학적 비밀까지.</p>
+          <h2>🎰 럭키 세븐: 숫자 7의 비밀</h2>
+          <p>숫자 7이 왜 행운의 상징이 되었을까요? 역사, 종교, 문화, 그리고 심리학을 넘나들며 '럭키 세븐'의 비밀을 다각도로 파헤쳐 봅니다.</p>
           <span class="date">2026.01.13</span>
         </a>
-
         <a href="story-probability.html" class="card">
           <h2>🔮 로또 1등 확률의 진실과 심리학</h2>
           <p>814만 분의 1이라는 숫자가 가지는 의미와, 사람들이 로또를 구매하는 심리적 이유에 대해 분석합니다.</p>
           <span class="date">2026.01.10</span>
         </a>
-
         <a href="story-ring-power.html" class="card">
           <h2>🧙‍♂️ 신비한 반지 속 운명의 힘</h2>
           <p>프로도와 샘의 여정에서 '행운'은 어떤 역할을 했을까요? 중간계의 서사를 통해 본 운명론과 우리가 숫자를 선택하는 태도에 대한 고찰.</p>
           <span class="date">2026.01.11</span>
         </a>
-
         <a href="story-animal-face.html" class="card">
           <h2>🐾 동물상이 말해주는 당신의 성격</h2>
           <p>AI 관점에서 본 강아지상과 고양이상의 차이점. 재미로 보는 것이지만, 오랜 데이터가 축적된 인공지능이 분석하는 나의 이미지 테스트.</p>
           <span class="date">2026.01.11</span>
         </a>
-
         <a href="story-lucky-habits.html" class="card">
           <h2>🍀 행운을 부르는 일상의 작은 습관들</h2>
           <p>행운은 타고나는 것이 아니라 만들어가는 것입니다. 긍정적인 에너지를 끌어당기는 심리학적 습관 5가지를 소개합니다.</p>
           <span class="date">2026.01.11</span>
         </a>
-
         <a href="story-statistics-lotto.html" class="card">
           <h2>📊 로또 번호의 통계학적 분포와 진실</h2>
           <p>무작위의 세계 속에서도 질서는 존재합니다. 통계학적으로 본 당첨 번호의 분포와 무작위성의 법칙에 대하여.</p>
@@ -522,79 +215,59 @@
       </div>
     </div>
 
-    <footer
-      style="margin-top: 20px; font-size: 0.8rem; opacity: 0.6; padding: 20px; border-top: 1px solid var(--btn-border); width: 100%; max-width: 1000px; box-sizing: border-box; text-align: center"
-    >
+    <footer style="margin-top: 20px; font-size: 0.8rem; opacity: 0.6; padding: 20px; border-top: 1px solid var(--btn-border); width: 100%; max-width: 1000px; box-sizing: border-box; text-align: center">
       <a href="privacy.html" style="color: inherit; margin-right: 15px">개인정보처리방침</a>
       <span>© 2026 Mystic Ring Lotto</span>
     </footer>
 
     <script>
       // Mobile Drawer Logic
-      const menuBtn = document.getElementById("menuBtn")
-      const closeBtn = document.getElementById("closeBtn")
-      const mobileDrawer = document.getElementById("mobileDrawer")
-      const overlay = document.getElementById("drawerOverlay")
-
-      function openDrawer() {
-        mobileDrawer.classList.add("open")
-        overlay.classList.add("active")
-        document.body.style.overflow = "hidden" // Prevent scrolling
-      }
-
-      function closeDrawer() {
-        mobileDrawer.classList.remove("open")
-        overlay.classList.remove("active")
-        document.body.style.overflow = ""
-      }
-
-      if (menuBtn) menuBtn.addEventListener("click", openDrawer)
-      if (closeBtn) closeBtn.addEventListener("click", closeDrawer)
-      if (overlay) overlay.addEventListener("click", closeDrawer)
+      const menuBtn = document.getElementById("menuBtn");
+      const closeBtn = document.getElementById("closeBtn");
+      const mobileDrawer = document.getElementById("mobileDrawer");
+      const overlay = document.getElementById("drawerOverlay");
+      function openDrawer() { mobileDrawer.classList.add("open"); overlay.classList.add("active"); document.body.style.overflow = "hidden"; }
+      function closeDrawer() { mobileDrawer.classList.remove("open"); overlay.classList.remove("active"); document.body.style.overflow = ""; }
+      if (menuBtn) menuBtn.addEventListener("click", openDrawer);
+      if (closeBtn) closeBtn.addEventListener("click", closeDrawer);
+      if (overlay) overlay.addEventListener("click", closeDrawer);
 
       // Theme Logic
-      const desktopThemeToggleText = document.getElementById("desktopThemeToggleText")
-      const desktopThemeStatus = document.getElementById("desktopThemeStatus")
-      const mobileThemeToggleText = document.getElementById("mobileThemeToggleText")
-      const themeStatus = document.getElementById("themeStatus")
-
-      let isDark = true
-      const savedTheme = localStorage.getItem("theme")
+      const desktopThemeToggleText = document.getElementById("desktopThemeToggleText");
+      const desktopThemeStatus = document.getElementById("desktopThemeStatus");
+      const mobileThemeToggleText = document.getElementById("mobileThemeToggleText");
+      const themeStatus = document.getElementById("themeStatus");
+      let isDark = true;
+      const savedTheme = localStorage.getItem("theme");
       if (savedTheme === "light") {
-        isDark = false
-        document.documentElement.setAttribute("data-theme", "light")
-        if (desktopThemeStatus) desktopThemeStatus.textContent = "OFF"
-        if (themeStatus) themeStatus.textContent = "OFF"
+        isDark = false;
+        document.documentElement.setAttribute("data-theme", "light");
+        if (desktopThemeStatus) desktopThemeStatus.textContent = "OFF";
+        if (themeStatus) themeStatus.textContent = "OFF";
       }
-
       function toggleTheme() {
-        isDark = !isDark
+        isDark = !isDark;
         if (isDark) {
-          document.documentElement.removeAttribute("data-theme")
-          if (desktopThemeStatus) desktopThemeStatus.textContent = "ON"
-          if (themeStatus) themeStatus.textContent = "ON"
-          localStorage.setItem("theme", "dark")
+          document.documentElement.removeAttribute("data-theme");
+          if (desktopThemeStatus) desktopThemeStatus.textContent = "ON";
+          if (themeStatus) themeStatus.textContent = "ON";
+          localStorage.setItem("theme", "dark");
         } else {
-          document.documentElement.setAttribute("data-theme", "light")
-          if (desktopThemeStatus) desktopThemeStatus.textContent = "OFF"
-          if (themeStatus) themeStatus.textContent = "OFF"
-          localStorage.setItem("theme", "light")
+          document.documentElement.setAttribute("data-theme", "light");
+          if (desktopThemeStatus) desktopThemeStatus.textContent = "OFF";
+          if (themeStatus) themeStatus.textContent = "OFF";
+          localStorage.setItem("theme", "light");
         }
       }
-
-      if (desktopThemeToggleText) desktopThemeToggleText.addEventListener("click", toggleTheme)
-      if (mobileThemeToggleText) mobileThemeToggleText.addEventListener("click", toggleTheme)
+      if (desktopThemeToggleText) desktopThemeToggleText.addEventListener("click", toggleTheme);
+      if (mobileThemeToggleText) mobileThemeToggleText.addEventListener("click", toggleTheme);
 
       // Scroll Effect for Header
-      const header = document.querySelector(".main-header")
-
+      const header = document.querySelector(".main-header");
       window.addEventListener("scroll", () => {
-        if (window.scrollY > 50) {
-          header.classList.add("scrolled")
-        } else {
-          header.classList.remove("scrolled")
-        }
-      })
+        if (window.scrollY > 50) { header.classList.add("scrolled"); }
+        else { header.classList.remove("scrolled"); }
+      });
     </script>
   </body>
 </html>
