@@ -1,4 +1,4 @@
-User-agent: Yeti
+﻿User-agent: Yeti
 Allow: /
 
 User-agent: *
@@ -7,4 +7,4 @@ Allow: /
 User-agent: Mediapartners-Google
 Allow: /
 
-Sitemap: https://novanoto.net/sitemap.xml
+Sitemap: https://product-builder-3d5.pages.dev/sitemap.xml
