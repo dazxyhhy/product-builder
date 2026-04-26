@@ -62,42 +62,48 @@
         --lotto-blue: #1976d2;
         --ink-black: #2c2c2c;
 
-        /* Default (Dark Mode) */
-        --bg-color: #1a1a1a;
-        --text-color: #b8860b; /* mystic-gold */
+        /* Default (Dark Mode) - Deeper, more cosmic */
+        --bg-color: #0a0a0b;
+        --text-color: #b8860b; 
         --subtitle-color: rgba(184, 134, 11, 0.8);
-        --bg-image: radial-gradient(circle at 50% 50%, rgba(184, 134, 11, 0.1) 0%, transparent 70%), url("https://www.transparenttextures.com/patterns/dark-leather.png");
-        --ring-color: rgba(184, 134, 11, 0.05);
+        --bg-image: radial-gradient(circle at 50% 50%, rgba(184, 134, 11, 0.15) 0%, rgba(0, 0, 0, 0.8) 100%), url("https://www.transparenttextures.com/patterns/dark-leather.png");
+        --ring-color: rgba(184, 134, 11, 0.08);
         --btn-border: #b8860b;
         --btn-text: #b8860b;
         --btn-hover-bg: #b8860b;
         --btn-hover-text: #1a1a1a;
         --mystic-text-color: rgba(184, 134, 11, 0.6);
         --shadow-color: rgba(184, 134, 11, 0.5);
-        --header-bg: rgba(0, 0, 0, 0.2); /* Very transparent black */
-        --card-bg: rgba(255, 255, 255, 0.05);
+        --header-bg: rgba(0, 0, 0, 0.4);
+        --card-bg: rgba(255, 255, 255, 0.03);
+        --nebula-color: rgba(184, 134, 11, 0.05);
+        --bg-blend-mode: normal;
       }
 
       [data-theme="light"] {
-        /* Light Mode */
+        /* Light Mode - Aged Parchment style */
         --bg-color: #e8e4d9;
         --text-color: #5d4037;
         --subtitle-color: rgba(93, 64, 55, 0.8);
-        --bg-image: radial-gradient(circle at 50% 50%, rgba(93, 64, 55, 0.05) 0%, transparent 70%), url("https://www.transparenttextures.com/patterns/cream-paper.png");
-        --ring-color: rgba(93, 64, 55, 0.08);
+        --bg-image: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.3) 0%, rgba(210, 195, 175, 0.4) 100%), url("https://www.transparenttextures.com/patterns/paper-fibers.png");
+        --ring-color: rgba(93, 64, 55, 0.1);
         --btn-border: #5d4037;
         --btn-text: #5d4037;
         --btn-hover-bg: #5d4037;
         --btn-hover-text: #e8e4d9;
         --mystic-text-color: rgba(93, 64, 55, 0.7);
         --shadow-color: rgba(93, 64, 55, 0.3);
-        --header-bg: rgba(255, 255, 255, 0.2); /* Very transparent white */
-        --card-bg: rgba(0, 0, 0, 0.05);
+        --header-bg: rgba(255, 255, 255, 0.4);
+        --card-bg: rgba(0, 0, 0, 0.02);
+        --nebula-color: rgba(93, 64, 55, 0.03);
+        --bg-blend-mode: multiply;
       }
 
       body {
         background-color: var(--bg-color);
         background-image: var(--bg-image);
+        background-attachment: fixed;
+        background-blend-mode: var(--bg-blend-mode);
         font-family: "Nanum Myeongjo", serif;
         display: flex;
         flex-direction: column;
@@ -109,6 +115,57 @@
         color: var(--text-color);
         overflow-x: hidden;
         transition: background 0.5s ease, color 0.5s ease;
+      }
+
+      /* === Advanced Background Layers === */
+      .mystic-bg {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -2;
+        pointer-events: none;
+        overflow: hidden;
+      }
+
+      .nebula {
+        position: absolute;
+        width: 200%;
+        height: 200%;
+        top: -50%;
+        left: -50%;
+        background: radial-gradient(circle at center, var(--nebula-color) 0%, transparent 50%);
+        animation: nebulaRotate 120s linear infinite;
+        filter: blur(80px);
+      }
+
+      @keyframes nebulaRotate {
+        from { transform: rotate(0deg) scale(1); }
+        50% { transform: rotate(180deg) scale(1.2); }
+        to { transform: rotate(360deg) scale(1); }
+      }
+
+      .stardust {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-image: 
+          radial-gradient(1px 1px at 20px 30px, #fff, rgba(0,0,0,0)),
+          radial-gradient(1.5px 1.5px at 40px 70px, #fff, rgba(0,0,0,0)),
+          radial-gradient(1px 1px at 50px 160px, #fff, rgba(0,0,0,0)),
+          radial-gradient(1.5px 1.5px at 90px 40px, #fff, rgba(0,0,0,0)),
+          radial-gradient(1px 1px at 130px 80px, #fff, rgba(0,0,0,0)),
+          radial-gradient(1px 1px at 160px 120px, #fff, rgba(0,0,0,0));
+        background-repeat: repeat;
+        background-size: 200px 200px;
+        opacity: 0.05;
+        animation: stardustSlow 100s linear infinite;
+      }
+
+      @keyframes stardustSlow {
+        from { background-position: 0 0; }
+        to { background-position: 1000px 1000px; }
       }
 
       /* === Header Navigation === */
@@ -343,6 +400,154 @@
         text-shadow: 0 0 10px var(--shadow-color);
         letter-spacing: 3px;
         transition: text-shadow 0.5s ease;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+      }
+
+      .title-word {
+        display: inline-flex;
+        white-space: nowrap;
+      }
+
+      .letter {
+        display: inline-block;
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        animation: mysticFloat 3s ease-in-out infinite;
+        animation-delay: var(--delay);
+        cursor: default;
+      }
+
+      .letter:hover {
+        transform: translateY(-15px) scale(1.3) rotate(5deg);
+        color: #fff;
+        text-shadow: 0 0 20px var(--text-color), 0 0 30px #fff;
+        z-index: 10;
+      }
+
+      @keyframes mysticFloat {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-8px); }
+      }
+
+      /* === Mystical Embers === */
+      #ember-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: -1;
+        overflow: hidden;
+      }
+
+      .ember {
+        position: absolute;
+        width: 4px;
+        height: 4px;
+        background: var(--text-color);
+        border-radius: 50%;
+        filter: blur(1px);
+        opacity: 0;
+        box-shadow: 0 0 10px var(--text-color);
+        transition: background 0.5s ease;
+      }
+
+      [data-theme="light"] .ember {
+        background: #fff;
+        box-shadow: 0 0 12px rgba(255, 255, 255, 0.8), 0 0 20px rgba(184, 134, 11, 0.2);
+        filter: blur(2px);
+      }
+
+      @keyframes emberFly {
+        0% { transform: translateY(110vh) translateX(0); opacity: 0; }
+        10% { opacity: 0.5; }
+        50% { transform: translateY(50vh) translateX(50px); }
+        90% { opacity: 0.5; }
+        100% { transform: translateY(-10vh) translateX(-20px); opacity: 0; }
+      }
+
+      /* === 3D Tilt Wrapper === */
+      .ticket-side {
+        perspective: 1000px;
+      }
+
+      .ticket-wrapper {
+        position: relative;
+        width: 100%;
+        max-width: 420px;
+        transform-style: preserve-3d;
+        transition: transform 0.1s ease-out;
+      }
+
+      /* === Typing Cursor === */
+      #prophecyText::after {
+        content: "|";
+        display: inline-block;
+        margin-left: 3px;
+        animation: blink 0.7s infinite;
+      }
+
+      @keyframes blink {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0; }
+      }
+
+      /* === Background Saturn Elements === */
+      .bg-elements {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: -1;
+        overflow: hidden;
+      }
+
+      .saturn {
+        position: absolute;
+        top: 20%;
+        left: 10%;
+        width: 120px;
+        height: 120px;
+        background: radial-gradient(circle at 30% 30%, #d2b48c, #a0522d);
+        border-radius: 50%;
+        opacity: 0.2;
+        animation: slowDrift 40s linear infinite;
+        box-shadow: inset -10px -10px 20px rgba(0,0,0,0.5), 0 0 30px rgba(210, 180, 140, 0.2);
+      }
+
+      .saturn-ring {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 240px;
+        height: 60px;
+        border: 12px solid rgba(210, 180, 140, 0.4);
+        border-radius: 50%;
+        transform: translate(-50%, -50%) rotateX(75deg) rotateY(15deg);
+        box-shadow: 0 0 15px rgba(210, 180, 140, 0.2);
+      }
+
+      .mystic-sphere {
+        position: absolute;
+        width: 60px;
+        height: 60px;
+        background: radial-gradient(circle at 30% 30%, #deb887, #8b4513);
+        border-radius: 50%;
+        opacity: 0.15;
+        top: 70%;
+        left: 80%;
+        animation: slowDrift 60s linear infinite reverse;
+      }
+
+      @keyframes slowDrift {
+        0% { transform: translate(0, 0) rotate(0deg); }
+        33% { transform: translate(15vw, 10vh) rotate(120deg); }
+        66% { transform: translate(-5vw, 20vh) rotate(240deg); }
+        100% { transform: translate(0, 0) rotate(360deg); }
       }
 
       .subtitle {
@@ -584,11 +789,11 @@
 
       .one-ring {
         position: absolute;
-        top: -50px;
-        right: -50px;
-        width: 140px;
-        height: 140px;
-        border: 10px solid var(--ring-color);
+        top: 50%;
+        left: 50%;
+        width: 550px;
+        height: 550px;
+        border: 12px double var(--ring-color);
         border-radius: 50%;
         pointer-events: none;
         display: flex;
@@ -596,12 +801,21 @@
         justify-content: center;
         font-family: "Cinzel", serif;
         color: var(--ring-color);
-        font-size: 0.6rem;
-        animation: rotate 60s linear infinite;
+        font-size: 0.75rem;
+        animation: rotateRing 60s linear infinite;
         text-align: center;
+        box-shadow: 0 0 60px rgba(184, 134, 11, 0.15), inset 0 0 60px rgba(184, 134, 11, 0.15);
+        padding: 60px;
+        box-sizing: border-box;
+        line-height: 1.4;
+        letter-spacing: 2px;
+        font-weight: 700;
       }
 
-      @keyframes rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+      @keyframes rotateRing {
+        from { transform: translate(-50%, -50%) rotate(0deg); }
+        to { transform: translate(-50%, -50%) rotate(360deg); }
+      }
       @keyframes fadeIn { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
 
       .mystic-text {
@@ -809,6 +1023,12 @@
     </style>
   <script type="text/javascript">    (function(c,l,a,r,i,t,y){        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);    })(window, document, "clarity", "script", "v2qkcj2xxv");</script></head>
   <body>
+    <!-- Advanced Background Layers -->
+    <div class="mystic-bg">
+        <div class="nebula"></div>
+        <div class="stardust"></div>
+    </div>
+
     <!-- Overlay for Drawer -->
     <div class="drawer-overlay" id="drawerOverlay"></div>
 
@@ -887,9 +1107,9 @@
         </div>
 
         <div class="ticket-side">
+          <div class="one-ring">One Ring to Rule Them All - One Ring to Find Them - One Ring to Bring Them All - and in the Darkness Bind Them</div>
+          
           <div class="ticket-wrapper">
-            <div class="one-ring">One Ring to Rule Them All - One Ring to Find Them - One Ring to Bring Them All - and in the Darkness Bind Them</div>
-
             <div class="ticket" id="lottoTicket">
               <div class="ticket-header" style="justify-content: center;">
                 <div class="lotto-logo">
@@ -1256,8 +1476,175 @@
         }
       })
 
+      // === 3D Tilt Effect ===
+      const ticketWrapper = document.querySelector(".ticket-wrapper");
+      const ticketSide = document.querySelector(".ticket-side");
+
+      if (ticketSide) {
+        ticketSide.addEventListener("mousemove", (e) => {
+          const rect = ticketWrapper.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+          
+          const centerX = rect.width / 2;
+          const centerY = rect.height / 2;
+          
+          const rotateX = (y - centerY) / 10;
+          const rotateY = (centerX - x) / 10;
+          
+          ticketWrapper.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+        });
+
+        ticketSide.addEventListener("mouseleave", () => {
+          ticketWrapper.style.transform = "rotateX(0deg) rotateY(0deg)";
+        });
+      }
+
+      // === Mystical Embers Logic ===
+      function createEmbers() {
+        const container = document.createElement("div");
+        container.id = "ember-container";
+        document.body.appendChild(container);
+
+        for (let i = 0; i < 30; i++) {
+          spawnEmber(container);
+        }
+      }
+
+      function spawnEmber(container) {
+        const ember = document.createElement("div");
+        ember.className = "ember";
+        
+        const size = Math.random() * 4 + 2;
+        ember.style.width = `${size}px`;
+        ember.style.height = `${size}px`;
+        
+        ember.style.left = `${Math.random() * 100}vw`;
+        ember.style.animation = `emberFly ${Math.random() * 10 + 10}s linear infinite`;
+        ember.style.animationDelay = `${Math.random() * 20}s`;
+        
+        container.appendChild(ember);
+      }
+
+      createEmbers();
+
+      // === Typewriter Prophecy Effect ===
+      function typeProphecy(text) {
+        prophecyText.textContent = "";
+        let i = 0;
+        const speed = 50; // ms per character
+
+        function type() {
+          if (i < text.length) {
+            prophecyText.textContent += text.charAt(i);
+            i++;
+            setTimeout(type, speed);
+          }
+        }
+        type();
+      }
+
+      // Override generateNumbers to use typewriter
+      const originalGenerateNumbers = generateNumbers;
+      generateNumbers = function() {
+        document.querySelectorAll(".num-box").forEach((el) => el.classList.remove("active"))
+        
+        if(textSaveBtn) {
+            textSaveBtn.classList.add('disabled');
+            textSaveBtn.textContent = "[ 운명 각인 ]";
+        }
+        
+        const resetBalls = (container) => {
+             Array.from(container.children).forEach(ball => {
+                 ball.className = 'lotto-ball placeholder';
+                 ball.textContent = '';
+             });
+        };
+        resetBalls(resultBalls);
+        resetBalls(mobileResultBalls);
+
+        const ticket = document.getElementById("lottoTicket")
+        ticket.classList.add("shaking")
+        const nums = []
+        while (nums.length < 6) {
+          const n = Math.floor(Math.random() * 45) + 1
+          if (!nums.includes(n)) nums.push(n)
+        }
+        nums.sort((a, b) => a - b)
+        currentNumbers = nums; 
+
+        nums.forEach((n, index) => {
+          setTimeout(() => {
+            document.getElementById(`num-${n}`).classList.add("active")
+            
+            const updateBall = (container) => {
+                const ball = container.children[index];
+                if(ball) {
+                    ball.className = `lotto-ball ${getBallColorClass(n)}`;
+                    ball.textContent = n;
+                    requestAnimationFrame(() => {
+                        ball.classList.add("show");
+                    });
+                }
+            };
+            
+            updateBall(resultBalls);
+            updateBall(mobileResultBalls);
+            
+          }, index * 200)
+        })
+
+        setTimeout(() => {
+          ticket.classList.remove("shaking")
+          if(textSaveBtn) textSaveBtn.classList.remove('disabled');
+        }, nums.length * 200)
+
+        // Modified prophecy handling
+        const selectedProphecy = prophecies[Math.floor(Math.random() * prophecies.length)];
+        setTimeout(() => {
+          typeProphecy(selectedProphecy);
+        }, 500);
+      };
+
       generateBtn.addEventListener("click", generateNumbers)
       resetBtn.addEventListener("click", reset)
+
+      // Title Animation Logic
+      function animateTitle() {
+        const titleH1 = document.querySelector('.title-container h1');
+        const originalHTML = `MYSTIC RING <span style="color: var(--lotto-red);">LOTTO</span>`;
+        titleH1.innerHTML = ''; // Clear existing
+        
+        const fragments = [
+          { text: 'MYSTIC', class: '' },
+          { text: 'RING', class: '' },
+          { text: 'LOTTO', class: 'lotto-text', style: 'color: var(--lotto-red);' }
+        ];
+
+        let delay = 0;
+        fragments.forEach((frag, wordIdx) => {
+          const wordSpan = document.createElement('span');
+          wordSpan.className = 'title-word';
+          
+          frag.text.split('').forEach((char) => {
+            const charSpan = document.createElement('span');
+            charSpan.textContent = char;
+            charSpan.className = 'letter';
+            if (frag.style) charSpan.setAttribute('style', frag.style);
+            charSpan.style.setProperty('--delay', `${delay}s`);
+            wordSpan.appendChild(charSpan);
+            delay += 0.1;
+          });
+          
+          titleH1.appendChild(wordSpan);
+          // Add space between words
+          if (wordIdx < fragments.length - 1) {
+            titleH1.appendChild(document.createTextNode(' '));
+          }
+        });
+      }
+      
+      animateTitle();
     </script>
   </body>
 </html>
