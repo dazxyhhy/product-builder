@@ -50,6 +50,7 @@
       gtag("config", "G-DLFQSNY2FE")
     </script>
 
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2307043093255162" crossorigin="anonymous"></script>
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Nanum+Myeongjo:wght@400;700;800&family=Libre+Barcode+39&display=swap");
@@ -1143,6 +1144,8 @@
                   <span id="textSaveBtn" class="footer-action">[ 운명 각인 ]</span>
                   <span class="divider">|</span>
                   <span id="textHistoryBtn" class="footer-action">[ 기록 열람 ]</span>
+                  <span class="divider">|</span>
+                  <span id="imgSaveBtn" class="footer-action">[ 이미지 저장 ]</span>
               </div>
               
               <div id="inlineHistoryContainer" style="margin-top: 10px; border-top: 1px dashed rgba(0,0,0,0.2); padding-top: 10px; display: none;">
@@ -1437,6 +1440,54 @@
       }
 
       if(textSaveBtn) textSaveBtn.addEventListener("click", saveHistory);
+
+      const imgSaveBtn = document.getElementById("imgSaveBtn");
+      if(imgSaveBtn) {
+          imgSaveBtn.addEventListener("click", downloadTicketImage);
+      }
+
+      async function downloadTicketImage() {
+        const ticket = document.getElementById("lottoTicket");
+        const footer = document.querySelector(".ticket-footer-controls");
+        
+        // 1. Disable button & show loading state
+        imgSaveBtn.classList.add('disabled');
+        const originalText = imgSaveBtn.textContent;
+        imgSaveBtn.textContent = "[ 저장 중... ]";
+
+        // 2. Reset 3D Tilt for a clean capture
+        const originalTransform = ticketWrapper.style.transform;
+        ticketWrapper.style.transform = "rotateX(0deg) rotateY(0deg)";
+        
+        // 3. Temporarily hide footer controls so they don't appear in the image
+        footer.style.visibility = "hidden";
+
+        try {
+          // 4. Capture using html2canvas
+          const canvas = await html2canvas(ticket, {
+            useCORS: true,
+            scale: 2, // Higher quality
+            backgroundColor: null,
+            logging: false
+          });
+
+          // 5. Trigger download
+          const image = canvas.toDataURL("image/png");
+          const link = document.createElement("a");
+          link.href = image;
+          link.download = `mystic-ring-lotto-${Date.now()}.png`;
+          link.click();
+        } catch (error) {
+          console.error("Image capture failed:", error);
+          alert("이미지 저장에 실패했습니다. 다시 시도해 주세요.");
+        } finally {
+          // 6. Restore state
+          footer.style.visibility = "visible";
+          ticketWrapper.style.transform = originalTransform;
+          imgSaveBtn.classList.remove('disabled');
+          imgSaveBtn.textContent = originalText;
+        }
+      }
 
       let isDark = true
       const savedTheme = localStorage.getItem("theme")
