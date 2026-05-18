@@ -599,11 +599,29 @@
 
       /* === Responsive === */
       @media (max-width: 850px) {
-        .hero { grid-template-columns: 1fr; }
-        h1 { font-size: 3.5rem; }
+        .main-header { padding: 15px 20px; }
+        .main-header.scrolled { padding: 10px 20px; }
+        .hero { grid-template-columns: 1fr; gap: 30px; }
+        h1 { font-size: 3rem; min-height: 8rem; padding: 15px; }
+        .tagline { font-size: 1.2rem; }
         .nav-menu, .theme-toggle { display: none; }
         .menu-btn { display: block; }
         .sticker { display: none; }
+        .main-container { padding: 40px 15px; gap: 40px; }
+        .ticket-box { padding: 20px; position: static; }
+        .ball { width: 38px; height: 38px; font-size: 1rem; }
+        .result-balls { gap: 8px; }
+        .number-grid { gap: 3px; }
+        .num-box { font-size: 0.8rem; }
+      }
+
+      @media (max-width: 480px) {
+        h1 { font-size: 2.2rem; }
+        .controls { flex-direction: column; width: 100%; }
+        .btn { width: 100%; }
+        .logo { font-size: 1.4rem; }
+        .ball { width: 34px; height: 34px; font-size: 0.9rem; }
+        .result-balls { gap: 5px; }
       }
 
       /* Animations */
