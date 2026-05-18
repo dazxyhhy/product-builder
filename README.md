@@ -8,6 +8,8 @@
 
 ### 1. ⚡ 메인 번호 생성기 (Main Generator)
 <img width="1892" height="874" alt="image" src="https://github.com/user-attachments/assets/673d6502-f23b-4685-83bd-1db72e4fef98" />
+<img width="1913" height="912" alt="image" src="https://github.com/user-attachments/assets/b8498cde-9235-4b01-acfa-8010f58090b9" />
+
 
 *   **파일**: `index.html`
 - **랜덤 번호 추첨**: 자바스크립트 표준 난수 알고리즘을 활용한 로또 6/45 번호 생성.
@@ -17,11 +19,13 @@
 
 ### 2. 🌙 꿈해몽 번호 변환기 (Dream Interpreter)
 <img width="1894" height="898" alt="image" src="https://github.com/user-attachments/assets/77ecc08c-3444-4046-ad2c-a8378dc83d44" />
+
 *   **파일**: `dream-lotto.html`
 *   **기능**: 사용자가 꾼 꿈의 키워드(예: 돼지, 불, 똥)를 입력하면 고유 알고리즘을 통해 관련된 행운의 숫자로 변환해 줍니다.
 
 ### 3. 🐾 AI 동물상 테스트 (Animal Face AI)
 <img width="1882" height="880" alt="image" src="https://github.com/user-attachments/assets/f42b72ca-5652-43a2-a658-7ab1d77e9226" />
+
 *   **파일**: `animal-test.html`
 *   **기능**: 사용자의 사진을 분석하여 강아지상, 고양이상 등 닮은 동물상을 찾아주는 AI 기반 심리 테스트입니다. (이미지는 서버로 전송되지 않습니다)
 *   **모델**: Teachable Machine 활용
