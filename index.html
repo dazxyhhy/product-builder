@@ -609,12 +609,12 @@
         .main-header { padding: 15px 20px; }
         .main-header.scrolled { padding: 10px 20px; }
         .hero { grid-template-columns: 1fr; gap: 30px; }
-        h1 { font-size: 3rem; min-height: 8rem; padding: 15px; }
+        h1 { font-size: 3rem; min-height: 8rem; padding: 15px; word-break: keep-all; }
         .tagline { font-size: 1.2rem; }
         .nav-menu, .theme-toggle { display: none; }
         .menu-btn { display: block; }
         .sticker { display: none; }
-        .main-container { padding: 40px 15px; gap: 40px; }
+        .main-container { padding: 40px 20px; gap: 40px; }
         .ticket-box { padding: 20px; position: static; }
         .ball { width: 38px; height: 38px; font-size: 1rem; }
         .result-balls { gap: 8px; }
@@ -623,12 +623,24 @@
       }
 
       @media (max-width: 480px) {
-        h1 { font-size: 2.2rem; }
+        .main-container { padding: 30px 25px; } /* 그림자 공간 확보를 위해 패딩 증가 */
+        h1 { font-size: 2rem; min-height: 6rem; }
         .controls { flex-direction: column; width: 100%; }
-        .btn { width: 100%; }
+        .btn { width: 100%; padding: 12px 20px; font-size: 1.1rem; }
         .logo { font-size: 1.4rem; }
-        .ball { width: 34px; height: 34px; font-size: 0.9rem; }
-        .result-balls { gap: 5px; }
+        .ball { width: 32px; height: 32px; font-size: 0.85rem; border-width: 2px; box-shadow: 2px 2px 0px var(--shadow-color); }
+        .result-balls { gap: 5px; min-height: 40px; }
+        .ticket-buttons { flex-direction: column; } /* 버튼 세로 정렬 */
+        .ticket-box { padding: 15px; gap: 15px; }
+        .num-box { font-size: 0.7rem; }
+        .ticket-header .lotto-title { font-size: 1.2rem; }
+        #prophecyText { padding: 15px; font-size: 1rem; }
+      }
+
+      @media (max-width: 360px) {
+        .main-container { padding: 20px 20px; }
+        h1 { font-size: 1.8rem; }
+        .ball { width: 28px; height: 28px; font-size: 0.8rem; }
       }
 
       /* Animations */
@@ -714,7 +726,7 @@
             <div class="result-balls" id="resultBalls">
               <div class="ball">?</div><div class="ball">?</div><div class="ball">?</div><div class="ball">?</div><div class="ball">?</div><div class="ball">?</div>
             </div>
-            <div style="display: flex; gap: 10px; margin-top: 10px">
+            <div class="ticket-buttons" style="display: flex; gap: 10px; margin-top: 10px">
               <button class="btn btn-secondary" id="textSaveBtn" style="flex: 1; font-size: 0.8rem; padding: 10px; font-weight: 900">[ 기록하기 ]</button>
               <button class="btn btn-secondary" id="imgSaveBtn" style="flex: 1; font-size: 0.8rem; padding: 10px; font-weight: 900">[ 이미지로 저장 ]</button>
               <button class="btn btn-secondary" id="textHistoryBtn" style="flex: 1; font-size: 0.8rem; padding: 10px; font-weight: 900">[ 기록보기 ]</button>
