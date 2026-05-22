@@ -2,7 +2,7 @@
 <html lang="ko">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <meta name="google-site-verification" content="2kb9nHbLvD5nYCPVHvECZzZgecAGKibFpNi1URRwO2s" />
     <title>NEO LOTTO - 행운의 숫자 생성기</title>
     <meta name="description" content="네오 브루탈리즘 스타일의 감각적인 로또 번호 생성기. 당신의 행운을 볼드하게 잡아보세요." />
@@ -100,7 +100,7 @@
 
       html,
       body {
-        max-width: 100vw;
+        max-width: 100%;
         overflow-x: hidden;
         width: 100%;
       }
@@ -115,6 +115,27 @@
         min-height: 100vh;
         position: relative;
         width: 100%;
+      }
+
+      /* === Adsense Defenses === */
+      iframe[id^="google_ads_iframe"],
+      ins.adsbygoogle {
+        margin: 0 !important;
+        padding: 0 !important;
+        max-width: 100% !important;
+      }
+      ins.adsbygoogle[data-ad-status="unfilled"],
+      ins.adsbygoogle:empty {
+        display: none !important;
+        height: 0 !important;
+        width: 0 !important;
+      }
+      html,
+      body {
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
+        margin-top: 0 !important;
+        margin-bottom: 0 !important;
       }
 
       /* === Floating Decorations === */
@@ -376,7 +397,7 @@
       .main-container {
         width: 100%;
         max-width: 1100px;
-        padding: 60px 20px;
+        padding: 60px 24px; /* 우측 그림자가 빠져나갈 숨통 확보 */
         display: flex;
         flex-direction: column;
         gap: 60px;
@@ -394,6 +415,7 @@
         display: flex;
         flex-direction: column;
         gap: 30px;
+        width: 100%;
       }
 
       h1 {
@@ -413,6 +435,7 @@
         overflow: hidden;
         word-break: keep-all;
         overflow-wrap: break-word;
+        width: 100%;
       }
 
       .tagline {
@@ -430,6 +453,7 @@
       .controls {
         display: flex;
         gap: 20px;
+        width: 100%;
       }
 
       .btn {
@@ -474,6 +498,7 @@
         position: sticky;
         top: 120px;
         color: var(--text);
+        width: 100%;
       }
 
       .ticket-header {
@@ -493,6 +518,7 @@
         display: grid;
         grid-template-columns: repeat(7, 1fr);
         gap: 5px;
+        width: 100%;
       }
 
       .num-box {
@@ -516,11 +542,12 @@
 
       .result-balls {
         display: flex;
-        gap: 10px;
+        gap: 8px;
         justify-content: center;
         min-height: 50px;
         margin-top: 10px;
-        flex-wrap: nowrap; /* 공들이 밑으로 떨어지지 않게 설정 */
+        flex-wrap: nowrap;
+        width: 100%;
       }
 
       .ball {
@@ -538,7 +565,7 @@
         opacity: 0;
         transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         color: #000;
-        flex-shrink: 0; /* 부모 크기가 줄어도 찌그러지지 않게 방지 */
+        flex-shrink: 0;
       }
 
       .ball.show {
@@ -590,6 +617,7 @@
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
         gap: 30px;
+        width: 100%;
       }
 
       .feature-card {
@@ -602,6 +630,7 @@
         display: flex;
         flex-direction: column;
         gap: 15px;
+        width: 100%;
       }
       .feature-card.yellow {
         background: #f4d03f;
@@ -635,6 +664,7 @@
         padding: 40px;
         box-shadow: var(--shadow);
         line-height: 1.8;
+        width: 100%;
       }
       .seo-content h2 {
         font-family: "Outfit", sans-serif;
@@ -645,6 +675,7 @@
         padding: 5px 15px;
         border: 2px solid var(--border-color);
         color: #000;
+        max-width: 100%;
       }
 
       /* === Footer === */
@@ -694,7 +725,7 @@
         .main-container {
           padding: 40px 16px;
           gap: 40px;
-        } /* 박스 그림자가 잘리지 않도록 마진 확보 */
+        }
         .ticket-box {
           padding: 20px;
           position: static;
@@ -718,10 +749,10 @@
 
       @media (max-width: 480px) {
         .main-container {
-          padding: 30px 14px;
-        }
+          padding: 30px 12px;
+        } /* 패딩 정밀 조정하여 삐져나오는 shadow 격리 */
         h1 {
-          font-size: 2.2rem;
+          font-size: 2.1rem;
           min-height: auto;
           padding: 12px;
         }
@@ -739,22 +770,30 @@
         .logo {
           font-size: 1.4rem;
         }
-        /* 초소형 화면에서 공이 깨지거나 잘리지 않도록 유동적 대응 크기 적용 */
+
+        /* 공이 한 줄에 6개 우측 잘림 현상 완벽 조준 처방 (calc 비율 계산으로 여백 일치) */
         .ball {
-          width: calc((100% - 25px) / 6);
+          width: calc((100% - 30px) / 6);
           height: auto;
           aspect-ratio: 1;
-          font-size: 1rem;
+          font-size: 0.95rem;
           border-width: 3px;
           box-shadow: 3px 3px 0px var(--shadow-color);
         }
         .result-balls {
-          gap: 5px;
+          gap: 6px;
           min-height: 40px;
+          margin-top: 5px;
         }
+
         .ticket-buttons {
           flex-direction: column;
           gap: 8px;
+          width: 100%;
+        }
+        .ticket-buttons .btn {
+          width: 100% !important;
+          margin: 0;
         }
         .ticket-box {
           padding: 15px;
@@ -774,6 +813,7 @@
           padding: 15px;
           font-size: 1rem;
           box-shadow: 4px 4px 0px var(--shadow-color);
+          width: 100%;
         }
         .seo-content {
           padding: 20px;
@@ -785,8 +825,11 @@
       }
 
       @media (max-width: 360px) {
+        .main-container {
+          padding: 25px 8px;
+        }
         h1 {
-          font-size: 1.8rem;
+          font-size: 1.75rem;
         }
         .num-box {
           font-size: 0.65rem;
@@ -794,6 +837,10 @@
         .ball {
           font-size: 0.85rem;
           border-width: 2px;
+          box-shadow: 2px 2px 0px var(--shadow-color);
+        }
+        .result-balls {
+          gap: 4px;
         }
       }
 
@@ -820,6 +867,7 @@
         border-top: var(--border);
         margin-top: 20px;
         padding-top: 20px;
+        width: 100%;
       }
       .history-item {
         display: flex;
@@ -828,6 +876,7 @@
         border-bottom: 2px solid var(--border-color);
         padding: 5px 0;
         font-size: 0.9rem;
+        width: 100%;
       }
       .btn-del {
         background: #ff4d4d;
