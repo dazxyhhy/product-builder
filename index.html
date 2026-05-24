@@ -421,8 +421,8 @@
       h1 {
         font-family: "Outfit", sans-serif;
         font-weight: 900;
-        font-size: 5rem;
-        line-height: 0.9;
+        font-size: clamp(2.5rem, 7vw, 4.5rem);
+        line-height: 1.1;
         text-transform: uppercase;
         background: var(--primary);
         padding: 20px;
@@ -431,8 +431,10 @@
         color: #000;
         min-height: 12rem;
         display: flex;
-        align-items: center;
-        overflow: hidden;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        overflow: visible;
         word-break: keep-all;
         overflow-wrap: break-word;
         width: 100%;
@@ -661,7 +663,7 @@
       .seo-content {
         background: var(--white);
         border: var(--border);
-        padding: 40px;
+        padding: 40px 40px;
         box-shadow: var(--shadow);
         line-height: 1.8;
         width: 100%;
@@ -676,6 +678,7 @@
         border: 2px solid var(--border-color);
         color: #000;
         max-width: 100%;
+        margin-bottom: 20px;
       }
 
       /* === Footer === */
@@ -845,6 +848,26 @@
       }
 
       /* Animations */
+      .char {
+        opacity: 0;
+        display: inline-block;
+        white-space: pre;
+      }
+      .char.visible {
+        animation: char-flicker 0.3s steps(2, start) forwards;
+      }
+      @keyframes char-flicker {
+        0% {
+          opacity: 0;
+        }
+        50% {
+          opacity: 1;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+
       .shaking {
         animation: shake 0.2s ease-in-out infinite;
       }
@@ -961,7 +984,9 @@
             id="prophecyText"
             style="background: var(--white); border: var(--border); padding: 25px; font-weight: 800; font-size: 1.2rem; box-shadow: 6px 6px 0px var(--shadow-color); margin-top: 20px"
           >
-            "운명은 준비된 자에게 찾아온다. 오늘의 숫자는 무엇일까?"
+            "운명은 준비된 자에게 찾아온다.
+            <br />
+            오늘의 숫자는 무엇일까?"
           </div>
         </div>
         <div class="ticket-side">
@@ -1071,27 +1096,35 @@
         "“오늘은 평소와 다른 길로 가보라. 행운은 그 길모퉁이에 서 있다.”",
       ]
 
-      // Typewriter
-      const titleText = "WAKE UP YOUR LUCK"
-      let charIdx = 0,
-        isDeleting = false
-      function typeWriter() {
-        if (isDeleting) {
-          mainTitle.innerHTML = titleText.substring(0, charIdx - 1)
-          charIdx--
-        } else {
-          mainTitle.innerHTML = titleText.substring(0, charIdx + 1)
-          charIdx++
+      // Blink Title Animation
+      const titleLines = ["WAKE UP", "YOUR LUCK"]
+      function initTitleAnimation() {
+        mainTitle.innerHTML = titleLines
+          .map(
+            (line) =>
+              `<div>${line
+                .split("")
+                .map((char) => `<span class="char">${char === " " ? "&nbsp;" : char}</span>`)
+                .join("")}</div>`,
+          )
+          .join("")
+
+        const chars = mainTitle.querySelectorAll(".char")
+        let idx = 0
+        function animate() {
+          if (idx < chars.length) {
+            chars[idx].classList.add("visible")
+            idx++
+            setTimeout(animate, 100)
+          } else {
+            setTimeout(() => {
+              chars.forEach((c) => c.classList.remove("visible"))
+              idx = 0
+              animate()
+            }, 3000)
+          }
         }
-        let speed = isDeleting ? 50 : 150
-        if (!isDeleting && charIdx === titleText.length) {
-          isDeleting = true
-          speed = 2000
-        } else if (isDeleting && charIdx === 0) {
-          isDeleting = false
-          speed = 500
-        }
-        setTimeout(typeWriter, speed)
+        animate()
       }
 
       // Theme
@@ -1221,7 +1254,7 @@
       )
       document.addEventListener("DOMContentLoaded", () => {
         document.querySelectorAll(".reveal").forEach((el) => observer.observe(el))
-        typeWriter()
+        initTitleAnimation()
         const header = document.querySelector(".main-header")
         window.addEventListener("scroll", () => {
           if (window.scrollY > 50) header.classList.add("scrolled")
